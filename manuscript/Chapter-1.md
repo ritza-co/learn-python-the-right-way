@@ -16,7 +16,7 @@ Almost all programs are written in high-level languages because of their advanta
 
 The engine that translates and runs Python is called the **Python Interpreter**: There are two ways to use it: *immediate mode* and *script mode*. In immediate mode, you type Python expressions into the Python Interpreter window, and the interpreter immediately shows the result:
 
-![Python Interpreter](../Images/Chapter-1/01-01-python-interpreter.png)
+![Python Interpreter](Chapter-1/01-01-python-interpreter.png)
 
 
 The `>>>` or `>` is called the **Python prompt**. The interpreter uses the prompt to indicate that it is ready for instructions. We typed `2 + 2`, and the interpreter evaluated our expression, and replied `4`, and on the next line it gave a new prompt, indicating that it is ready for more input.
@@ -29,7 +29,7 @@ For example, we created a file named `main.py` using Repl.it. By convention, fil
 
 To execute the program, we can click the **Run** button in Repl.it:
 
-![Running a script in Repl.it](../Images/Chapter-1/01-02-running-a-script.png)
+![Running a script in Repl.it](Chapter-1/01-02-running-a-script.png)
 
 Most programs are more interesting than this one.
 
