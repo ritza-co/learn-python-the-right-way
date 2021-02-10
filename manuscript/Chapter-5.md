@@ -1,4 +1,4 @@
-# 5. Conditionals
+# Chapter 5: Conditionals
 
 Programs get really interesting when we can test conditions and change the program behaviour depending on the outcome of the tests. That’s what this chapter is about.
 

@@ -1,4 +1,4 @@
-# 6. Fruitful functions
+# Chapter 6: Fruitful functions
 
 ## 6.1. Return values
 

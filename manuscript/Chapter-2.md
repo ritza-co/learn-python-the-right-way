@@ -1,6 +1,6 @@
-## Chapter:2 Variables, expressions and statements
+# Chapter 2: Variables, expressions and statements
 
-### 2.1. Values and data types
+## 2.1. Values and data types
 
 A **value** is one of the fundamental things — like a letter or a number — that a program manipulates. The values we have seen so far are `4` (the result when we added `2 + 2`), and `"Hello, World!"`.
 
@@ -91,7 +91,7 @@ When you type a large integer, you might be tempted to use commas between groups
 
 Well, that’s not what we expected at all! Because of the comma, Python chose to treat this as a pair of values. We’ll come back to learn about pairs later. But, for the moment, remember not to put commas or spaces in your integers, no matter how big they are. Also revisit what we said in the previous chapter: formal languages are strict, the notation is concise, and even the smallest change might mean something quite different from what you intended.
 
-### 2.2. Variables
+## 2.2. Variables
 
 One of the most powerful features of a programming language is the ability to manipulate **variables**. A variable is a name that refers to a value.
 
@@ -153,7 +153,7 @@ You’ll notice we changed the value of `day` three times, and on the third assi
 
 A great deal of programming is about having the computer remember things, e.g. *The number of missed calls on your phone*, and then arranging to update or change the variable when you miss another call.
 
-### 2.3. Variable names and keywords
+## 2.3. Variable names and keywords
 
 **Variable names** can be arbitrarily long. They can contain both letters and digits, but they have to begin with a letter or an underscore. Although it is legal to use uppercase letters, by convention we don’t. If you do, remember that case matters. `Bruce` and `bruce` are different variables.
 
@@ -200,13 +200,13 @@ Programmers generally choose names for their variables that are meaningful to th
 
 ---
 
-### 2.4. Statements
+## 2.4. Statements
 
 A **statement** is an instruction that the Python interpreter can execute. We have only seen the assignment statement so far. Some other kinds of statements that we’ll see shortly are `while` statements, `for` statements, `if` statements, and `import` statements. (There are other kinds too!)
 
 When you type a statement on the command line, Python executes it. Statements don’t produce any result.
 
-### 2.5. Evaluating expressions
+## 2.5. Evaluating expressions
 
 An **expression** is a combination of values, variables, operators, and calls to functions. If you type an expression at the Python prompt, the interpreter **evaluates** it and displays the result:
 
@@ -232,7 +232,7 @@ The *evaluation* of an *expression* produces a value, which is why expressions c
 3.14
 ```
 
-### 2.6. Operators and operands
+## 2.6. Operators and operands
 
 **Operators** are special tokens that represent computations like addition, multiplication and division. The values the operator uses are called **operands**.
 
@@ -279,7 +279,7 @@ Oops! In Python 3, the division operator `/`always yields a floating point resul
 
 Take care that you choose the correct flavor of the division operator. If you’re working with expressions where you need floating point values, use the division operator that does the division accurately.
 
-### 2.7. Type converter functions
+## 2.7. Type converter functions
 
 Here we’ll look at three more Python functions, `int`, `float` and `str`, which will (attempt to) convert their arguments into types `int`, `float` and `str` respectively. We call these **type converter** functions.
 
@@ -329,7 +329,7 @@ The type converter `str` turns its argument into a string:
 '123.45'
 ```
 
-### 2.8. Order of operations
+## 2.8. Order of operations
 
 When more than one operator appears in an expression, the order of evaluation depends on the **rules of precedence**. Python follows the same precedence rules for its mathematical operators that mathematics does. The acronym PEMDAS is a useful way to remember the order of operations:
 
@@ -352,7 +352,7 @@ Due to some historical quirk, an exception to the left-to-right left-associative
 
 The immediate mode command prompt of Python is great for exploring and experimenting with expressions like this.
 
-### 2.9. Operations on strings
+## 2.9. Operations on strings
 
 In general, you cannot perform mathematical operations on strings, even if the strings look like numbers. The following are illegal (assuming that message has type string):
 
@@ -376,7 +376,7 @@ The `*` operator also works on strings; it performs repetition. For example, `'F
 
 On one hand, this interpretation of `+` and `*` makes sense by analogy with addition and multiplication. Just as `4*3` is equivalent to `4+4+4`, we expect `"Fun"*3` to be the same as `"Fun"+"Fun"+"Fun"`, and it is. On the other hand, there is a significant way in which string concatenation and repetition are different from integer addition and multiplication. Can you think of a property that addition and multiplication have that string concatenation and repetition do not?
 
-### 2.10. Input
+## 2.10. Input
 
 There is a built-in function in Python for getting input from the user:
 
@@ -392,7 +392,7 @@ The user of the program can enter the name and press enter, and when this happen
 
 Even if you asked the user to enter their age, you would get back a string like `"17"`. It would be your job, as the programmer, to convert that string into a int or a float, using the `int` or `float` converter functions we saw earlier.
 
-### 2.11. Composition
+## 2.11. Composition
 
 So far, we have looked at the elements of a program — variables, expressions, statements, and function calls — in isolation, without talking about how to combine them.
 
@@ -428,7 +428,7 @@ Such compact code may not be most understandable for humans, but it does illustr
 
 If you’re ever in doubt about whether to compose code or fragment it into smaller steps, try to make it as simple as you can for the human to follow. My choice would be the first case above, with four separate steps.
 
-### 2.12. The modulus operator
+## 2.12. The modulus operator
 
 The modulus operator works on integers (and integer expressions) and gives the remainder when the first number is divided by the second. In Python, the modulus operator is a percent sign (`%`). The syntax is the same as for other operators. It has the same precedence as the multiplication operator.
 
@@ -460,7 +460,7 @@ print("Hrs=", hours, "  mins=", minutes,
                          "secs=", secs_finally_remaining)
 ```
 
-### 2.13. Glossary
+## 2.13. Glossary
 
 **assignment statement**
 
@@ -562,30 +562,30 @@ A name given to a variable. Variable names in Python consist of a sequence of le
 
 4. Start the Python interpreter and enter `bruce + 4` at the prompt. This will give you an error:
 
-```python
-NameError: name 'bruce' is not defined
-```
-Assign a value to bruce so that `bruce + 4` evaluates to `10`.
+    ```python
+    NameError: name 'bruce' is not defined
+    ```
+    Assign a value to bruce so that `bruce + 4` evaluates to `10`.
 
 5. The formula for computing the final amount if one is earning compound interest is given on Wikipedia as
 
-![Compounded Interest Formula](https://i.ritzastatic.com/ThinkCS-images/Chapter-2/02-04-compoundInterest.png)
+    ![Compounded Interest Formula](https://i.ritzastatic.com/ThinkCS-images/Chapter-2/02-04-compoundInterest.png)
 
-Write a Python program that assigns the principal amount of $10000 to variable `P`, assign to n the value `12`, and assign to `r` the interest rate of 8%. Then have the program prompt the user for the number of years `t` that the money will be compounded for. Calculate and print the final amount after `t` years.
+    Write a Python program that assigns the principal amount of $10000 to variable `P`, assign to n the value `12`, and assign to `r` the interest rate of 8%. Then have the program prompt the user for the number of years `t` that the money will be compounded for. Calculate and print the final amount after `t` years.
 
 6. Evaluate the following numerical expressions in your head, then use the Python interpreter to check your results:
 
-```python
->>> 5 % 2
->>> 9 % 5
->>> 15 % 12
->>> 12 % 15
->>> 6 % 6
->>> 0 % 7
->>> 7 % 0
-```
+    ```python
+    >>> 5 % 2
+    >>> 9 % 5
+    >>> 15 % 12
+    >>> 12 % 15
+    >>> 6 % 6
+    >>> 0 % 7
+    >>> 7 % 0
+    ```
 
-What happened with the last example? Why? If you were able to correctly anticipate the computer’s response in all but the last one, it is time to move on. If not, take time now to make up examples of your own. Explore the modulus operator until you are confident you understand how it works.
+    What happened with the last example? Why? If you were able to correctly anticipate the computer’s response in all but the last one, it is time to move on. If not, take time now to make up examples of your own. Explore the modulus operator until you are confident you understand how it works.
 
 7. You look at the clock and it is exactly 2pm. You set an alarm to go off in 51 hours. At what time does the alarm go off? (*Hint: you could count on your fingers, but this is not what we’re after. If you are tempted to count on your fingers, change the 51 to 5100.*)
 

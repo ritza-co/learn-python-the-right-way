@@ -1,4 +1,4 @@
-# 3. Hello, little turtles!
+# Chapter 3: Hello, little turtles!
 
 There are many *modules* in Python that provide very powerful features that we can use in our own programs. Some of these can send email, or fetch web pages. The one we’ll look at in this chapter allows us to create turtles and get them to draw shapes and patterns.
 

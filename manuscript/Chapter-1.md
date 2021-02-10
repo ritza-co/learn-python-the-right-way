@@ -1,4 +1,4 @@
-## Chapter 1: The way of the program
+# Chapter 1: The way of the program
 
 The goal of this book is to teach you to think like a computer scientist. This way of thinking combines some of the best features of mathematics, engineering, and natural science. Like mathematicians, computer scientists use formal languages to denote ideas (specifically computations). Like engineers, they design things, assembling components into systems and evaluating tradeoffs among alternatives. Like scientists, they observe the behavior of complex systems, form hypotheses, and test predictions.
 
@@ -6,7 +6,7 @@ The single most important skill for a computer scientist is **problem solving**.
 
 On one level, you will be learning to program, a useful skill by itself. On another level, you will use programming as a means to an end. As we go along, that end will become clearer.
 
-### 1.1. The Python programming language
+## 1.1. The Python programming language
 
 The programming language you will be learning is Python. Python is an example of a high-level language; other **high-level languages** you might have heard of are C++, PHP, Pascal, C#, and Java.
 
@@ -34,7 +34,7 @@ Most programs are more interesting than this one.
 
 Working directly in the interpreter is convenient for testing short bits of code because you get immediate feedback. Think of it as scratch paper used to help you work out problems. Anything longer than a few lines should be put into a script.
 
-### 1.2. What is a program?
+## 1.2. What is a program?
 
 A **program** is a sequence of instructions that specifies how to perform a computation. The computation might be something mathematical, such as solving a system of equations or finding the roots of a polynomial, but it can also be a symbolic computation, such as searching and replacing text in a document or (strangely enough) compiling a program.
 
@@ -64,7 +64,7 @@ Believe it or not, that’s pretty much all there is to it. Every program you’
 
 That may be a little vague, but we will come back to this topic later when we talk about **algorithms**.
 
-### 1.3. What is debugging?
+## 1.3. What is debugging?
 
 Programming is a complex process, and because it is done by human beings, it often leads to errors. Programming errors are called **bugs** and the process of tracking them down and correcting them is called **debugging**. Use of the term bug to describe small engineering difficulties dates back to at least 1889, when Thomas Edison had a bug with his phonograph.
 
@@ -76,19 +76,19 @@ Python can only execute a program if the program is syntactically correct; other
 
 For most readers, a few syntax errors are not a significant problem, which is why we can read the poetry of E. E. Cummings without problems. Python is not so forgiving. If there is a single syntax error anywhere in your program, Python will display an error message and quit, and you will not be able to run your program. During the first few weeks of your programming career, you will probably spend a lot of time tracking down syntax errors. As you gain experience, though, you will make fewer errors and find them faster.
 
-### 1.5. Runtime errors
+## 1.5. Runtime errors
 
 The second type of error is a runtime error, so called because the error does not appear until you run the program. These errors are also called **exceptions** because they usually indicate that something exceptional (and bad) has happened.
 
 Runtime errors are rare in the simple programs you will see in the first few chapters, so it might be a while before you encounter one.
 
-### 1.6. Semantic errors
+## 1.6. Semantic errors
 
 The third type of error is the **semantic error**. If there is a semantic error in your program, it will run successfully, in the sense that the computer will not generate any error messages, but it will not do the right thing. It will do something else. Specifically, it will do what you told it to do.
 
 The problem is that the program you wrote is not the program you wanted to write. The meaning of the program (its semantics) is wrong. Identifying semantic errors can be tricky because it requires you to work backward by looking at the output of the program and trying to figure out what it is doing.
 
-### 1.7. Experimental debugging
+## 1.7. Experimental debugging
 
 One of the most important skills you will acquire is debugging. Although it can be frustrating, debugging is one of the most intellectually rich, challenging, and interesting parts of programming.
 
@@ -102,7 +102,7 @@ For example, Linux is an operating system kernel that contains millions of lines
 
 Later chapters will make more suggestions about debugging and other programming practices.
 
-### 1.8. Formal and natural languages
+## 1.8. Formal and natural languages
 
 **Natural languages** are the languages that people speak, such as English, Spanish, and French. They were not designed by people (although people try to impose some order on them); they evolved naturally.
 
@@ -152,7 +152,7 @@ People who grow up speaking a natural language—everyone—often have a hard ti
 
 Here are some suggestions for reading programs (and other formal languages). First, remember that formal languages are much more dense than natural languages, so it takes longer to read them. Also, the structure is very important, so it is usually not a good idea to read from top to bottom, left to right. Instead, learn to parse the program in your head, identifying the tokens and interpreting the structure. Finally, the details matter. Little things like spelling errors and bad punctuation, which you can get away with in natural languages, can make a big difference in a formal language.
 
-### 1.9. The first program
+## 1.9. The first program
 
 Traditionally, the first program written in a new language is called Hello, World! because all it does is display the words, Hello, World! In Python, the script looks like this: (For scripts, we’ll show line numbers to the left of the Python statements.)
 
@@ -170,7 +170,7 @@ The quotation marks in the program mark the beginning and end of the value; they
 
 Some people judge the quality of a programming language by the simplicity of the Hello, World! program. By this standard, Python does about as well as possible.
 
-### 1.10. Comments
+## 1.10. Comments
 
 As programs get bigger and more complicated, they get more difficult to read. Formal languages are dense, and it is often difficult to look at a piece of code and figure out what it is doing, or why.
 
@@ -193,7 +193,7 @@ print("Hello, World!")     # Isn't this easy!
 
 You’ll also notice that we’ve left a blank line in the program. Blank lines are also ignored by the interpreter, but comments and blank lines can make your programs much easier for humans to parse. Use them liberally!
 
-### 1.11. Glossary
+## 1.11. Glossary
 
 **algorithm**
 
@@ -300,7 +300,7 @@ An error in a program that makes it impossible to parse — and therefore imposs
 
 One of the basic elements of the syntactic structure of a program, analogous to a word in a natural language.
 
-### 1.12. Exercises
+## 1.12. Exercises
 
 1. Write an English sentence with understandable semantics but incorrect syntax. Write another English sentence which has correct syntax but has semantic errors.
 
@@ -308,53 +308,53 @@ One of the basic elements of the syntactic structure of a program, analogous to 
 
 3. Type `1 2` and then hit return. Python tries to evaluate the expression, but it can’t because the expression is not syntactically legal. Instead, it shows the error message:
 
-```python
-File "<interactive input>", line 1
-    1 2
-      ^
-SyntaxError: invalid syntax
-```
+    ```python
+    File "<interactive input>", line 1
+        1 2
+          ^
+    SyntaxError: invalid syntax
+    ```
 
-In many cases, Python indicates where the syntax error occurred, but it is not always right, and it doesn’t give you much information about what is wrong.
+    In many cases, Python indicates where the syntax error occurred, but it is not always right, and it doesn’t give you much information about what is wrong.
 
-So, for the most part, the burden is on you to learn the syntax rules.
+    So, for the most part, the burden is on you to learn the syntax rules.
 
-In this case, Python is complaining because there is no operator between the numbers.
+    In this case, Python is complaining because there is no operator between the numbers.
 
-See if you can find a few more examples of things that will produce error messages when you enter them at the Python prompt. Write down what you enter at the prompt and the last line of the error message that Python reports back to you.
+    See if you can find a few more examples of things that will produce error messages when you enter them at the Python prompt. Write down what you enter at the prompt and the last line of the error message that Python reports back to you.
 
 4. Type `print("hello")`. Python executes this, which has the effect of printing the letters h-e-l-l-o. Notice that the quotation marks that you used to enclose the string are not part of the output. Now type `"hello"` and describe your result. Make notes of when you see the quotation marks and when you don’t.
 
 5. Type cheese without the quotation marks. The output will look something like this:
 
-```python
-Traceback (most recent call last):
-  File "<interactive input>", line 1, in ?
-NameError: name 'cheese' is not defined
-```
+    ```python
+    Traceback (most recent call last):
+      File "<interactive input>", line 1, in ?
+    NameError: name 'cheese' is not defined
+    ```
 
-This is a run-time error; specifically, it is a NameError, and even more specifically, it is an error because the name cheese is not defined. If you don’t know what that means yet, you will soon.
+    This is a run-time error; specifically, it is a NameError, and even more specifically, it is an error because the name cheese is not defined. If you don’t know what that means yet, you will soon.
 
 6. Type 6 + 4 * 9 at the Python prompt and hit enter. Record what happens.
 
-Now create a Python script with the following contents:
+    Now create a Python script with the following contents:
 
-```python
- 6 + 4 * 9
-```
+    ```python
+    6 + 4 * 9
+    ```
 
-What happens when you run this script? Now change the script contents to:
+    What happens when you run this script? Now change the script contents to:
 
 
-```python
-print(6 + 4 * 9)
-```
-and run it again.
+    ```python
+    print(6 + 4 * 9)
+    ```
+    and run it again.
 
-What happened this time?
+    What happened this time?
 
-Whenever an expression is typed at the Python prompt, it is evaluated and the result is automatically shown on the line below. (Like on your calculator, if you type this expression you’ll get the result 42.)
+    Whenever an expression is typed at the Python prompt, it is evaluated and the result is automatically shown on the line below. (Like on your calculator, if you type this expression you’ll get the result 42.)
 
-A script is different, however. Evaluations of expressions are not automatically displayed, so it is necessary to use the **print** function to make the answer show up.
+    A script is different, however. Evaluations of expressions are not automatically displayed, so it is necessary to use the **print** function to make the answer show up.
 
-It is hardly ever necessary to use the print function in immediate mode at the command prompt.
+    It is hardly ever necessary to use the print function in immediate mode at the command prompt.
