@@ -112,18 +112,17 @@ The assignment token, `=`, should not be confused with *equals*, which uses the 
 File "<interactive input>", line 1
 SyntaxError: can't assign to literal
 ```
-
+---
 **Tip:**
 
 *When reading or writing code, say to yourself “n is assigned 17” or “n gets the value 17”. Don’t say “n equals 17”.*
 
+---
+
 A common way to represent variables on paper is to write the name with an arrow pointing to the variable’s value. This kind of figure is called a **state snapshot** because it shows what state each of the variables is in at a particular instant in time. (Think of it as the variable’s state of mind). This diagram shows the result of executing the assignment statements:
 
-```
-message --> "What's up, Doc?"
-      n --> 17
-     pi --> 3.14159
-```
+
+![State Snapshot](https://i.ritzastatic.com/ThinkCS-images/Chapter-2/02-01-state.png) 
 
 If you ask the interpreter to evaluate a variable, it will produce the value that is currently linked to the variable:
 
@@ -152,7 +151,7 @@ We use variables in a program to “remember” things, perhaps the current scor
 
 You’ll notice we changed the value of `day` three times, and on the third assignment we even made it refer to a value that was of a different type.
 
-A great deal of programming is about having the computer remember things, e.g. *The number of missed calls on your phone, and then arranging to update or change the variable when you miss another call.*
+A great deal of programming is about having the computer remember things, e.g. *The number of missed calls on your phone*, and then arranging to update or change the variable when you miss another call.
 
 ### 2.3. Variable names and keywords
 
@@ -193,7 +192,7 @@ Programmers generally choose names for their variables that are meaningful to th
 
 ---
 
-**Caution**
+***Caution***
 
 *Beginners sometimes confuse “meaningful to the human readers” with “meaningful to the computer”. So they’ll wrongly think that because they’ve called some variable `average` or `pi`, it will somehow magically calculate an average, or magically know that the variable `pi` should have a value like `3.14159`. No! The computer doesn’t understand what you intend the variable to mean.*
 
@@ -258,12 +257,16 @@ Addition, subtraction, multiplication, and exponentiation all do what you expect
 
 Example: so let us convert 645 minutes into hours:
 
+```python
 >>> minutes = 645
 >>> hours = minutes / 60
 >>> hours
 10.75
-Oops! In Python 3, the division operator / always yields a floating point result. What we might have wanted to know was how many whole hours there are, and how many minutes remain. Python gives us two different flavors of the division operator. The second, called floor division uses the token //. Its result is always a whole number — and if it has to adjust the number it always moves it to the left on the number line. So 6 // 4 yields 1, but -6 // 4 might surprise you!
+```
 
+Oops! In Python 3, the division operator `/`always yields a floating point result. What we might have wanted to know was how many whole hours there are, and how many minutes remain. Python gives us two different flavors of the division operator. The second, called **floor division** uses the token `//`. Its result is always a whole number — and if it has to adjust the number it always moves it to the left on the number line. So `6 // 4` yields `1`, but `-6 // 4` might surprise you!
+
+```python
 >>> 7 / 4
 1.75
 >>> 7 // 4
@@ -272,13 +275,17 @@ Oops! In Python 3, the division operator / always yields a floating point result
 >>> hours = minutes // 60
 >>> hours
 10
+```
+
 Take care that you choose the correct flavor of the division operator. If you’re working with expressions where you need floating point values, use the division operator that does the division accurately.
 
-2.7. Type converter functions
-Here we’ll look at three more Python functions, int, float and str, which will (attempt to) convert their arguments into types int, float and str respectively. We call these type converter functions.
+### 2.7. Type converter functions
+
+Here we’ll look at three more Python functions, `int`, `float` and `str`, which will (attempt to) convert their arguments into types `int`, `float` and `str` respectively. We call these **type converter** functions.
 
 The int function can take a floating point number or a string, and turn it into an int. For floating point numbers, it discards the decimal portion of the number — a process we call truncation towards zero on the number line. Let us see this in action:
 
+```python
 >>> int(3.14)
 3
 >>> int(3.9999)             # This doesn't round to the closest int!
@@ -294,132 +301,155 @@ The int function can take a floating point number or a string, and turn it into 
 >>> int(17)                 # It even works if arg is already an int
 17
 >>> int("23 bottles")
+```
+
 This last case doesn’t look like a number — what do we expect?
 
+```python
 Traceback (most recent call last):
 File "<interactive input>", line 1, in <module>
 ValueError: invalid literal for int() with base 10: '23 bottles'
-The type converter float can turn an integer, a float, or a syntactically legal string into a float:
+```
 
+The type converter `float` can turn an integer, a float, or a syntactically legal string into a float:
+
+```python
 >>> float(17)
 17.0
 >>> float("123.45")
 123.45
-The type converter str turns its argument into a string:
+```
 
+The type converter `str` turns its argument into a string:
+
+```python
 >>> str(17)
 '17'
 >>> str(123.45)
 '123.45'
-2.8. Order of operations
-When more than one operator appears in an expression, the order of evaluation depends on the rules of precedence. Python follows the same precedence rules for its mathematical operators that mathematics does. The acronym PEMDAS is a useful way to remember the order of operations:
+```
 
-Parentheses have the highest precedence and can be used to force an expression to evaluate in the order you want. Since expressions in parentheses are evaluated first, 2 * (3-1) is 4, and (1+1)**(5-2) is 8. You can also use parentheses to make an expression easier to read, as in (minute * 100) / 60, even though it doesn’t change the result.
+### 2.8. Order of operations
 
-Exponentiation has the next highest precedence, so 2**1+1 is 3 and not 4, and 3*1**3 is 3 and not 27.
+When more than one operator appears in an expression, the order of evaluation depends on the **rules of precedence**. Python follows the same precedence rules for its mathematical operators that mathematics does. The acronym PEMDAS is a useful way to remember the order of operations:
 
-Multiplication and both Division operators have the same precedence, which is higher than Addition and Subtraction, which also have the same precedence. So 2*3-1 yields 5 rather than 4, and 5-2*2 is 1, not 6.
+1. **P**arentheses have the highest precedence and can be used to force an expression to evaluate in the order you want. Since expressions in parentheses are evaluated first, `2 * (3-1)` is `4`, and `(1+1)**(5-2)` is `8`. You can also use parentheses to make an expression easier to read, as in `(minute * 100) / 60`, even though it doesn’t change the result.
 
-Operators with the same precedence are evaluated from left-to-right. In algebra we say they are left-associative. So in the expression 6-3+2, the subtraction happens first, yielding 3. We then add 2 to get the result 5. If the operations had been evaluated from right to left, the result would have been 6-(3+2), which is 1. (The acronym PEDMAS could mislead you to thinking that division has higher precedence than multiplication, and addition is done ahead of subtraction - don’t be misled. Subtraction and addition are at the same precedence, and the left-to-right rule applies.)
+2. **E**xponentiation has the next highest precedence, so `2**1+1` is `3` and not `4`, and `3*1**3` is `3` and not `27`.
 
-Due to some historical quirk, an exception to the left-to-right left-associative rule is the exponentiation operator **, so a useful hint is to always use parentheses to force exactly the order you want when exponentiation is involved:
+3. **M**ultiplication and both **D**ivision operators have the same precedence, which is higher than **A**ddition and **S**ubtraction, which also have the same precedence. So `2*3-1` yields `5` rather than `4`, and `5-2*2` is `1`, not `6`.
 
+Operators with the same precedence are evaluated from left-to-right. In algebra we say they are left-associative. So in the expression `6-3+2`, the subtraction happens first, yielding `3`. We then add `2` to get the result `5`. If the operations had been evaluated from right to left, the result would have been `6-(3+2)`, which is `1`. (The acronym PEDMAS could mislead you to thinking that division has higher precedence than multiplication, and addition is done ahead of subtraction - don’t be misled. Subtraction and addition are at the same precedence, and the left-to-right rule applies.)
+
+Due to some historical quirk, an exception to the left-to-right left-associative rule is the exponentiation operator `**`, so a useful hint is to always use parentheses to force exactly the order you want when exponentiation is involved:
+
+```python
 >>> 2 ** 3 ** 2     # The right-most ** operator gets done first!
 512
 >>> (2 ** 3) ** 2   # Use parentheses to force the order you want!
 64
+```
+
 The immediate mode command prompt of Python is great for exploring and experimenting with expressions like this.
 
-2.9. Operations on strings
+### 2.9. Operations on strings
+
 In general, you cannot perform mathematical operations on strings, even if the strings look like numbers. The following are illegal (assuming that message has type string):
 
+```python
 >>> message - 1        # Error
 >>> "Hello" / 123      # Error
 >>> message * "Hello"  # Error
 >>> "15" + 2           # Error
-Interestingly, the + operator does work with strings, but for strings, the + operator represents concatenation, not addition. Concatenation means joining the two operands by linking them end-to-end. For example:
+```
 
-1
-2
-3
+Interestingly, the `+` operator does work with strings, but for strings, the `+` operator represents **concatenation**, not addition. Concatenation means joining the two operands by linking them end-to-end. For example:
+
+```python
 fruit = "banana"
 baked_good = " nut bread"
 print(fruit + baked_good)
+```
 The output of this program is banana nut bread. The space before the word nut is part of the string, and is necessary to produce the space between the concatenated strings.
 
-The * operator also works on strings; it performs repetition. For example, 'Fun'*3 is 'FunFunFun'. One of the operands has to be a string; the other has to be an integer.
+The `*` operator also works on strings; it performs repetition. For example, `'Fun'*3` is `'FunFunFun'`. One of the operands has to be a string; the other has to be an integer.
 
-On one hand, this interpretation of + and * makes sense by analogy with addition and multiplication. Just as 4*3 is equivalent to 4+4+4, we expect "Fun"*3 to be the same as "Fun"+"Fun"+"Fun", and it is. On the other hand, there is a significant way in which string concatenation and repetition are different from integer addition and multiplication. Can you think of a property that addition and multiplication have that string concatenation and repetition do not?
+On one hand, this interpretation of `+` and `*` makes sense by analogy with addition and multiplication. Just as `4*3` is equivalent to `4+4+4`, we expect `"Fun"*3` to be the same as `"Fun"+"Fun"+"Fun"`, and it is. On the other hand, there is a significant way in which string concatenation and repetition are different from integer addition and multiplication. Can you think of a property that addition and multiplication have that string concatenation and repetition do not?
 
-2.10. Input
+### 2.10. Input
+
 There is a built-in function in Python for getting input from the user:
 
-1
+```python
 n = input("Please enter your name: ")
-A sample run of this script in PyScripter would pop up a dialog window like this:
+```
 
-input dialog
-The user of the program can enter the name and click OK, and when this happens the text that has been entered is returned from the input function, and in this case assigned to the variable n.
+A sample run of this script in Repl.it would populate your input question in the console to the left like this:
 
-Even if you asked the user to enter their age, you would get back a string like "17". It would be your job, as the programmer, to convert that string into a int or a float, using the int or float converter functions we saw earlier.
+![Input Prompt](https://i.ritzastatic.com/ThinkCS-images/Chapter-2/02-02-input-prompt.png)
 
-2.11. Composition
+The user of the program can enter the name and press enter, and when this happens the text that has been entered is returned from the input function, and in this case assigned to the variable n.
+
+Even if you asked the user to enter their age, you would get back a string like `"17"`. It would be your job, as the programmer, to convert that string into a int or a float, using the `int` or `float` converter functions we saw earlier.
+
+### 2.11. Composition
+
 So far, we have looked at the elements of a program — variables, expressions, statements, and function calls — in isolation, without talking about how to combine them.
 
-One of the most useful features of programming languages is their ability to take small building blocks and compose them into larger chunks.
+One of the most useful features of programming languages is their ability to take small building blocks and **compose** them into larger chunks.
 
 For example, we know how to get the user to enter some input, we know how to convert the string we get into a float, we know how to write a complex expression, and we know how to print values. Let’s put these together in a small four-step program that asks the user to input a value for the radius of a circle, and then computes the area of the circle from the formula
 
-formula for area of a circle
+![Area of a circle](https://i.ritzastatic.com/ThinkCS-images/Chapter-2/02-03-circle_area.png)
+
 Firstly, we’ll do the four steps one at a time:
 
-1
-2
-3
-4
+```python
 response = input("What is your radius? ")
 r = float(response)
 area = 3.14159 * r**2
 print("The area is ", area)
+```
+
 Now let’s compose the first two lines into a single line of code, and compose the second two lines into another line of code.
 
-1
-2
+```python
 r = float( input("What is your radius? ") )
 print("The area is ", 3.14159 * r**2)
+```
+
 If we really wanted to be tricky, we could write it all in one statement:
 
-1
+```python
 print("The area is ", 3.14159*float(input("What is your radius?"))**2)
+```
+
 Such compact code may not be most understandable for humans, but it does illustrate how we can compose bigger chunks from our building blocks.
 
 If you’re ever in doubt about whether to compose code or fragment it into smaller steps, try to make it as simple as you can for the human to follow. My choice would be the first case above, with four separate steps.
 
-2.12. The modulus operator
-The modulus operator works on integers (and integer expressions) and gives the remainder when the first number is divided by the second. In Python, the modulus operator is a percent sign (%). The syntax is the same as for other operators. It has the same precedence as the multiplication operator.
+### 2.12. The modulus operator
 
+The modulus operator works on integers (and integer expressions) and gives the remainder when the first number is divided by the second. In Python, the modulus operator is a percent sign (`%`). The syntax is the same as for other operators. It has the same precedence as the multiplication operator.
+
+```python
 >>> q = 7 // 3     # This is integer division operator
 >>> print(q)
 2
 >>> r  = 7 % 3
 >>> print(r)
 1
-So 7 divided by 3 is 2 with a remainder of 1.
+```
 
-The modulus operator turns out to be surprisingly useful. For example, you can check whether one number is divisible by another—if x % y is zero, then x is divisible by y.
+So `7` divided by `3` is `2` with a remainder of `1`.
 
-Also, you can extract the right-most digit or digits from a number. For example, x % 10 yields the right-most digit of x (in base 10). Similarly x % 100 yields the last two digits.
+The modulus operator turns out to be surprisingly useful. For example, you can check whether one number is divisible by another—if `x % y` is zero, then `x` is divisible by `y`.
+
+Also, you can extract the right-most digit or digits from a number. For example, `x % 10` yields the right-most digit of `x` (in base `10`). Similarly `x % 100` yields the last two digits.
 
 It is also extremely useful for doing conversions, say from seconds, to hours, minutes and seconds. So let’s write a program to ask the user to enter some seconds, and we’ll convert them into hours, minutes, and remaining seconds.
 
-1
-2
-3
-4
-5
-6
-7
-8
+```python
 total_secs = int(input("How many seconds, in total?"))
 hours = total_secs // 3600
 secs_still_remaining = total_secs % 3600
@@ -428,72 +458,124 @@ secs_finally_remaining = secs_still_remaining  % 60
 
 print("Hrs=", hours, "  mins=", minutes,
                          "secs=", secs_finally_remaining)
-2.13. Glossary
-assignment statement
-A statement that assigns a value to a name (variable). To the left of the assignment operator, =, is a name. To the right of the assignment token is an expression which is evaluated by the Python interpreter and then assigned to the name. The difference between the left and right hand sides of the assignment statement is often confusing to new programmers. In the following assignment:
+```
 
+### 2.13. Glossary
+
+**assignment statement**
+
+A statement that assigns a value to a name (variable). To the left of the assignment operator, `=`, is a name. To the right of the assignment token is an expression which is evaluated by the Python interpreter and then assigned to the name. The difference between the left and right hand sides of the assignment statement is often confusing to new programmers. In the following assignment:
+
+```
 n = n + 1
-n plays a very different role on each side of the =. On the right it is a value and makes up part of the expression which will be evaluated by the Python interpreter before assigning it to the name on the left.
+```
 
-assignment token
-= is Python’s assignment token. Do not confuse it with equals, which is an operator for comparing values.
-composition
+`n` plays a very different role on each side of the `=`. On the right it is a value and makes up part of the expression which will be evaluated by the Python interpreter before assigning it to the name on the left.
+
+**assignment token**
+
+`=` is Python’s assignment token. Do not confuse it with *equals*, which is an operator for comparing values.
+
+**composition**
+
 The ability to combine simple expressions and statements into compound statements and expressions in order to represent complex computations concisely.
-concatenate
+
+**concatenate**
+
 To join two strings end-to-end.
-data type
-A set of values. The type of a value determines how it can be used in expressions. So far, the types you have seen are integers (int), floating-point numbers (float), and strings (str).
-evaluate
+
+**data type**
+
+A set of values. The type of a value determines how it can be used in expressions. So far, the types you have seen are integers (`int`), floating-point numbers (`float`), and strings (`str`).
+
+**evaluate**
+
 To simplify an expression by performing the operations in order to yield a single value.
-expression
+
+**expression**
+
 A combination of variables, operators, and values that represents a single result value.
-float
-A Python data type which stores floating-point numbers. Floating-point numbers are stored internally in two parts: a base and an exponent. When printed in the standard format, they look like decimal numbers. Beware of rounding errors when you use floats, and remember that they are only approximate values.
-floor division
-An operator (denoted by the token //) that divides one number by another and yields an integer, or, if the result is not already an integer, it yields the next smallest integer.
-int
+
+**float**
+
+A Python data type which stores *floating-point* numbers. Floating-point numbers are stored internally in two parts: a *base* and an *exponent*. When printed in the standard format, they look like decimal numbers. Beware of rounding errors when you use `floats`, and remember that they are only approximate values.
+
+**floor division**
+
+An operator (denoted by the token `//`) that divides one number by another and yields an integer, or, if the result is not already an integer, it yields the next smallest integer.
+
+**int**
+
 A Python data type that holds positive and negative whole numbers.
-keyword
-A reserved word that is used by the compiler to parse programs; you cannot use keywords like if, def, and while as variable names.
-modulus operator
-An operator, denoted with a percent sign ( %), that works on integers and yields the remainder when one number is divided by another.
-operand
+
+**keyword**
+
+A reserved word that is used by the compiler to parse programs; you cannot use keywords like `if`, `def`, and `while` as variable names.
+
+**modulus operator**
+
+An operator, denoted with a percent sign (`%`), that works on integers and yields the remainder when one number is divided by another.
+
+**operand**
+
 One of the values on which an operator operates.
-operator
+
+**operator**
+
 A special symbol that represents a simple computation like addition, multiplication, or string concatenation.
-rules of precedence
+
+**rules of precedence**
+
 The set of rules governing the order in which expressions involving multiple operators and operands are evaluated.
-state snapshot
+
+**state snapshot**
+
 A graphical representation of a set of variables and the values to which they refer, taken at a particular instant during the program’s execution.
-statement
-An instruction that the Python interpreter can execute. So far we have only seen the assignment statement, but we will soon meet the import statement and the for statement.
-str
+
+**statement**
+
+An instruction that the Python interpreter can execute. So far we have only seen the assignment statement, but we will soon meet the `import` statement and the `for` statement.
+
+**str**
+
 A Python data type that holds a string of characters.
-value
+
+**value**
+
 A number or string (or other things to be named later) that can be stored in a variable or computed in an expression.
-variable
+
+**variable**
+
 A name that refers to a value.
-variable name
-A name given to a variable. Variable names in Python consist of a sequence of letters (a..z, A..Z, and _) and digits (0..9) that begins with a letter. In best programming practice, variable names should be chosen so that they describe their use in the program, making the program self documenting.
-2.14. Exercises
-Take the sentence: All work and no play makes Jack a dull boy. Store each word in a separate variable, then print out the sentence on one line using print.
 
-Add parenthesis to the expression 6 * 1 - 2 to change its value from 4 to -6.
+**variable name**
 
-Place a comment before a line of code that previously worked, and record what happens when you rerun the program.
+A name given to a variable. Variable names in Python consist of a sequence of letters (a..z, A..Z, and _) and digits (0..9) that begins with a letter. In best programming practice, variable names should be chosen so that they describe their use in the program, making the program *self documenting*.
 
-Start the Python interpreter and enter bruce + 4 at the prompt. This will give you an error:
+### 2.14. Exercises
 
+1. Take the sentence: All work and no play makes Jack a dull boy. Store each word in a separate variable, then print out the sentence on one line using print.
+
+2. Add parenthesis to the expression `6 * 1 - 2` to change its value from `4` to `-6`.
+
+3. Place a comment before a line of code that previously worked, and record what happens when you rerun the program.
+
+4. Start the Python interpreter and enter `bruce + 4` at the prompt. This will give you an error:
+
+```python
 NameError: name 'bruce' is not defined
-Assign a value to bruce so that bruce + 4 evaluates to 10.
+```
+Assign a value to bruce so that `bruce + 4` evaluates to `10`.
 
-The formula for computing the final amount if one is earning compound interest is given on Wikipedia as
+5. The formula for computing the final amount if one is earning compound interest is given on Wikipedia as
 
-formula for compound interest
-Write a Python program that assigns the principal amount of $10000 to variable P, assign to n the value 12, and assign to r the interest rate of 8%. Then have the program prompt the user for the number of years t that the money will be compounded for. Calculate and print the final amount after t years.
+![Compounded Interest Formula](https://i.ritzastatic.com/ThinkCS-images/Chapter-2/02-04-compoundInterest.png)
 
-Evaluate the following numerical expressions in your head, then use the Python interpreter to check your results:
+Write a Python program that assigns the principal amount of $10000 to variable `P`, assign to n the value `12`, and assign to `r` the interest rate of 8%. Then have the program prompt the user for the number of years `t` that the money will be compounded for. Calculate and print the final amount after `t` years.
 
+6. Evaluate the following numerical expressions in your head, then use the Python interpreter to check your results:
+
+```python
 >>> 5 % 2
 >>> 9 % 5
 >>> 15 % 12
@@ -501,8 +583,10 @@ Evaluate the following numerical expressions in your head, then use the Python i
 >>> 6 % 6
 >>> 0 % 7
 >>> 7 % 0
+```
+
 What happened with the last example? Why? If you were able to correctly anticipate the computer’s response in all but the last one, it is time to move on. If not, take time now to make up examples of your own. Explore the modulus operator until you are confident you understand how it works.
 
-You look at the clock and it is exactly 2pm. You set an alarm to go off in 51 hours. At what time does the alarm go off? (Hint: you could count on your fingers, but this is not what we’re after. If you are tempted to count on your fingers, change the 51 to 5100.)
+7. You look at the clock and it is exactly 2pm. You set an alarm to go off in 51 hours. At what time does the alarm go off? (*Hint: you could count on your fingers, but this is not what we’re after. If you are tempted to count on your fingers, change the 51 to 5100.*)
 
-Write a Python program to solve the general version of the above problem. Ask the user for the time now (in hours), and ask for the number of hours to wait. Your program should output what the time will be on the clock when the alarm goes off.
+8. Write a Python program to solve the general version of the above problem. Ask the user for the time now (in hours), and ask for the number of hours to wait. Your program should output what the time will be on the clock when the alarm goes off.

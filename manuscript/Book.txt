@@ -1,2 +1,6 @@
 Chapter-1.md
 Chapter-2.md
+Chapter-3.md
+Chapter-4.md
+Chapter-5.md
+Chapter-6.md
