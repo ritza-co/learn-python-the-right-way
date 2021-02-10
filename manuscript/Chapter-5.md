@@ -72,7 +72,7 @@ So there are no unnecessary evaluations.
 A truth table is a small table that allows us to list all the possible inputs, and to give the results for the logical operators. Because the `and` and `or` operators each have two operands, there are only four rows in a truth table that describes the semantics of `and`.
 
 | a | b | a and b|
-|---|---|--------|
+| --- | --- | --- |
 |False|	False|	False|
 |False|	True|	False
 |True|	False|	False
@@ -81,7 +81,7 @@ A truth table is a small table that allows us to list all the possible inputs, a
 In a Truth Table, we sometimes use `T` and `F` as shorthand for the two Boolean values: here is the truth table describing or:
 
 |a|	b|	a or b|
-|-|-|-|
+| --- | --- | --- |
 |F|	F|	F|
 |F|	T|	T|
 |T|	F|	T|
@@ -90,7 +90,7 @@ In a Truth Table, we sometimes use `T` and `F` as shorthand for the two Boolean 
 The third logical operator, `not`, only takes a single operand, so its truth table only has two rows:
 
 |a|	not a|
-|-|-|
+| --- | --- |
 |F|	T|
 |T|	F|
 
@@ -305,7 +305,7 @@ Each of the six relational operators has a logical opposite: for example, suppos
 Notice that the opposite of `>=` is `<`.
 
 |operator	|logical opposite|
-|-|-|
+| --- | --- |
 `==`|	`!=`
 `!=`|	`==`
 `<`|	`>=`
@@ -607,7 +607,7 @@ The process of adding a function header and parameters to a sequence of program 
 5. Complete this truth table:
 
     |p|	q|	r|	(not (p and q)) or r|
-    |-|-|-|-|
+    | --- | --- | --- | --- |
     |F|	F|	F|	?
     |F|	F|	T|	?
     |F|	T|	F|	?
@@ -620,7 +620,7 @@ The process of adding a function header and parameters to a sequence of program 
 6. Write a function which is given an exam mark, and it returns a string — the grade for that mark — according to this scheme:
 
     |Mark|	Grade|
-    |-|-|
+    | --- | --- |
     |>= 75|	First|
     |[70-75)|	Upper Second|
     |[60-70)|	Second|
