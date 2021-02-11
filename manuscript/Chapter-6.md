@@ -532,16 +532,14 @@ After completing each exercise, confirm that all the tests pass.
     test(seconds_in(9010) == 10)
     ```
 
----
-**It won’t always be obvious what is wanted ...**
 
-In the third case above, the requirement seems quite ambiguous and fuzzy. But the test clarifies what we actually need to do.
-
-Unit tests often have this secondary benefit of clarifying the specifications. If you write your own test suites, consider it part of the problem-solving process as you ask questions about what you really expect to happen, and whether you’ve considered all the possible cases.
-
-Since our book is titled *How to Think Like* ... you might enjoy reading at least one reference about thinking, and about fun ideas like *fluid intelligence*, a key ingredient in problem solving. See, for example, http://psychology.about.com/od/cognitivepsychology/a/fluid-crystal.htm. Learning Computer Science requires a good mix of both fluid and crystallized kinds of intelligence.
-
----
+    > **It won’t always be obvious what is wanted ...**
+    > 
+    > In the third case above, the requirement seems quite ambiguous and fuzzy. But the test clarifies what we actually need to do.
+    > 
+    > Unit tests often have this secondary benefit of clarifying the specifications. If you write your own test suites, consider it part of the problem-solving process as you ask questions about what you really expect to happen, and whether you’ve considered all the possible cases.
+    > 
+    > Since our book is titled *How to Think Like* ... you might enjoy reading at least one reference about thinking, and about fun ideas like *fluid intelligence*, a key ingredient in problem solving. See, for example, http://psychology.about.com/od/cognitivepsychology/a/fluid-crystal.htm. Learning Computer Science requires a good mix of both fluid and crystallized kinds of intelligence.
 
 10. Which of these tests fail? Explain why.
 

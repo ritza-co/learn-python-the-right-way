@@ -73,26 +73,26 @@ A truth table is a small table that allows us to list all the possible inputs, a
 
 | a | b | a and b|
 | --- | --- | --- |
-|False|	False|	False|
-|False|	True|	False
-|True|	False|	False
-|True|	True|	True
+|False | False | False |
+|False | True | False |
+|True | False|	False|
+|True | True | True|
 
 In a Truth Table, we sometimes use `T` and `F` as shorthand for the two Boolean values: here is the truth table describing or:
 
-|a|	b|	a or b|
+| a | b | a or b |
 | --- | --- | --- |
-|F|	F|	F|
-|F|	T|	T|
-|T|	F|	T|
-|T|	T|	T|
+| F | F | F |
+| F | T | T |
+| T | F | T |
+| T | T | T |
 
 The third logical operator, `not`, only takes a single operand, so its truth table only has two rows:
 
-|a|	not a|
+| a | not a |
 | --- | --- |
-|F|	T|
-|T|	F|
+| F | T |
+| T | F |
 
 ## 5.4. Simplifying Boolean Expressions
 
@@ -148,10 +148,9 @@ else:
 
 The Boolean expression after the `if` statement is called the **condition**. If it is true, then all the indented statements get executed. If not, then all the statements indented under the `else` clause get executed.
 
----
-**Flowchart of an `if` statement with an `else` claus**e
-
-![Flowchart - if else](https://i.ritzastatic.com/ThinkCS-images/Chapter-5/05-01-flowchart_if_else.png)
+A> **Flowchart of an `if` statement with an `else` claus**e
+A> 
+A> ![Flowchart - if else](https://i.ritzastatic.com/ThinkCS-images/Chapter-5/05-01-flowchart_if_else.png)
 
 The syntax for an if statement looks like this:
 
@@ -179,12 +178,9 @@ else:
 
 ## 5.6. Omitting the else clause
 
----
-**Flowchart of an `if` statement with no `else` clause**
-
-![Flowchart - if only](https://i.ritzastatic.com/ThinkCS-images/Chapter-5/05-02-flowchart_if_only.png)
-
----
+B> **Flowchart of an `if` statement with no `else` clause**
+B> 
+B> ![Flowchart - if only](https://i.ritzastatic.com/ThinkCS-images/Chapter-5/05-02-flowchart_if_only.png)
 
 Another form of the `if` statement is one in which the `else` clause is omitted entirely. In this case, when the condition evaluates to `True`, the statements are executed, otherwise the flow of execution continues to the statement after the `if`.
 
@@ -198,14 +194,11 @@ print("The square root of ", x, "is", math.sqrt(x))
 ```
 In this case, the `print` function that outputs the square root is the one after the `if` — not because we left a blank line, but because of the way the code is indented. Note too that the function call `math.sqrt(x)` will give an error unless we have an `import math` statement, usually placed near the top of our script.
 
----
-**Python terminology**
-
-Python documentation sometimes uses the term **suite** of statements to mean what we have called a *block* here. They mean the same thing, and since most other languages and computer scientists use the word block, we’ll stick with that.
-
-Notice too that `else` is not a statement. The `if` statement has two clauses, one of which is the (optional) `else` clause.
-
----
+> **Python terminology**
+> 
+> Python documentation sometimes uses the term **suite** of statements to mean what we have called a *block* here. They mean the same thing, and since most other languages and computer scientists use the word block, we’ll stick with that.
+> 
+> Notice too that `else` is not a statement. The `if` statement has two clauses, one of which is the (optional) `else` clause.
 
 ## 5.7. Chained conditionals
 
@@ -220,12 +213,9 @@ else:
     STATEMENTS_C
 ```
 
----
-**Flowchart of this chained conditional**
-
-![Flowchart - chained conditional](https://i.ritzastatic.com/ThinkCS-images/Chapter-5/05-03-flowchart_chained_conditional.png)
-
----
+> **Flowchart of this chained conditional**
+> 
+> ![Flowchart - chained conditional](https://i.ritzastatic.com/ThinkCS-images/Chapter-5/05-03-flowchart_chained_conditional.png)
 
 `elif` is an abbreviation of else if. Again, exactly one branch will be executed. There is no limit of the number of `elif` statements but only a single (and optional) final `else` statement is allowed and it must be the last branch in the statement:
 
@@ -246,12 +236,9 @@ Each condition is checked in order. If the first is false, the next is checked, 
 
 One conditional can also be **nested** within another. (It is the same theme of composability, again!) We could have written the previous example as follows:
 
----
-**Flowchart of this nested conditional**
-
-![Flowchart - nested conditional](https://i.ritzastatic.com/ThinkCS-images/Chapter-5/05-04-flowchart_nested_conditional.png)
-
----
+> **Flowchart of this nested conditional**
+> 
+> ![Flowchart - nested conditional](https://i.ritzastatic.com/ThinkCS-images/Chapter-5/05-04-flowchart_nested_conditional.png)
 
 ```python
 if x < y:
@@ -304,14 +291,14 @@ Each of the six relational operators has a logical opposite: for example, suppos
 
 Notice that the opposite of `>=` is `<`.
 
-|operator	|logical opposite|
+| operator | logical opposite |
 | --- | --- |
-`==`|	`!=`
-`!=`|	`==`
-`<`|	`>=`
-`<=`|	`>`
-`>`|	`<=`
-`>=`|	`<`
+| `==` | `!=` |
+| `!=` | `==` |
+| `<` | `>=` |
+| `<=` | `>` |
+| `>` | `<=` |
+| `>=` | `<` |
 
 Understanding these logical opposites allows us to sometimes get rid of `not` operators. `not` operators are often quite difficult to read in computer code, and our intentions will usually be clearer if we can eliminate them.
 
@@ -364,14 +351,11 @@ This version is probably the best of the three, because it very closely matches 
 
 As our programming skills develop we’ll find we have more than one way to solve any problem. So good programs are *designed*. We make choices that favour clarity, simplicity, and elegance. The job title *software architect* says a lot about what we do — we are *architects* who engineer our products to balance beauty, functionality, simplicity and clarity in our creations.
 
----
-***Tip***
-
-*Once our program works, we should play around a bit trying to polish it up. Write good comments. Think about whether the code would be clearer with different variable names. Could we have done it more elegantly? Should we rather use a function? Can we simplify the conditionals?*
-
-*We think of our code as our creation, our work of art! We make it great.*
-
----
+> ***Tip***
+> 
+> *Once our program works, we should play around a bit trying to polish it up. Write good comments. Think about whether the code would be clearer with different variable names. Could we have done it more elegantly? Should we rather use a function? Can we simplify the conditionals?*
+> 
+> *We think of our code as our creation, our work of art! We make it great.*
 
 ## 5.11. Type conversion
 
@@ -510,7 +494,7 @@ wn.mainloop()
 
 It produces the following, which is more satisfying:
 
-![_images/tess_bar_3.png](https://i.ritzastatic.com/ThinkCS-images/Chapter-5/05-07-tess_bar_3.png)
+![Filled bar chart](https://i.ritzastatic.com/ThinkCS-images/Chapter-5/05-07-tess_bar_3.png)
 
 Mmm. Perhaps the bars should not be joined to each other at the bottom. We’ll need to pick up the pen while making the gap between the bars. We’ll leave that (and a few more tweaks) as exercises for you!
 
@@ -606,28 +590,28 @@ The process of adding a function header and parameters to a sequence of program 
 
 5. Complete this truth table:
 
-    |p|	q|	r|	(not (p and q)) or r|
+    | p | q | r | (not (p and q)) or r |
     | --- | --- | --- | --- |
-    |F|	F|	F|	?
-    |F|	F|	T|	?
-    |F|	T|	F|	?
-    |F|	T|	T|	?
-    |T|	F|	F|	?
-    |T|	F|	T|	?
-    |T|	T|	F|	?
-    |T|	T|	T|	?
+    | F | F | F | ? |
+    | F | F | T | ? |
+    | F | T | F | ? |
+    | F | T | T | ? |
+    | T | F | F | ? |
+    | T | F | T | ? |
+    | T | T | F | ? |
+    | T | T | T | ? |
 
 6. Write a function which is given an exam mark, and it returns a string — the grade for that mark — according to this scheme:
 
-    |Mark|	Grade|
+    | Mark | Grade |
     | --- | --- |
-    |>= 75|	First|
-    |[70-75)|	Upper Second|
-    |[60-70)|	Second|
-    |[50-60)|	Third|
-    |[45-50)|	F1 Supp|
-    |[40-45)|	F2|
-    |< 40|	F3|
+    | >= 75 | First |
+    | [70-75) | Upper Second |
+    | [60-70) |	Second |
+    | [50-60) |	Third |
+    | [45-50) |	F1 Supp |
+    | [40-45) |	F2 |
+    | < 40 | F3 |
 
     The square and round brackets denote closed and open intervals. A closed interval includes the number, and open interval excludes it. So `39.99999` gets grade `F3`, but `40` gets grade `F2`. Assume
 

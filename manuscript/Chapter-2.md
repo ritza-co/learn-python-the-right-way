@@ -112,12 +112,10 @@ The assignment token, `=`, should not be confused with *equals*, which uses the 
 File "<interactive input>", line 1
 SyntaxError: can't assign to literal
 ```
----
-**Tip:**
 
-*When reading or writing code, say to yourself “n is assigned 17” or “n gets the value 17”. Don’t say “n equals 17”.*
+> **Tip:**
+> *When reading or writing code, say to yourself “n is assigned 17” or “n gets the value 17”. Don’t say “n equals 17”.*
 
----
 
 A common way to represent variables on paper is to write the name with an arrow pointing to the variable’s value. This kind of figure is called a **state snapshot** because it shows what state each of the variables is in at a particular instant in time. (Think of it as the variable’s state of mind). This diagram shows the result of executing the assignment statements:
 
@@ -181,24 +179,21 @@ Python has thirty-something keywords (and every now and again improvements to Py
 | and |	as | assert | break | class | continue |
 | --- | --- | --- | --- | --- | --- |
 | def |	del | elif | else | except |exec|
-finally | for |	from | global | if | import
-in | is | lambda | nonlocal | not | or
-pass | raise | return | try | while	| with
-yield |	True |	False |	None |
+| finally | for | from | global | if | import |
+| in | is | lambda | nonlocal | not | or |
+| pass | raise | return | try | while | with |
+| yield |	True |	False |	None |
 
 You might want to keep this list handy. If the interpreter complains about one of your variable names and you don’t know why, see if it is on this list.
 
 Programmers generally choose names for their variables that are meaningful to the human readers of the program — they help the programmer document, or remember, what the variable is used for.
 
----
 
-***Caution***
-
-*Beginners sometimes confuse “meaningful to the human readers” with “meaningful to the computer”. So they’ll wrongly think that because they’ve called some variable `average` or `pi`, it will somehow magically calculate an average, or magically know that the variable `pi` should have a value like `3.14159`. No! The computer doesn’t understand what you intend the variable to mean.*
-
-*So you’ll find some instructors who deliberately don’t choose meaningful names when they teach beginners — not because we don’t think it is a good habit, but because we’re trying to reinforce the message that you — the programmer — must write the program code to calculate the average, and you must write an assignment statement to give the variable `pi` the value you want it to have.*
-
----
+A> ***Caution***
+A> 
+A> *Beginners sometimes confuse “meaningful to the human readers” with “meaningful to the computer”. So they’ll wrongly think that because they’ve called some variable `average` or `pi`, it will somehow magically calculate an average, or magically know that the variable `pi` should have a value like `3.14159`. No! The computer doesn’t understand what you intend the variable to mean.*
+A> 
+A> *So you’ll find some instructors who deliberately don’t choose meaningful names when they teach beginners — not because we don’t think it is a good habit, but because we’re trying to reinforce the message that you — the programmer — must write the program code to calculate the average, and you must write an assignment statement to give the variable `pi` the value you want it to have.*
 
 ## 2.4. Statements
 
@@ -552,7 +547,7 @@ A name that refers to a value.
 
 A name given to a variable. Variable names in Python consist of a sequence of letters (a..z, A..Z, and _) and digits (0..9) that begins with a letter. In best programming practice, variable names should be chosen so that they describe their use in the program, making the program *self documenting*.
 
-### 2.14. Exercises
+## 2.14. Exercises
 
 1. Take the sentence: All work and no play makes Jack a dull boy. Store each word in a separate variable, then print out the sentence on one line using print.
 

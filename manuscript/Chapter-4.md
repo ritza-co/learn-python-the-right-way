@@ -48,18 +48,16 @@ Suppose we’re working with turtles, and a common operation we need is to draw 
 
 This function is named `draw_square`. It has two parameters: one to tell the function which turtle to move around, and the other to tell it the size of the square we want drawn. Make sure you know where the body of the function ends — it depends on the indentation, and the blank lines don’t count for this purpose!
 
----
-**Docstrings for documentation**
 
-If the first thing after the function header is a string, it is treated as a **docstring** and gets special treatment in Python and in some programming tools. For example, when we type a built-in function name with an unclosed parenthesis in Repl.it, a tooltip pops up, telling us what arguments the function takes, and it shows us any other text contained in the docstring.
-
-Docstrings are the key way to document our functions in Python and the documentation part is important. Because whoever calls our function shouldn’t have to need to know what is going on in the function or how it works; they just need to know what arguments our function takes, what it does, and what the expected result is. Enough to be able to use the function without having to look underneath. This goes back to the concept of abstraction of which we’ll talk more about.
-
-Docstrings are usually formed using triple-quoted strings as they allow us to easily expand the docstring later on should we want to write more than a one-liner.
-
-Just to differentiate from comments, a string at the start of a function (a docstring) is retrievable by Python tools at runtime. By contrast, comments are completely eliminated when the program is parsed.
-
----
+> **Docstrings for documentation**
+> 
+> If the first thing after the function header is a string, it is treated as a **docstring** and gets special treatment in Python and in some programming tools. For example, when we type a built-in function name with an unclosed parenthesis in Repl.it, a tooltip pops up, telling us what arguments the function takes, and it shows us any other text contained in the docstring.
+> 
+> Docstrings are the key way to document our functions in Python and the documentation part is important. Because whoever calls our function shouldn’t have to need to know what is going on in the function or how it works; they just need to know what arguments our function takes, what it does, and what the expected result is. Enough to be able to use the function without having to look underneath. This goes back to the concept of abstraction of which we’ll talk more about.
+> 
+> Docstrings are usually formed using triple-quoted strings as they allow us to easily expand the docstring later on should we want to write more than a one-liner.
+> 
+> Just to differentiate from comments, a string at the start of a function (a docstring) is retrievable by Python tools at runtime. By contrast, comments are completely eliminated when the program is parsed.
 
 Defining a new function does not make the function run. To do that we need a **function call**. We’ve already seen how to call some built-in functions like **`print`**, **`range`** and **`int`**. Function calls contain the name of the function being executed followed by a list of values, called *arguments*, which are assigned to the parameters in the function definition. So in the second last line of the program, we call the function, and pass alex as the turtle to be manipulated, and 50 as the size of the square we want. While the function is executing, then, the variable `sz` refers to the value `50`, and the variable t refers to the same turtle instance that the variable `alex` refers to.
 
@@ -156,37 +154,34 @@ Fortunately, Python is adept at keeping track of where it is, so each time a fun
 
 What’s the moral of this sordid tale? When we read a program, don’t read from top to bottom. Instead, follow the flow of execution.
 
----
-**Watch the flow of execution in action**
-
-Repl.it does not have "single-stepping" functionality. For this we would recommend a different IDE like [PyScripter](https://sourceforge.net/projects/pyscripter/)
-
-In PyScripter, we can watch the flow of execution by “single-stepping” through any program. PyScripter will highlight each line of code just before it is about to be executed.
-
-PyScripter also lets us hover the mouse over any variable in the program, and it will pop up the current value of that variable. So this makes it easy to inspect the “state snapshot” of the program — the current values that are assigned to the program’s variables.
-
-This is a powerful mechanism for building a deep and thorough understanding of what is happening at each step of the way. Learn to use the single-stepping feature well, and be mentally proactive: as you work through the code, challenge yourself before each step: *“What changes will this line make to any variables in the program?”* and “Where will flow of execution go next?”
-
-Let us go back and see how this works with the program above that draws 15 multicolor squares. First, we’re going to add one line of magic below the import statement — not strictly necessary, but it will make our lives much simpler, because it prevents stepping into the module containing the turtle code.
-
-```python
-import turtle
-__import__("turtle").__traceable__ = False
-```
-
-Now we’re ready to begin. Put the mouse cursor on the line of the program where we create the turtle screen, and press the F4 key. This will run the Python program up to, but not including, the line where we have the cursor. Our program will “break” now, and provide a highlight on the next line to be executed, something like this:
-
-![PyScripter Breakpoint](https://i.ritzastatic.com/ThinkCS-images/Chapter-4/pyscripter.png)
-
-At this point we can press the `F7` key (*step into*) repeatedly to single step through the code. Observe as we execute lines 10, 11, 12, … how the turtle window gets created, how its canvas color is changed, how the title gets changed, how the turtle is created on the canvas, and then how the flow of execution gets into the loop, and from there into the function, and into the function’s loop, and then repeatedly through the body of that loop.
-
-While we do this, we can also hover our mouse over some of the variables in the program, and confirm that their values match our conceptual model of what is happening.
-
-After a few loops, when we’re about to execute line 20 and we’re starting to get bored, we can use the key `F8` to “step over” the function we are calling. This executes all the statements in the function, but without having to step through each one. We always have the choice to either “go for the detail”, or to “take the high-level view” and execute the function as a single chunk.
-
-There are some other options, including one that allow us to resume execution without further stepping. Find them under the *Run* menu of PyScripter.
-
----
+> **Watch the flow of execution in action**
+> 
+> Repl.it does not have "single-stepping" functionality. For this we would recommend a different IDE like [PyScripter](https://sourceforge.net/projects/pyscripter/)
+> 
+> In PyScripter, we can watch the flow of execution by “single-stepping” through any program. PyScripter will highlight each line of code just before it is about to be executed.
+> 
+> PyScripter also lets us hover the mouse over any variable in the program, and it will pop up the current value of that variable. So this makes it easy to inspect the “state snapshot” of the program — the current values that are assigned to the program’s variables.
+> 
+> This is a powerful mechanism for building a deep and thorough understanding of what is happening at each step of the way. Learn to use the single-stepping feature well, and be mentally proactive: as you work through the code, challenge yourself before each step: *“What changes will this line make to any variables in the program?”* and “Where will flow of execution go next?”
+> 
+> Let us go back and see how this works with the program above that draws 15 multicolor squares. First, we’re going to add one line of magic below the import statement — not strictly necessary, but it will make our lives much simpler, because it prevents stepping into the module containing the turtle code.
+> 
+> ```python
+> import turtle
+> __import__("turtle").__traceable__ = False
+> ```
+> 
+> Now we’re ready to begin. Put the mouse cursor on the line of the program where we create the turtle screen, and press the F4 key. This will run the Python program up to, but not including, the line where we have the cursor. Our program will “break” now, and provide a highlight on the next line to be executed, something like this:
+> 
+> ![PyScripter Breakpoint](https://i.ritzastatic.com/ThinkCS-images/Chapter-4/pyscripter.png)
+> 
+> At this point we can press the `F7` key (*step into*) repeatedly to single step through the code. Observe as we execute lines 10, 11, 12, … how the turtle window gets created, how its canvas color is changed, how the title gets changed, how the turtle is created on the canvas, and then how the flow of execution gets into the loop, and from there into the function, and into the function’s loop, and then repeatedly through the body of that loop.
+> 
+> While we do this, we can also hover our mouse over some of the variables in the program, and confirm that their values match our conceptual model of what is happening.
+> 
+> After a few loops, when we’re about to execute line 20 and we’re starting to get bored, we can use the key `F8` to “step over” the function we are calling. This executes all the statements in the function, but without having to step through each one. We always have the choice to either “go for the detail”, or to “take the high-level view” and execute the function as a single chunk.
+> 
+> There are some other options, including one that allow us to resume execution without further stepping. Find them under the *Run* menu of PyScripter.
 
 ## 4.4. Functions that require arguments
 
@@ -453,8 +448,7 @@ The opposite of a fruitful function: one that does not return a value. It is exe
 
 3. Write a void function `draw_poly(t, n, sz)` which makes a turtle draw a regular polygon. When called with `draw_poly(tess, 8, 50)`, it will draw a shape like this:
 
-![Regular Polygon](https://i.ritzastatic.com/ThinkCS-images/Chapter-4/04-06-regularpolygon.png
-)
+![Regular Polygon](https://i.ritzastatic.com/ThinkCS-images/Chapter-4/04-06-regularpolygon.png)
 
 4. Draw this pretty pattern.
 
@@ -472,11 +466,10 @@ The opposite of a fruitful function: one that does not return a value. It is exe
 
 9. Write a void function to draw a star, where the length of each side is 100 units. (*Hint: You should turn the turtle by 144 degrees at each point.*)
 
-![Star](https://i.ritzastatic.com/ThinkCS-images/Chapter-4/04-09-star.png
-)
+![Star](https://i.ritzastatic.com/ThinkCS-images/Chapter-4/04-09-star.png)
 
 10. Extend your program above. Draw five stars, but between each, pick up the pen, move forward by 350 units, turn right by 144, put the pen down, and draw the next star. You’ll get something like this:
 
 ![Five Stars](https://i.ritzastatic.com/ThinkCS-images/Chapter-4/04-10-five_stars.png)
 
-What would it look like if you didn’t pick up the pen?
+    What would it look like if you didn’t pick up the pen?

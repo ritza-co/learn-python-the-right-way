@@ -22,8 +22,7 @@ Let’s write a couple of lines of Python program to create a new turtle and sta
 
 When we run this program, a new window pops up:
 
-![Turtle Window](https://i.ritzastatic.com/ThinkCS-images/Chapter-3/03-01-turtle-window.png
-)
+![Turtle Window](https://i.ritzastatic.com/ThinkCS-images/Chapter-3/03-01-turtle-window.png)
 
 Here are a couple of things we’ll need to understand about this program.
 
@@ -66,16 +65,14 @@ When we run this program, this new window pops up, and will remain on the screen
 
 ![tess mainloop](https://i.ritzastatic.com/ThinkCS-images/Chapter-3/03-02-turtle-green.png)
 
----
-**Extend this program …**
 
-1. Modify this program so that before it creates the window, it prompts the user to enter the desired background color. It should store the user’s responses in a variable, and modify the color of the window according to the user’s wishes. (*Hint: you can find a list of permitted color names at http://www.tcl.tk/man/tcl8.4/TkCmd/colors.htm. It includes some quite unusual ones, like “peach puff” and “HotPink”.*)
-
-2. Do similar changes to allow the user, at runtime, to set tess’ color.
-
-3. Do the same for the width of `tess’` pen. *Hint: your dialog with the user will return a string, but tess’ `pensize` method expects its argument to be an int. So you’ll need to convert the string to an int before you pass it to `pensize`.*
-
----
+B> **Extend this program …**
+B> 
+B> 1. Modify this program so that before it creates the window, it prompts the user to enter the desired background color. It should store the user’s responses in a variable, and modify the color of the window according to the user’s wishes. (*Hint: you can find a list of permitted color names at http://www.tcl.tk/man/tcl8.4/TkCmd/colors.htm. It includes some quite unusual ones, like “peach puff” and “HotPink”.*)
+B> 
+B> 2. Do similar changes to allow the user, at runtime, to set tess’ color.
+B> 
+B> 3. Do the same for the width of `tess’` pen. *Hint: your dialog with the user will return a string, but tess’ `pensize` method expects its argument to be an int. So you’ll need to convert the string to an int before you pass it to `pensize`.*
 
 ## 3.2. Instances — a herd of turtles
 
@@ -173,15 +170,11 @@ As a program executes, the interpreter always keeps track of which statement is 
 
 Control flow until now has been strictly top to bottom, one statement at a time. The for loop changes this.
 
----
-**Flowchart of a for loop**
-
-Control flow is often easy to visualize and understand if we draw a flowchart. This shows the exact steps and logic of how the for statement executes.
-
-![For loop flowchart](https://i.ritzastatic.com/ThinkCS-images/Chapter-3/03-04-flowchart_for.png
-)
-
----
+> **Flowchart of a for loop**
+> 
+> Control flow is often easy to visualize and understand if we draw a flowchart. This shows the exact steps and logic of how the for statement executes.
+> 
+> ![For loop flowchart](https://i.ritzastatic.com/ThinkCS-images/Chapter-3/03-04-flowchart_for.png)
 
 ## 3.5. The loop simplifies our turtle program
 
@@ -361,11 +354,11 @@ A condition that occurs which causes a loop to stop repeating its body. In the f
 
 3. Write a program that uses a `for` loop to print
 
-```
-One of the months of the year is January
-One of the months of the year is February
-...
-```
+    ```
+    One of the months of the year is January
+    One of the months of the year is February
+    ...
+    ```
 
 4. Suppose our turtle tess is at heading `0` — facing east. We execute the statement `tess.left(3645)`. What does tess do, and what is her final heading?
 
@@ -394,23 +387,23 @@ One of the months of the year is February
 
 10. At the interactive prompt, anticipate what each of the following lines will do, and then record what happens. Score yourself, giving yourself one point for each one you anticipate correctly:
 
-```python
->>> import turtle
->>> wn = turtle.Screen()
->>> tess = turtle.Turtle()
->>> tess.right(90)
->>> tess.left(3600)
->>> tess.right(-90)
->>> tess.speed(10)
->>> tess.left(3600)
->>> tess.speed(0)
->>> tess.left(3645)
->>> tess.forward(-100)
-```
+    ```python
+    >>> import turtle
+    >>> wn = turtle.Screen()
+    >>> tess = turtle.Turtle()
+    >>> tess.right(90)
+    >>> tess.left(3600)
+    >>> tess.right(-90)
+    >>> tess.speed(10)
+    >>> tess.left(3600)
+    >>> tess.speed(0)
+    >>> tess.left(3645)
+    >>> tess.forward(-100)
+    ```
 
 11. Write a program to draw a shape like this:
 
-![_images/star.png](https://i.ritzastatic.com/ThinkCS-images/Chapter-3/03-07-star.png)
+    ![Star](https://i.ritzastatic.com/ThinkCS-images/Chapter-3/03-07-star.png)
 
 Hints:
 
@@ -420,8 +413,7 @@ Hints:
 
 12. Write a program to draw a face of a clock that looks something like this:
 
-![Clock face](https://i.ritzastatic.com/ThinkCS-images/Chapter-3/04-08-turtle-clock.png
-)
+    ![Clock face](https://i.ritzastatic.com/ThinkCS-images/Chapter-3/04-08-turtle-clock.png)
 
 13. Create a turtle, and assign it to a variable. When you ask for its type, what do you get?
 
