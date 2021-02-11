@@ -66,13 +66,13 @@ When we run this program, this new window pops up, and will remain on the screen
 ![tess mainloop](https://i.ritzastatic.com/ThinkCS-images/Chapter-3/03-02-turtle-green.png)
 
 
-B> **Extend this program …**
-B> 
-B> 1. Modify this program so that before it creates the window, it prompts the user to enter the desired background color. It should store the user’s responses in a variable, and modify the color of the window according to the user’s wishes. (*Hint: you can find a list of permitted color names at http://www.tcl.tk/man/tcl8.4/TkCmd/colors.htm. It includes some quite unusual ones, like “peach puff” and “HotPink”.*)
-B> 
-B> 2. Do similar changes to allow the user, at runtime, to set tess’ color.
-B> 
-B> 3. Do the same for the width of `tess’` pen. *Hint: your dialog with the user will return a string, but tess’ `pensize` method expects its argument to be an int. So you’ll need to convert the string to an int before you pass it to `pensize`.*
+A> **Extend this program …**
+A> 
+A> 1. Modify this program so that before it creates the window, it prompts the user to enter the desired background color. It should store the user’s responses in a variable, and modify the color of the window according to the user’s wishes. (*Hint: you can find a list of permitted color names at http://www.tcl.tk/man/tcl8.4/TkCmd/colors.htm. It includes some quite unusual ones, like “peach puff” and “HotPink”.*)
+A> 
+A> 2. Do similar changes to allow the user, at runtime, to set tess’ color.
+A> 
+A> 3. Do the same for the width of `tess’` pen. *Hint: your dialog with the user will return a string, but tess’ `pensize` method expects its argument to be an int. So you’ll need to convert the string to an int before you pass it to `pensize`.*
 
 ## 3.2. Instances — a herd of turtles
 
@@ -170,11 +170,11 @@ As a program executes, the interpreter always keeps track of which statement is 
 
 Control flow until now has been strictly top to bottom, one statement at a time. The for loop changes this.
 
-> **Flowchart of a for loop**
-> 
-> Control flow is often easy to visualize and understand if we draw a flowchart. This shows the exact steps and logic of how the for statement executes.
-> 
-> ![For loop flowchart](https://i.ritzastatic.com/ThinkCS-images/Chapter-3/03-04-flowchart_for.png)
+A> **Flowchart of a for loop**
+A> 
+A> Control flow is often easy to visualize and understand if we draw a flowchart. This shows the exact steps and logic of how the for statement executes.
+A> 
+A> ![For loop flowchart](https://i.ritzastatic.com/ThinkCS-images/Chapter-3/03-04-flowchart_for.png)
 
 ## 3.5. The loop simplifies our turtle program
 

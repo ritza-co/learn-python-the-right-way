@@ -148,7 +148,7 @@ else:
 
 The Boolean expression after the `if` statement is called the **condition**. If it is true, then all the indented statements get executed. If not, then all the statements indented under the `else` clause get executed.
 
-A> **Flowchart of an `if` statement with an `else` claus**e
+A> **Flowchart of an `if` statement with an `else` clause**
 A> 
 A> ![Flowchart - if else](https://i.ritzastatic.com/ThinkCS-images/Chapter-5/05-01-flowchart_if_else.png)
 
@@ -178,9 +178,9 @@ else:
 
 ## 5.6. Omitting the else clause
 
-B> **Flowchart of an `if` statement with no `else` clause**
-B> 
-B> ![Flowchart - if only](https://i.ritzastatic.com/ThinkCS-images/Chapter-5/05-02-flowchart_if_only.png)
+A> **Flowchart of an `if` statement with no `else` clause**
+A> 
+A> ![Flowchart - if only](https://i.ritzastatic.com/ThinkCS-images/Chapter-5/05-02-flowchart_if_only.png)
 
 Another form of the `if` statement is one in which the `else` clause is omitted entirely. In this case, when the condition evaluates to `True`, the statements are executed, otherwise the flow of execution continues to the statement after the `if`.
 
@@ -194,11 +194,11 @@ print("The square root of ", x, "is", math.sqrt(x))
 ```
 In this case, the `print` function that outputs the square root is the one after the `if` — not because we left a blank line, but because of the way the code is indented. Note too that the function call `math.sqrt(x)` will give an error unless we have an `import math` statement, usually placed near the top of our script.
 
-> **Python terminology**
-> 
-> Python documentation sometimes uses the term **suite** of statements to mean what we have called a *block* here. They mean the same thing, and since most other languages and computer scientists use the word block, we’ll stick with that.
-> 
-> Notice too that `else` is not a statement. The `if` statement has two clauses, one of which is the (optional) `else` clause.
+A> **Python terminology**
+A> 
+A> Python documentation sometimes uses the term **suite** of statements to mean what we have called a *block* here. They mean the same thing, and since most other languages and computer scientists use the word block, we’ll stick with that.
+A> 
+A> Notice too that `else` is not a statement. The `if` statement has two clauses, one of which is the (optional) `else` clause.
 
 ## 5.7. Chained conditionals
 
@@ -213,9 +213,9 @@ else:
     STATEMENTS_C
 ```
 
-> **Flowchart of this chained conditional**
-> 
-> ![Flowchart - chained conditional](https://i.ritzastatic.com/ThinkCS-images/Chapter-5/05-03-flowchart_chained_conditional.png)
+A> **Flowchart of this chained conditional**
+A> 
+A> ![Flowchart - chained conditional](https://i.ritzastatic.com/ThinkCS-images/Chapter-5/05-03-flowchart_chained_conditional.png)
 
 `elif` is an abbreviation of else if. Again, exactly one branch will be executed. There is no limit of the number of `elif` statements but only a single (and optional) final `else` statement is allowed and it must be the last branch in the statement:
 
@@ -236,9 +236,9 @@ Each condition is checked in order. If the first is false, the next is checked, 
 
 One conditional can also be **nested** within another. (It is the same theme of composability, again!) We could have written the previous example as follows:
 
-> **Flowchart of this nested conditional**
-> 
-> ![Flowchart - nested conditional](https://i.ritzastatic.com/ThinkCS-images/Chapter-5/05-04-flowchart_nested_conditional.png)
+A> **Flowchart of this nested conditional**
+A> 
+A> ![Flowchart - nested conditional](https://i.ritzastatic.com/ThinkCS-images/Chapter-5/05-04-flowchart_nested_conditional.png)
 
 ```python
 if x < y:
@@ -351,11 +351,11 @@ This version is probably the best of the three, because it very closely matches 
 
 As our programming skills develop we’ll find we have more than one way to solve any problem. So good programs are *designed*. We make choices that favour clarity, simplicity, and elegance. The job title *software architect* says a lot about what we do — we are *architects* who engineer our products to balance beauty, functionality, simplicity and clarity in our creations.
 
-> ***Tip***
-> 
-> *Once our program works, we should play around a bit trying to polish it up. Write good comments. Think about whether the code would be clearer with different variable names. Could we have done it more elegantly? Should we rather use a function? Can we simplify the conditionals?*
-> 
-> *We think of our code as our creation, our work of art! We make it great.*
+A> ***Tip***
+A> 
+A> *Once our program works, we should play around a bit trying to polish it up. Write good comments. Think about whether the code would be clearer with different variable names. Could we have done it more elegantly? Should we rather use a function? Can we simplify the conditionals?*
+A> 
+A> *We think of our code as our creation, our work of art! We make it great.*
 
 ## 5.11. Type conversion
 

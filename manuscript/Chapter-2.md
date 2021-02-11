@@ -113,8 +113,8 @@ File "<interactive input>", line 1
 SyntaxError: can't assign to literal
 ```
 
-> **Tip:**
-> *When reading or writing code, say to yourself “n is assigned 17” or “n gets the value 17”. Don’t say “n equals 17”.*
+A> **Tip:**
+A> *When reading or writing code, say to yourself “n is assigned 17” or “n gets the value 17”. Don’t say “n equals 17”.*
 
 
 A common way to represent variables on paper is to write the name with an arrow pointing to the variable’s value. This kind of figure is called a **state snapshot** because it shows what state each of the variables is in at a particular instant in time. (Think of it as the variable’s state of mind). This diagram shows the result of executing the assignment statements:
