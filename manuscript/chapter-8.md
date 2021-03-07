@@ -93,3 +93,43 @@ We've also seen lists previously. The same indexing notation works to extract el
 ```
 
 ## 8.4. Length
+
+The `len` function, when applied to a string, returns the number of characters in a string:
+
+```python
+>>> fruit = "banana"
+>>> len(fruit)
+6
+```
+
+To get the last letter of a string, you might be tempted to try something like this:
+
+That won't work. It causes the runtime error `IndexError: string index out of range`. The reason is that there is no character at index position 6 in `"banana"`. Because we start counting at zero, the six indexes are numbered 0 to 5. To get the last character, we have to subtract 1 from the length of `fruit`:
+
+Alternatively, we can use negative indices, which count backward from the end of the string. The expression `fruit[-1]` yields the last letter, `fruit[-2]` yields the second to last, and so on.
+
+As you might have guessed, indexing with a negative index also works like this for lists.
+
+We won't use negative indexes in the rest of these notes --- not many computer languages use this idiom, and you'll probably be better off avoiding it. But there is plenty of Python code out on the Internet that will use this trick, so it is best to know that it exists.
+
+```python
+.. index:: traversal, for loop, concatenation, abecedarian series
+```
+
+```python
+.. index::
+    single: McCloskey, Robert
+    single: Make Way for Ducklings
+```
+
+## 8.5. Traversal and the `for` loop
+
+A lot of computations involve processing a string one character at a time. Often they start at the beginning, select each character in turn, do something to it, and continue until the end. This pattern of processing is called a **traversal**. One way to encode a traversal is with a `while` statement:
+
+This loop traverses the string and displays each letter on a line by itself. The loop condition is `ix < len(fruit)`, so when `ix` is equal to the length of the string, the condition is false, and the body of the loop is not executed. The last character accessed is the one with the index `len(fruit)-1`, which is the last character in the string.
+
+But we've previously seen how the `for` loop can easily iterate over the elements in a list and it can do so for strings as well:
+
+Each time through the loop, the next character in the string is assigned to the variable `c`. The loop continues until no characters are left. Here we can see the expressive power the `for` loop gives us compared to the `while` loop when traversing a string.
+
+The following example shows how to use concatenation and a `for` loop to generate an abecedarian series. Abecedarian refers to a series or list in which the elements appear in alphabetical order. For example, in Robert McCloskey's book Make Way for Ducklings, the names of the ducklings are Jack, Kack, Lack, Mack, Nack, Ouack, Pack, and Quack. This loop outputs these names in order:
