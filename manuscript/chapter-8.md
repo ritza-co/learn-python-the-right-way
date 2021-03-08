@@ -133,3 +133,147 @@ But we've previously seen how the `for` loop can easily iterate over the element
 Each time through the loop, the next character in the string is assigned to the variable `c`. The loop continues until no characters are left. Here we can see the expressive power the `for` loop gives us compared to the `while` loop when traversing a string.
 
 The following example shows how to use concatenation and a `for` loop to generate an abecedarian series. Abecedarian refers to a series or list in which the elements appear in alphabetical order. For example, in Robert McCloskey's book Make Way for Ducklings, the names of the ducklings are Jack, Kack, Lack, Mack, Nack, Ouack, Pack, and Quack. This loop outputs these names in order:
+
+The output of this program is:
+
+```python
+Jack
+Kack
+Lack
+Mack
+Nack
+Oack
+Pack
+Qack
+```
+
+Of course, that's not quite right because Ouack and Quack are misspelled. You'll fix this as an exercise below.
+
+```python
+.. index:: slice, string slice, substring, sublist
+```
+
+## 8.6. Slices
+
+A *substring* of a string is obtained by taking a **slice**. Similarly, we can slice a list to refer to some sublist of the items in the list:
+
+```python
+>>> s = "Pirates of the Caribbean"
+>>> print(s[0:7])
+Pirates
+>>> print(s[11:14])
+the
+>>> print(s[15:24])
+Caribbean
+>>> friends = ["Joe", "Zoe", "Brad", "Angelina", "Zuki", "Thandi", "Paris"]
+>>> print(friends[2:4])
+['Brad', 'Angelina']
+```
+
+The operator `[n:m]` returns the part of the string from the n'th character to the m'th character, including the first but excluding the last. This behavior makes sense if you imagine the indices pointing *between* the characters, as in the following diagram:
+
+If you imagine this as a piece of paper, the slice operator `[n:m]` copies out the part of the paper between the `n` and `m` positions. Provided `m` and `n` are both within the bounds of the string, your result will be of length (m-n).
+
+Three tricks are added to this: if you omit the first index (before the colon), the slice starts at the beginning of the string (or list). If you omit the second index, the slice extends to the end of the string (or list). Similarly, if you provide value for `n` that is bigger than the length of the string (or list), the slice will take all the values up to the end. (It won't give an "out of range" error like the normal indexing operation does.) Thus:
+
+```python
+>>> fruit = "banana"
+>>> fruit[:3]
+'ban'
+>>> fruit[3:]
+'ana'
+>>> fruit[3:999]
+'ana'
+```
+
+What do you think `s[:]` means? What about `friends[4:]`?
+
+```python
+.. index:: string comparison, comparison of strings
+```
+
+## 8.7. String comparison
+
+The comparison operators work on strings. To see if two strings are equal:
+
+Other comparison operations are useful for putting words in lexicographical order:
+
+This is similar to the alphabetical order you would use with a dictionary, except that all the uppercase letters come before all the lowercase letters. As a result:
+
+```python
+Your word, Zebra, comes before banana.
+```
+
+A common way to address this problem is to convert strings to a standard format, such as all lowercase, before performing the comparison. A more difficult problem is making the program realize that zebras are not fruit.
+
+```python
+.. index:: mutable, immutable, runtime error
+```
+
+## 8.8. Strings are immutable
+
+It is tempting to use the `[]` operator on the left side of an assignment, with the intention of changing a character in a string. For example:
+
+Instead of producing the output `Jello, world!`, this code produces the runtime error `TypeError: 'str' object does not support item assignment`.
+
+Strings are **immutable**, which means you can't change an existing string. The best you can do is create a new string that is a variation on the original:
+
+The solution here is to concatenate a new first letter onto a slice of `greeting`. This operation has no effect on the original string.
+
+```python
+.. index::
+    single: in operator
+    single: operator; in
+```
+
+## 8.9. The `in` and `not in` operators
+
+The `in` operator tests for membership. When both of the arguments to `in` are strings, `in` checks whether the left argument is a substring of the right argument.
+
+```python
+>>> "p" in "apple"
+True
+>>> "i" in "apple"
+False
+>>> "ap" in "apple"
+True
+>>> "pa" in "apple"
+False
+```
+
+Note that a string is a substring of itself, and the empty string is a substring of any other string. (Also note that computer scientists like to think about these edge cases quite carefully!)
+
+```python
+>>> "a" in "a"
+True
+>>> "apple" in "apple"
+True
+>>> "" in "a"
+True
+>>> "" in "apple"
+True
+```
+
+The `not in` operator returns the logical opposite results of `in`:
+
+```python
+>>> "x" not in "apple"
+True
+```
+
+Combining the `in` operator with string concatenation using `+`, we can write a function that removes all the vowels from a string:
+
+```python
+.. index:: traversal, eureka traversal, short-circuit evaluation, pattern of computation,
+           computation pattern
+```
+
+## 8.10. A `find` function
+
+What does the following function do?
+
+In a sense, `find` is the opposite of the indexing operator. Instead of taking an index and extracting the corresponding character, it takes a character and finds the index where that character appears. If the character is not found, the function returns `-1`.
+
+This is another example where we see a `return` statement inside a loop. If `strng[ix] == ch`, the function returns immediately, breaking out of the loop prematurely.
+
+If the character doesn't appear in the string, then the program exits the loop normally and returns `-1`.
