@@ -31,7 +31,11 @@ To learn what methods are available, you can consult the Help documentation, loo
 
 When you type the period to select one of the methods of `ss`, PyScripter will pop up a selection window showing all the methods (there are around 70 of them --- thank goodness we'll only use a few of those!) that could be used on your string.
 
+![](images/string_methods.png?raw=true)
+
 When you type the name of the method, some further help about its parameter and return type, and its docstring, will be displayed. This is a good example of a tool --- PyScripter --- using the meta-information --- the docstrings --- provided by the module programmers.
+
+![](images/swapcase.png?raw=true)
 
 ## 8.3. Working with the parts of a string
 
@@ -171,6 +175,8 @@ Caribbean
 ```
 
 The operator `[n:m]` returns the part of the string from the n'th character to the m'th character, including the first but excluding the last. This behavior makes sense if you imagine the indices pointing *between* the characters, as in the following diagram:
+
+![](images/banana.png?raw=true)
 
 If you imagine this as a piece of paper, the slice operator `[n:m]` copies out the part of the paper between the `n` and `m` positions. Provided `m` and `n` are both within the bounds of the string, your result will be of length (m-n).
 
