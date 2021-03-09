@@ -277,3 +277,185 @@ In a sense, `find` is the opposite of the indexing operator. Instead of taking a
 This is another example where we see a `return` statement inside a loop. If `strng[ix] == ch`, the function returns immediately, breaking out of the loop prematurely.
 
 If the character doesn't appear in the string, then the program exits the loop normally and returns `-1`.
+
+This pattern of computation is sometimes called a **eureka traversal** or **short-circuit evaluation**, because as soon as we find what we are looking for, we can cry "Eureka!", take the short-circuit, and stop looking.
+
+```python
+.. index:: counting pattern
+```
+
+## 8.11. Looping and counting
+
+The following program counts the number of times the letter `a` appears in a string, and is another example of the counter pattern introduced in counting.
+
+```python
+.. index:: optional parameter, default value, parameter; optional
+```
+
+## 8.12. Optional parameters
+
+To find the locations of the second or third occurrence of a character in a string, we can modify the `find` function, adding a third parameter for the starting position in the search string:
+
+The call `find2("banana", "a", 2)` now returns `3`, the index of the first occurrence of "a" in "banana" starting the search at index 2. What does `find2("banana", "n", 3)` return? If you said, 4, there is a good chance you understand how `find2` works.
+
+Better still, we can combine `find` and `find2` using an **optional parameter**:
+
+When a function has an optional parameter, the caller may provide a matching argument. If the third argument is provided to `find`, it gets assigned to `start`. But if the caller leaves the argument out, then start is given a default value indicated by the assignment `start=0` in the function definition.
+
+So the call `find("banana", "a", 2)` to this version of `find` behaves just like `find2`, while in the call `find("banana", "a")`, `start` will be set to the **default value** of `0`.
+
+Adding another optional parameter to `find` makes it search from a starting position, up to but not including the end position:
+
+The optional value for `end` is interesting: we give it a default value `None` if the caller does not supply any argument. In the body of the function we test what `end` is, and if the caller did not supply any argument, we reassign `end` to be the length of the string. If the caller has supplied an argument for `end`, however, the caller's value will be used in the loop.
+
+The semantics of `start` and `end` in this function are precisely the same as they are in the `range` function.
+
+Here are some test cases that should pass:
+
+```python
+.. index:: module, string module, dir function, dot notation, function type,
+           docstring
+```
+
+## 8.13. The built-in `find` method
+
+Now that we've done all this work to write a powerful `find` function, we can reveal that strings already have their own built-in `find` method. It can do everything that our code can do, and more!
+
+The built-in `find` method is more general than our version. It can find substrings, not just single characters:
+
+```python 
+>>> "banana".find("nan")
+2
+>>> "banana".find("na", 3)
+4
+```
+
+Usually we'd prefer to use the methods that Python provides rather than reinvent our own equivalents. But many of the built-in functions and methods make good teaching exercises, and the underlying techniques you learn are your building blocks to becoming a proficient programmer.
+
+## 8.14. The `split` method
+
+One of the most useful methods on strings is the `split` method: it splits a single multi-word string into a list of individual words, removing all the whitespace between them. (Whitespace means any tabs, newlines, or spaces.) This allows us to read input as a single string, and split it into words.
+
+```python
+>>> ss = "Well I never did said Alice"
+>>> wds = ss.split()
+>>> wds
+['Well', 'I', 'never', 'did', 'said', 'Alice']
+```
+
+## 8.15. Cleaning up your strings
+
+We'll often work with strings that contain punctuation, or tab and newline characters, especially, as we'll see in a future chapter, when we read our text from files or from the Internet. But if we're writing a program, say, to count word frequencies or check the spelling of each word, we'd prefer to strip off these unwanted characters.
+
+We'll show just one example of how to strip punctuation from a string. Remember that strings are immutable, so we cannot change the string with the punctuation --- we need to traverse the original string and create a new string, omitting any punctuation:
+
+Setting up that first assignment is messy and error-prone. Fortunately, the Python `string` module already does it for us. So we will make a slight improvement to this program --- we'll import the `string` module and use its definition:
+
+Composing together this function and the `split` method from the previous section makes a useful combination --- we'll clean out the punctuation, and `split` will clean out the newlines and tabs while turning the string into a list of words:
+
+The output:
+
+```python
+['Pythons', 'are', 'constrictors', ... , 'it', 'snake', 'POOP']
+```
+
+There are other useful string methods, but this book isn't intended to be a reference manual. On the other hand, the *Python Library Reference* is. Along with a wealth of other documentation, it is available at the [Python website](https://www.python.org/).
+
+```python
+.. index:: string formatting, operations on strings, formatting; strings, justification, field width
+```
+
+## 8.16. The string format method
+
+The easiest and most powerful way to format a string in Python 3 is to use the `format` method. To see how this works, let's start with a few examples:
+
+Running the script produces:
+
+```python
+His name is Arthur!
+I am Alice and I am 10 years old.
+2**10 = 1024 and 4 * 5 = 20.000000
+```
+
+The template string contains place holders, `... {0} ... {1} ... {2} ...` etc. The `format` method substitutes its arguments into the place holders. The numbers in the place holders are indexes that determine which argument gets substituted --- make sure you understand line 6 above!
+
+But there's more! Each of the replacement fields can also contain a **format specification** --- it is always introduced by the `:` symbol (Line 11 above uses one.) This modifies how the substitutions are made into the template, and can control things like:
+
+* whether the field is aligned to the left `<`, center `^`, or right `>`
+* the width allocated to the field within the result string (a number like `10`)
+* the type of conversion (we'll initially only force conversion to float, `f`, as we did in line 11 of the code above, or perhaps we'll ask integer numbers to be converted to hexadecimal using `x`)
+* if the type conversion is a float, you can also specify how many decimal places are wanted (typically, `.2f` is useful for working with currencies to two decimal places.)
+Let's do a few simple and common examples that should be enough for most needs. If you need to do anything more esoteric, use help and read all the powerful, gory details.
+
+This script produces the output:
+
+```python
+Pi to three decimal places is 3.142
+123456789 123456789 123456789 123456789 123456789 123456789
+|||Paris          |||    Whitney    |||         Hilton|||Born in 1981|||
+The decimal value 123456 converts to hex value 1e240
+```
+
+You can have multiple placeholders indexing the same argument, or perhaps even have extra arguments that are not referenced at all:
+
+This produces the following:
+
+```python
+Dear Paris Hilton.
+ Paris, I have an interesting money-making proposition for you!
+ If you deposit $10 million into my bank account, I can
+ double your money ...
+
+
+Dear Bill Gates.
+ Bill, I have an interesting money-making proposition for you!
+ If you deposit $10 million into my bank account I can
+ double your money ...
+```
+
+As you might expect, you'll get an index error if your placeholders refer to arguments that you do not provide:
+
+```python
+>>> "hello {3}".format("Dave")
+Traceback (most recent call last):
+  File "<interactive input>", line 1, in <module>
+IndexError: tuple index out of range
+```
+
+The following example illustrates the real utility of string formatting. First, we'll try to print a table without using string formatting:
+
+This program prints out a table of various powers of the numbers from 1 to 10. (This assumes that the tab width is 8. You might see something even worse than this if you tab width is set to 4.) In its current form it relies on the tab character ( `\t`) to align the columns of values, but this breaks down when the values in the table get larger than the tab width:
+
+```python
+i       i**2    i**3    i**5    i**10   i**20
+1       1       1       1       1       1
+2       4       8       32      1024    1048576
+3       9       27      243     59049   3486784401
+4       16      64      1024    1048576         1099511627776
+5       25      125     3125    9765625         95367431640625
+6       36      216     7776    60466176        3656158440062976
+7       49      343     16807   282475249       79792266297612001
+8       64      512     32768   1073741824      1152921504606846976
+9       81      729     59049   3486784401      12157665459056928801
+10      100     1000    100000  10000000000     100000000000000000000
+```
+
+One possible solution would be to change the tab width, but the first column already has more space than it needs. The best solution would be to set the width of each column independently. As you may have guessed by now, string formatting provides a much nicer solution. We can also right-justify each field:
+
+Running this version produces the following (much more satisfying) output:
+
+```python
+i  i**2  i**3    i**5        i**10                   i**20
+ 1     1     1       1            1                       1
+ 2     4     8      32         1024                 1048576
+ 3     9    27     243        59049              3486784401
+ 4    16    64    1024      1048576           1099511627776
+ 5    25   125    3125      9765625          95367431640625
+ 6    36   216    7776     60466176        3656158440062976
+ 7    49   343   16807    282475249       79792266297612001
+ 8    64   512   32768   1073741824     1152921504606846976
+ 9    81   729   59049   3486784401    12157665459056928801
+10   100  1000  100000  10000000000   100000000000000000000
+```
+
+## Summary
