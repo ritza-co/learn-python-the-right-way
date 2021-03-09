@@ -458,4 +458,179 @@ i  i**2  i**3    i**5        i**10                   i**20
 10   100  1000  100000  10000000000   100000000000000000000
 ```
 
-## Summary
+## 8.17. Summary
+
+This chapter introduced a lot of new ideas. The following summary may prove helpful in remembering what you learned.
+
+```python
+.. glossary::
+
+    indexing (``[]``)
+        Access a single character in a string using its position (starting from
+        0).  Example: ``"This"[2]`` evaluates to ``"i"``.
+
+    length function (``len``)
+        Returns the number of characters in a string.  Example:
+        ``len("happy")`` evaluates to ``5``.
+
+    for loop traversal (``for``)
+        *Traversing* a string means accessing each character in the string, one
+        at a time.  For example, the following for loop:
+
+            .. sourcecode:: python3
+
+                for ch in "Example":
+                    ...
+
+        executes the body of the loop 7 times with different values of ``ch`` each time.
+
+    slicing (``[:]``)
+        A *slice* is a substring of a string. Example: ``'bananas and
+        cream'[3:6]`` evaluates to ``ana`` (so does ``'bananas and
+        cream'[1:4]``).
+
+    string comparison (``>, <, >=, <=, ==, !=``)
+        The six common comparison operators work with strings, evaluating according to
+        `lexicographical` order.  Examples:
+        ``"apple" < "banana"`` evaluates to ``True``.  ``"Zeta" < "Appricot"``
+        evaluates to ``False``.  ``"Zebra" <= "aardvark"`` evaluates to
+        ``True`` because all upper case letters precede lower case letters.
+
+    in and not in operator (``in``, ``not in``)
+        The ``in`` operator tests for membership. In the case of
+        strings, it tests whether one string is contained inside another
+        string.  Examples: ``"heck" in "I'll be checking for you."``
+        evaluates to ``True``.  ``"cheese" in "I'll be checking for
+        you."`` evaluates to ``False``.
+```
+
+## 8.18. Glossary
+
+```python
+.. glossary::
+
+    compound data type
+        A data type in which the values are made up of components, or elements,
+        that are themselves values.
+
+    default value
+        The value given to an optional parameter if no argument for it is
+        provided in the function call.
+
+    docstring
+        A string constant on the first line of a function or module definition
+        (and as we will see later, in class and method definitions as well).
+        Docstrings provide a convenient way to associate documentation with
+        code. Docstrings are also used by programming tools to provide interactive help.
+
+    dot notation
+        Use of the **dot operator**, ``.``, to access methods and attributes of an object.
+
+    immutable data value
+        A data value which cannot be modified.  Assignments to elements or
+        slices (sub-parts) of immutable values cause a runtime error.
+
+    index
+        A variable or value used to select a member of an ordered collection, such as
+        a character from a string, or an element from a list.
+
+    mutable data value
+        A data value which can be modified. The types of all mutable values
+        are compound types.  Lists and dictionaries are mutable; strings
+        and tuples are not.
+
+    optional parameter
+        A parameter written in a function header with an assignment to a
+        default value which it will receive if no corresponding argument is
+        given for it in the function call.
+
+    short-circuit evaluation
+        A style of programming that shortcuts extra work as soon as the
+        outcome is know with certainty. In this chapter our ``find``
+        function returned as soon as it found what it was looking for; it
+        didn't traverse all the rest of the items in the string.
+
+    slice
+        A part of a string (substring) specified by a range of indices. More
+        generally, a subsequence of any sequence type in Python can be created
+        using the slice operator (``sequence[start:stop]``).
+
+    traverse
+        To iterate through the elements of a collection, performing a similar
+        operation on each.
+
+    whitespace
+        Any of the characters that move the cursor without printing visible
+        characters. The constant ``string.whitespace`` contains all the
+        white-space characters.
+        
+        
+```
+
+## 8.19. Exercises
+
+We suggest you create a single file containing the test scaffolding from our previous chapters, and put all functions that require tests into that file.
+
+    1. What is the result of each of the following:
+
+    ```python
+    >>> "Python"[1]
+    >>> "Strings are sequences of characters."[5]
+    >>> len("wonderful")
+    >>> "Mystery"[:4]
+    >>> "p" in "Pineapple"
+    >>> "apple" in "Pineapple"
+    >>> "pear" not in "Pineapple"
+    >>> "apple" > "pineapple"
+    >>> "pineapple" < "Peach"
+    ```
+    
+    2. Modify:
+       so that `Ouack` and `Quack` are spelled correctly.
+       
+    3. Encapsulate 
+       in a function named `count_letters`, and generalize it so that it accepts the string and the letter as arguments. Make the function return the number of characters,              rather than print the answer. The caller should do the printing.
+       
+    4. Now rewrite the count_letters function so that instead of traversing the string, it repeatedly calls the find method, with the optional third parameter to locate new            occurrences of the letter being counted.
+    
+    5. Assign to a variable in your program a triple-quoted string that contains your favourite paragraph of text --- perhaps a poem, a speech, instructions to bake a cake, some        inspirational verses, etc.
+
+       Write a function which removes all punctuation from the string, breaks the string into a list of words, and counts the number of words in your text that contain the              letter "e". Your program should print an analysis of the text like this:
+       
+       ```python 
+       Your text contains 243 words, of which 109 (44.8%) contain an "e".
+       ```
+       
+    6. Print a neat looking multiplication table like this:
+       ```python
+               1   2   3   4   5   6   7   8   9  10  11  12
+          :--------------------------------------------------
+         1:     1   2   3   4   5   6   7   8   9  10  11  12
+         2:     2   4   6   8  10  12  14  16  18  20  22  24
+         3:     3   6   9  12  15  18  21  24  27  30  33  36
+         4:     4   8  12  16  20  24  28  32  36  40  44  48
+         5:     5  10  15  20  25  30  35  40  45  50  55  60
+         6:     6  12  18  24  30  36  42  48  54  60  66  72
+         7:     7  14  21  28  35  42  49  56  63  70  77  84
+         8:     8  16  24  32  40  48  56  64  72  80  88  96
+         9:     9  18  27  36  45  54  63  72  81  90  99 108
+        10:    10  20  30  40  50  60  70  80  90 100 110 120
+        11:    11  22  33  44  55  66  77  88  99 110 121 132
+        12:    12  24  36  48  60  72  84  96 108 120 132 144
+        ```
+    
+    7. Write a function that reverses its string argument, and satisfies these tests:
+    
+    8. Write a function that mirrors its argument:
+    
+    9. Write a function that removes all occurrences of a given letter from a string:
+    
+    10. Write a function that recognizes palindromes. (Hint: use your `reverse` function to make this easy!):
+    
+    11. Write a function that counts how many times a substring occurs in a string:
+    
+    12. Write a function that removes the first occurrence of a string from another string:
+    
+    13. Write a function that removes all occurrences of a string from another string:   
+
+ 
