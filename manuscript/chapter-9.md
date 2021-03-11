@@ -5,9 +5,9 @@
 We saw earlier that we could group together pairs of values by
 surrounding with parentheses. Recall this example:
 
-> ``` {.python3}
-> >>> year_born = ("Paris Hilton", 1981) 
-> ```
+```python
+ >>> year_born = ("Paris Hilton", 1981) 
+```
 
 This is an example of a **data structure** \-\-- a mechanism for
 grouping and organizing data to make it easier to use.
@@ -18,9 +18,9 @@ Syntactically, a tuple is a comma-separated sequence of values. Although
 it is not necessary, it is conventional to enclose tuples in
 parentheses:
 
-> ``` {.python3}
-> >>> julia = ("Julia", "Roberts", 1967, "Duplicity", 2009, "Actress", "Atlanta, Georgia")
-> ```
+```python
+>>> julia = ("Julia", "Roberts", 1967, "Duplicity", 2009, "Actress", "Atlanta, Georgia")
+```
 
 Tuples are useful for representing what other languages often call
 *records* \-\--some related information that belongs together, like your
@@ -31,18 +31,18 @@ information and use it as a single thing.
 Tuples support the same sequence operations as strings. The index
 operator selects an element from a tuple.
 
-> ``` {.python3}
-> >>> julia[2]
-> 1967
-> ```
+```python
+>>> julia[2]
+1967
+```
 
 But if we try to use item assignment to modify one of the elements of
 the tuple, we get an error:
 
-> ``` {.python3}
-> >>> julia[0] = "X"
-> TypeError: 'tuple' object does not support item assignment
-> ```
+```python
+>>> julia[0] = "X"
+TypeError: 'tuple' object does not support item assignment
+```
 
 So like strings, tuples are immutable. Once Python has created a tuple
 in memory, it cannot be changed.
@@ -54,31 +54,33 @@ slice parts of the old tuple and join up the bits to make the new tuple.
 So if `julia` has a new recent film, we could change her variable to
 reference a new tuple that used some information from the old one:
 
-> ``` {.python3}
-> >>> julia = julia[:3] + ("Eat Pray Love", 2010) + julia[5:]
-> >>> julia
-> ("Julia", "Roberts", 1967, "Eat Pray Love", 2010, "Actress", "Atlanta, Georgia")
-> ```
+```python
+>>> julia = julia[:3] + ("Eat Pray Love", 2010) + julia[5:]
+>>> julia
+("Julia", "Roberts", 1967, "Eat Pray Love", 2010, "Actress", "Atlanta, Georgia")
+```
 
 To create a tuple with a single element (but you\'re probably not likely
 to do that too often), we have to include the final comma, because
 without the final comma, Python treats the `(5)` below as an integer in
 parentheses:
 
-> ``` {.python3}
-> >>> tup = (5,)
-> >>> type(tup)
-> <class 'tuple'> 
-> >>> x = (5)
-> >>> type(x)
-> <class 'int'>     
-> ```
+```python
+>>> tup = (5,)
+>>> type(tup)
+<class 'tuple'> 
+>>> x = (5)
+>>> type(x)
+<class 'int'>     
+```
 
-::: {.index}
-single: assignment; tuple single: tuple; assignment
-:::
+```
+.. index::
+    single: assignment; tuple
+    single: tuple; assignment
+```
 
-## Tuple assignment
+## 9.2. Tuple assignment
 
 Python has a very powerful **tuple assignment** feature that allows a
 tuple of variables on the left of an assignment to be assigned values
