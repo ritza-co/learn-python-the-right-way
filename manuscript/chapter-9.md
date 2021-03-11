@@ -1,12 +1,6 @@
-| 
+# Chapter 9: Tuples
 
-# Tuples
-
-::: {.index}
-mutable, immutable, tuple
-:::
-
-## Tuples are used for grouping data
+## 9.1. Tuples are used for grouping data
 
 We saw earlier that we could group together pairs of values by
 surrounding with parentheses. Recall this example:
