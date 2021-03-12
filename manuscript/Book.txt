@@ -10,3 +10,5 @@ chapter-5.md
 chapter-6.md
 chapter-7.md
 chapter-8.md
+chapter-9.md
+chapter-10.md
