@@ -104,7 +104,7 @@ A simple state machine that we encounter often is a traffic light. Here
 is a state diagram which shows that the machine continually cycles
 through three different states, which we\'ve numbered 0, 1 and 2.
 
-> ![image](illustrations/fsm_traffic_lights.png)
+![](resources/Chapter-10/fsm_traffic_lights.png?raw=true)
 
 We\'re going to build a program that uses a turtle to simulate the
 traffic lights. There are three lessons here. The first shows off some
@@ -214,4 +214,4 @@ light machine to move to its new state.
     state, the advantage states, and the \"A wins\" and \"B wins\"
     states in your diagram.)
 
-    ![image](illustrations/fsm_tennis_scores.png)
+    ![](resources/Chapter-10/fsm_tennis_scores.png?raw=true)
