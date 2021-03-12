@@ -1,10 +1,6 @@
-| 
+# Chapter 10: Event Handling
 
-::: {.index}
-event, handler
-:::
-
-# Event-Driven Programming
+## 10.1. Event-driven programming
 
 Most programs and devices like a cellphone respond to *events* \-\--
 things that happen. For example, you might move your mouse, and the
@@ -12,46 +8,11 @@ computer responds. Or you click a button, and the program does something
 interesting. In this chapter we\'ll touch very briefly on how
 event-driven programming works.
 
-## Keypress events
+## 10.2. Keypress events
 
 Here\'s a program with some new features. Copy it into your workspace,
 run it. When the turtle window opens, press the arrow keys and make tess
 move about!
-
-``` {.python3 linenos=""}
-import turtle
-
-turtle.setup(400,500)                # Determine the window size
-wn = turtle.Screen()                 # Get a reference to the window
-wn.title("Handling keypresses!")     # Change the window title
-wn.bgcolor("lightgreen")             # Set the background color
-tess = turtle.Turtle()               # Create our favorite turtle
-
-# The next four functions are our "event handlers".
-def h1():
-   tess.forward(30)
-
-def h2():
-   tess.left(45)
-
-def h3():
-   tess.right(45)
-
-def h4():
-    wn.bye()                        # Close down the turtle window
-
-# These lines "wire up" keypresses to the handlers we've defined.
-wn.onkey(h1, "Up")
-wn.onkey(h2, "Left")
-wn.onkey(h3, "Right")
-wn.onkey(h4, "q")
-
-# Now we need to tell the window to start listening for events,  
-# If any of the keys that we're monitoring is pressed, its 
-# handler will be called.
-wn.listen()
-wn.mainloop()    
-```
 
 Here are some points to note:
 
@@ -61,7 +22,7 @@ Here are some points to note:
     choose better names. The handlers can be arbitrarily complex
     functions that call other functions, etc.
 -   Pressing the `q` key on the keyboard calls function `h4` (because we
-    [bound]{.title-ref} the `q` key to `h4` on line 26). While executing
+    bound the `q` key to `h4` on line 26). While executing
     `h4`, the window\'s `bye` method (line 20) closes the turtle window,
     which causes the window\'s mainloop call (line 31) to end its
     execution. Since we did not write any more statements after line 32,
@@ -76,31 +37,11 @@ Here are some points to note:
     Delete, F1, F2, F3, F4, F5, F6, F7, F8, F9, F10, F11, F12, Num_Lock,
     and Scroll_Lock.
 
-## Mouse events
+## 10.3. Mouse events
 
 A mouse event is a bit different from a keypress event because its
 handler needs two parameters to receive x,y coordinate information
 telling us where the mouse was when the event occurred.
-
-``` {.python3 linenos=""}
-import turtle
-
-turtle.setup(400,500)                    
-wn = turtle.Screen()                   
-wn.title("How to handle mouse clicks on the window!")  
-wn.bgcolor("lightgreen")              
-
-tess = turtle.Turtle()              
-tess.color("purple")
-tess.pensize(3)
-tess.shape("circle")
-
-def h1(x, y):
-   tess.goto(x, y)
-
-wn.onclick(h1)  # Wire up a click on the window.
-wn.mainloop()
-```
 
 There is a new turtle method used at line 14 \-\-- this allows us to
 move the turtle to an *absolute* coordinate position. (Most of the
@@ -111,7 +52,9 @@ line) to wherever the mouse is clicked. Try it out!
 If we add this line before line 14, we\'ll learn a useful debugging
 trick too:
 
-    wn.title("Got click at coords {0}, {1}".format(x, y))
+```
+wn.title("Got click at coords {0}, {1}".format(x, y))
+```
 
 Because we can easily change the text in the window\'s title bar, it is
 a useful place to display occasional debugging or status information.
@@ -125,63 +68,14 @@ also have their own handlers for mouse clicks. The turtle that
 create two turtles. Each will bind a handler to its own `onclick` event.
 And the two handlers can do different things for their turtles.
 
-``` {.python3 linenos="
-import turtle
-
-turtle.setup(400,500)              # Determine the window size
-wn = turtle.Screen()               # Get a reference to the window
-wn.title(\"Handling mouse clicks!\") # Change the window title
-wn.bgcolor(\"lightgreen\")           # Set the background color
-tess = turtle.Turtle()             # Create two turtles
-tess.color(\"purple\")
-alex = turtle.Turtle()             # Move them apart
-alex.color(\"blue\")
-alex.forward(100)
-
-def handler_for_tess(x, y):
-   wn.title(\"Tess clicked at {0}, {1}\".format(x, y))
-   tess.left(42)
-   tess.forward(30)
-
-def handler_for_alex(x, y):
-   wn.title(\"Alex clicked at {0}, {1}\".format(x, y))
-   alex.right(84)
-   alex.forward(50)
-
-tess.onclick(handler_for_tess)
-alex.onclick(handler_for_alex)
-
-wn.mainloop()"}
-```
-
 Run this, click on the turtles, see what happens!
 
-## Automatic events from a timer
+## 10.4. Automatic events from a timer
 
 Alarm clocks, kitchen timers, and thermonuclear bombs in James Bond
 movies are set to create an \"automatic\" event after a certain
 interval. The turtle module in Python has a timer that can cause an
 event when its time is up.
-
-``` {.python3 linenos=""}
-import turtle
-
-turtle.setup(400,500)
-wn = turtle.Screen()
-wn.title("Using a timer")
-wn.bgcolor("lightgreen")
-
-tess = turtle.Turtle()
-tess.color("purple")
-tess.pensize(3)
-
-def h1():
-    tess.forward(100)
-    tess.left(56)
-
-wn.ontimer(h1, 2000)
-wn.mainloop()
-```
 
 On line 16 the timer is started and set to explode in 2000 milliseconds
 (2 seconds). When the event does occur, the handler is called, and tess
@@ -191,34 +85,14 @@ Unfortunately, when one sets a timer, it only goes off once. So a common
 idiom, or style, is to restart the timer inside the handler. In this way
 the timer will keep on giving new events. Try this program:
 
-``` {.python3 linenos=""}
-import turtle
-
-turtle.setup(400,500)
-wn = turtle.Screen()
-wn.title("Using a timer to get events!")
-wn.bgcolor("lightgreen")
-
-tess = turtle.Turtle()
-tess.color("purple")
-
-def h1():
-    tess.forward(100)
-    tess.left(56)
-    wn.ontimer(h1, 60)
-
-h1()
-wn.mainloop()
-```
-
-## An example: state machines
+## 10.5. An example: state machines
 
 A state machine is a system that can be in one of a few different
-[states]{.title-ref}. We draw a state diagram to represent the machine,
+states. We draw a state diagram to represent the machine,
 where each state is drawn as a circle or an ellipse. Certain events
 occur which cause the system to leave one state and
-[transition]{.title-ref} into a different state. These [state
-transitions]{.title-ref} are usually drawn as an arrow on the diagram.
+transition into a different state. These state
+transitions are usually drawn as an arrow on the diagram.
 
 This idea is not new: when first turning on a cellphone, it goes into a
 state which we could call \"Awaiting PIN\". When the correct PIN is
@@ -244,73 +118,6 @@ the state changes.
 Copy and run this program. Make sure you understand what each line does,
 consulting the documentation as you need to.
 
-``` {.python3 linenos=""}
-import turtle           # Tess becomes a traffic light.
-
-turtle.setup(400,500)
-wn = turtle.Screen()
-wn.title("Tess becomes a traffic light!")
-wn.bgcolor("lightgreen")
-tess = turtle.Turtle()
-
-
-def draw_housing():
-    """ Draw a nice housing to hold the traffic lights """
-    tess.pensize(3)
-    tess.color("black", "darkgrey")
-    tess.begin_fill()
-    tess.forward(80)
-    tess.left(90)
-    tess.forward(200)
-    tess.circle(40, 180)
-    tess.forward(200)
-    tess.left(90)
-    tess.end_fill()
-
-
-draw_housing()
-
-tess.penup()
-# Position tess onto the place where the green light should be
-tess.forward(40)
-tess.left(90)
-tess.forward(50)
-# Turn tess into a big green circle
-tess.shape("circle")
-tess.shapesize(3)
-tess.fillcolor("green")
-
-# A traffic light is a kind of state machine with three states,
-# Green, Orange, Red.  We number these states  0, 1, 2
-# When the machine changes state, we change tess' position and
-# her fillcolor. 
-
-# This variable holds the current state of the machine
-state_num = 0
-
-
-def advance_state_machine():
-    global state_num
-    if state_num == 0:       # Transition from state 0 to state 1
-        tess.forward(70)
-        tess.fillcolor("orange")
-        state_num = 1
-    elif state_num == 1:     # Transition from state 1 to state 2
-        tess.forward(70)
-        tess.fillcolor("red")
-        state_num = 2
-    else:                    # Transition from state 2 to state 0
-        tess.back(140)
-        tess.fillcolor("green")
-        state_num = 0
-
-# Bind the event handler to the space key.
-wn.onkey(advance_state_machine, "space")  
-
-wn.listen()                      # Listen for events
-wn.mainloop()
-```
-
 The new Python statement is at line 46. The `global` keyword tells
 Python not to create a new local variable for `state_num` (in spite of
 the fact that the function assigns to this variable at lines 50, 54, and
@@ -325,28 +132,26 @@ tess to her new position, change her color, and, of course, we assign to
 Each time the space bar is pressed, the event handler causes the traffic
 light machine to move to its new state.
 
-## Glossary
+## 10.6. Glossary
 
-::: {.glossary}
+```
+.. glossary::
 
-bind
+    bind
+        We bind a function (or associate it) with an event, meaning that when the event occurs, the
+        function is called to handle it.
 
-:   We bind a function (or associate it) with an event, meaning that
-    when the event occurs, the function is called to handle it.
+    event
+        Something that happens "outside" the normal control flow of our program, usually from some user action.
+        Typical events are mouse operations and keypresses.  We've also seen that a timer can be primed
+        to create an event.
 
-event
+    handler
+        A function that is called in response to an event.
 
-:   Something that happens \"outside\" the normal control flow of our
-    program, usually from some user action. Typical events are mouse
-    operations and keypresses. We\'ve also seen that a timer can be
-    primed to create an event.
+```
 
-handler
-
-:   A function that is called in response to an event.
-:::
-
-## Exercises
+## 10.7. Exercises
 
 1.  Add some new key bindings to the first sample program:
 
