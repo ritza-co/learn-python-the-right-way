@@ -52,7 +52,7 @@ line) to wherever the mouse is clicked. Try it out!
 If we add this line before line 14, we\'ll learn a useful debugging
 trick too:
 
-```
+```python
 wn.title("Got click at coords {0}, {1}".format(x, y))
 ```
 
@@ -134,7 +134,7 @@ light machine to move to its new state.
 
 ## 10.6. Glossary
 
-```
+```python
 .. glossary::
 
     bind
