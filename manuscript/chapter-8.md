@@ -31,7 +31,7 @@ To learn what methods are available, you can consult the Help documentation, loo
 
 When you type the period to select one of the methods of `ss`, PyScripter will pop up a selection window showing all the methods (there are around 70 of them --- thank goodness we'll only use a few of those!) that could be used on your string.
 
-![](resources/Chapter-8/stringmethods.png?raw=true)
+![](Chapter-8/stringmethods.png?raw=true)
 ![](https://i.ritzastatic.com/images/f90f90117e8d49e59592b1d77628da02/stringmethods.png)
 
 When you type the name of the method, some further help about its parameter and return type, and its docstring, will be displayed. This is a good example of a tool --- PyScripter --- using the meta-information --- the docstrings --- provided by the module programmers.
