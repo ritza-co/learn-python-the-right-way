@@ -12,3 +12,5 @@ chapter-7.md
 chapter-8.md
 chapter-9.md
 chapter-10.md
+chapter-11.md
+chapter-12.md
