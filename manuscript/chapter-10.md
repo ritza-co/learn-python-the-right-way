@@ -71,10 +71,13 @@ Each time the space bar is pressed, the event handler causes the traffic light m
 .. glossary::
 
     bind
-        We bind a function (or associate it) with an event, meaning that when the event occurs, the function is called to handle it.
+        We bind a function (or associate it) with an event, meaning that when the event occurs, 
+        the function is called to handle it.
 
     event
-        Something that happens "outside" the normal control flow of our program, usually from some user action. Typical events are mouse operations and keypresses.  We've also           seen that a timer can be primed to create an event.
+        Something that happens "outside" the normal control flow of our program, usually from some 
+        user action. Typical events are mouse operations and keypresses. We've also seen that a 
+        timer can be primed to create an event.
 
     handler
         A function that is called in response to an event.
