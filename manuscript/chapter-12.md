@@ -490,7 +490,7 @@ method
     Function-like attribute of an object. Methods are *invoked* (called) on
     an object using the dot operator. For example:
 
-    ``` python3
+    ```python
     >>> s = "this is a string."
     >>> s.upper()
     'THIS IS A STRING.'
@@ -526,11 +526,10 @@ naming collision
 
     prevents naming collisions.
 
-standard library A library is a collection of software used as tools in
-the development of other software. The standard library of a programming
-language is the set of such tools that are distributed with the core
-programming language. Python comes with an extensive standard library.
-
+    standard library A library is a collection of software used as tools in
+    the development of other software. The standard library of a programming
+    language is the set of such tools that are distributed with the core
+    programming language. Python comes with an extensive standard library.
 ```
 
 ## 12.11. Exercises
