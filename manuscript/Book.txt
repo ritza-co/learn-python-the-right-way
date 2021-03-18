@@ -28,3 +28,6 @@ chapter-23.md
 chapter-24.md
 chapter-25.md
 chapter-26.md
+chapter-27.md
+chapter-28.md
+appendix-a.md
