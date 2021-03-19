@@ -121,3 +121,179 @@ In general, it is always legal to use an instance of a subclass in place of an i
 
 ## 24.5. The `CardGame` class
 
+The `CardGame` class takes care of some basic chores common to all games, such as creating the deck and shuffling it:
+
+```python
+class CardGame:
+    def __init__(self):
+        self.deck = Deck()
+        self.deck.shuffle()
+```
+
+This is the first case we have seen where the initialization method performs a significant computation, beyond initializing attributes.
+
+To implement specific games, we can inherit from `CardGame` and add features for the new game. As an example, we'll write a simulation of Old Maid.
+
+The object of Old Maid is to get rid of cards in your hand. You do this by matching cards by rank and color. For example, the 4 of Clubs matches the 4 of Spades since both suits are black. The Jack of Hearts matches the Jack of Diamonds since both are red.
+
+To begin the game, the Queen of Clubs is removed from the deck so that the Queen of Spades has no match. The fifty-one remaining cards are dealt to the players in a round robin. After the deal, all players match and discard as many cards as possible.
+
+When no more matches can be made, play begins. In turn, each player picks a card (without looking) from the closest neighbor to the left who still has cards. If the chosen card matches a card in the player's hand, the pair is removed. Otherwise, the card is added to the player's hand. Eventually all possible matches are made, leaving only the Queen of Spades in the loser's hand.
+
+In our computer simulation of the game, the computer plays all hands. Unfortunately, some nuances of the real game are lost. In a real game, the player with the Old Maid goes to some effort to get their neighbor to pick that card, by displaying it a little more prominently, or perhaps failing to display it more prominently, or even failing to fail to display that card more prominently. The computer simply picks a neighbor's card at random.
+
+## 24.6. `OldMaidHand` class
+
+A hand for playing Old Maid requires some abilities beyond the general abilities of a `Hand`. We will define a new class, `OldMaidHand`, that inherits from `Hand` and provides an additional method called `remove_matches`:
+
+```python
+class OldMaidHand(Hand):
+    def remove_matches(self):
+        count = 0
+        original_cards = self.cards[:]
+        for card in original_cards:
+            match = Card(3 - card.suit, card.rank)
+            if match in self.cards:
+                self.cards.remove(card)
+                self.cards.remove(match)
+                print("Hand {0}: {1} matches {2}"
+                        .format(self.name, card, match))
+                count += 1
+        return count
+```
+
+We start by making a copy of the list of cards, so that we can traverse the copy while removing cards from the original. Since `self.cards` is modified in the loop, we don't want to use it to control the traversal. Python can get quite confused if it is traversing a list that is changing!
+
+For each card in the hand, we figure out what the matching card is and go looking for it. The match card has the same rank and the other suit of the same color. The expression `3 - card.suit` turns a Club (suit 0) into a Spade (suit 3) and a Diamond (suit 1) into a Heart (suit 2). You should satisfy yourself that the opposite operations also work. If the match card is also in the hand, both cards are removed.
+
+The following example demonstrates how to use `remove_matches`:
+
+```python
+>>> game = CardGame()
+>>> hand = OldMaidHand("frank")
+>>> game.deck.deal([hand], 13)
+>>> print(hand)
+Hand frank contains
+Ace of Spades
+ 2 of Diamonds
+  7 of Spades
+   8 of Clubs
+    6 of Hearts
+     8 of Spades
+      7 of Clubs
+       Queen of Clubs
+        7 of Diamonds
+         5 of Clubs
+          Jack of Diamonds
+           10 of Diamonds
+            10 of Hearts
+>>> hand.remove_matches()
+Hand frank: 7 of Spades matches 7 of Clubs
+Hand frank: 8 of Spades matches 8 of Clubs
+Hand frank: 10 of Diamonds matches 10 of Hearts
+>>> print(hand)
+Hand frank contains
+Ace of Spades
+ 2 of Diamonds
+  6 of Hearts
+   Queen of Clubs
+    7 of Diamonds
+     5 of Clubs
+      Jack of Diamonds
+```
+
+Notice that there is no `__init__` method for the `OldMaidHand` class. We inherit it from `Hand`.
+
+## 24.7. `OldMaidGame` class
+
+Now we can turn our attention to the game itself. `OldMaidGame` is a subclass of `CardGame` with a new method called `play` that takes a list of players as a parameter.
+
+Since `__init__` is inherited from `CardGame`, a new `OldMaidGame` object contains a new shuffled deck:
+
+```python
+class OldMaidGame(CardGame):
+    def play(self, names):
+        # Remove Queen of Clubs
+        self.deck.remove(Card(0,12))
+
+        # Make a hand for each player
+        self.hands = []
+        for name in names:
+            self.hands.append(OldMaidHand(name))
+
+        # Deal the cards
+        self.deck.deal(self.hands)
+        print("---------- Cards have been dealt")
+        self.print_hands()
+
+        # Remove initial matches
+        matches = self.remove_all_matches()
+        print("---------- Matches discarded, play begins")
+        self.print_hands()
+
+        # Play until all 50 cards are matched
+        turn = 0
+        num_hands = len(self.hands)
+        while matches < 25:
+            matches += self.play_one_turn(turn)
+            turn = (turn + 1) % num_hands
+
+        print("---------- Game is Over")
+        self.print_hands()
+```
+
+The writing of `print_hands` has been left as an exercise.
+
+Some of the steps of the game have been separated into methods. `remove_all_matches` traverses the list of hands and invokes `remove_matches` on each:
+
+```python
+class OldMaidGame(CardGame):
+    ...
+    def remove_all_matches(self):
+        count = 0
+        for hand in self.hands:
+            count += hand.remove_matches()
+        return count
+```
+
+`count` is an accumulator that adds up the number of matches in each hand. When we've gone through every hand, the total is returned (`count`).
+
+When the total number of matches reaches twenty-five, fifty cards have been removed from the hands, which means that only one card is left and the game is over.
+
+The variable `turn` keeps track of which player's turn it is. It starts at 0 and increases by one each time; when it reaches `num_hands`, the modulus operator wraps it back around to 0.
+
+The method `play_one_turn` takes a parameter that indicates whose turn it is. The return value is the number of matches made during this turn:
+
+```python
+class OldMaidGame(CardGame):
+    ...
+    def play_one_turn(self, i):
+        if self.hands[i].is_empty():
+            return 0
+        neighbor = self.find_neighbor(i)
+        picked_card = self.hands[neighbor].pop()
+        self.hands[i].add(picked_card)
+        print("Hand", self.hands[i].name, "picked", picked_card)
+        count = self.hands[i].remove_matches()
+        self.hands[i].shuffle()
+        return count
+```
+
+If a player's hand is empty, that player is out of the game, so he or she does nothing and returns 0.
+
+Otherwise, a turn consists of finding the first player on the left that has cards, taking one card from the neighbor, and checking for matches. Before returning, the cards in the hand are shuffled so that the next player's choice is random.
+
+The method `find_neighbor` starts with the player to the immediate left and continues around the circle until it finds a player that still has cards:
+
+```python
+class OldMaidGame(CardGame):
+    ...
+    def find_neighbor(self, i):
+        num_hands = len(self.hands)
+        for next in range(1,num_hands):
+            neighbor = (i + next) % num_hands
+            if not self.hands[neighbor].is_empty():
+                return neighbor
+```
+
+If `find_neighbor` ever went all the way around the circle without finding cards, it would return `None` and cause an error elsewhere in the program. Fortunately, we can prove that that will never happen (as long as the end of the game is detected correctly).
