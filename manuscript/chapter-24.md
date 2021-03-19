@@ -297,3 +297,106 @@ class OldMaidGame(CardGame):
 ```
 
 If `find_neighbor` ever went all the way around the circle without finding cards, it would return `None` and cause an error elsewhere in the program. Fortunately, we can prove that that will never happen (as long as the end of the game is detected correctly).
+
+We have omitted the `print_hands` method. You can write that one yourself.
+
+The following output is from a truncated form of the game where only the top fifteen cards (tens and higher) were dealt to three players. With this small deck, play stops after seven matches instead of twenty-five.
+
+```python
+>>> import cards
+>>> game = cards.OldMaidGame()
+>>> game.play(["Allen","Jeff","Chris"])
+---------- Cards have been dealt
+Hand Allen contains
+King of Hearts
+ Jack of Clubs
+  Queen of Spades
+   King of Spades
+    10 of Diamonds
+
+Hand Jeff contains
+Queen of Hearts
+ Jack of Spades
+  Jack of Hearts
+   King of Diamonds
+    Queen of Diamonds
+
+Hand Chris contains
+Jack of Diamonds
+ King of Clubs
+  10 of Spades
+   10 of Hearts
+    10 of Clubs
+
+Hand Jeff: Queen of Hearts matches Queen of Diamonds
+Hand Chris: 10 of Spades matches 10 of Clubs
+---------- Matches discarded, play begins
+Hand Allen contains
+King of Hearts
+ Jack of Clubs
+  Queen of Spades
+   King of Spades
+    10 of Diamonds
+
+Hand Jeff contains
+Jack of Spades
+ Jack of Hearts
+  King of Diamonds
+
+Hand Chris contains
+Jack of Diamonds
+ King of Clubs
+  10 of Hearts
+
+Hand Allen picked King of Diamonds
+Hand Allen: King of Hearts matches King of Diamonds
+Hand Jeff picked 10 of Hearts
+Hand Chris picked Jack of Clubs
+Hand Allen picked Jack of Hearts
+Hand Jeff picked Jack of Diamonds
+Hand Chris picked Queen of Spades
+Hand Allen picked Jack of Diamonds
+Hand Allen: Jack of Hearts matches Jack of Diamonds
+Hand Jeff picked King of Clubs
+Hand Chris picked King of Spades
+Hand Allen picked 10 of Hearts
+Hand Allen: 10 of Diamonds matches 10 of Hearts
+Hand Jeff picked Queen of Spades
+Hand Chris picked Jack of Spades
+Hand Chris: Jack of Clubs matches Jack of Spades
+Hand Jeff picked King of Spades
+Hand Jeff: King of Clubs matches King of Spades
+---------- Game is Over
+Hand Allen is empty
+
+Hand Jeff contains
+Queen of Spades
+
+Hand Chris is empty
+```
+
+So Jeff loses.
+
+## 24.8. Glossary
+
+```
+inheritance  
+    The ability to define a new class that is a modified version of a
+    previously defined class.
+
+parent class  
+    The class from which a child class inherits.
+
+child class  
+    A new class created by inheriting from an existing class; also called a
+    subclass.
+
+```
+
+## 24.9. Exercises
+
+1.  Add a method, `print_hands`, to the `OldMaidGame` class which traverses `self.hands` and prints each hand.
+2.  Define a new kind of Turtle, `TurtleGTX`, that comes with some extra features: it can jump forward a 
+    given distance, and it has an odometer that keeps track of how far the turtle has travelled since it came off the production line. (The parent class has a number of synonyms like `fd`, `forward`, `back`, `backward`, and `bk`: for this exercise, just focus on putting this functionality into the `forward` method.) Think carefully about how to count the distance if the turtle is asked to move forward by a negative amount. (We would not want to buy a second-hand turtle whose odometer reading was faked because its previous owner drove it backwards around the block too often. Try this in a car near you, and see if the car's odometer counts up or down when you reverse.)
+3.  After travelling some random distance, your turtle should break down with a flat tyre. After this 
+    happens, raise an exception whenever `forward` is called. Also provide a `change_tyre` method that can    fix the flat.
