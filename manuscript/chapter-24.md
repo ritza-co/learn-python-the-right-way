@@ -27,3 +27,53 @@ class Hand(Deck):
     pass
 ```
 
+This statement indicates that the new `Hand` class inherits from the existing `Deck` class.
+
+The `Hand` constructor initializes the attributes for the hand, which are `name` and `cards`. The string `name` identifies this hand, probably by the name of the player that holds it. The name is an optional parameter with the empty string as a default value. `cards` is the list of cards in the hand, initialized to the empty list:
+
+```python
+class Hand(Deck):
+    def __init__(self, name=""):
+       self.cards = []
+       self.name = name
+```
+
+For just about any card game, it is necessary to add and remove cards from the deck. Removing cards is already taken care of, since `Hand` inherits `remove` from `Deck`. But we have to write `add`:
+
+```python
+class Hand(Deck):
+    ...
+    def add(self, card):
+        self.cards.append(card)
+```
+
+Again, the ellipsis indicates that we have omitted other methods. The list `append` method adds the new card to the end of the list of cards.
+
+## 24.3. Dealing cards
+
+Now that we have a `Hand` class, we want to deal cards from the `Deck` into hands. It is not immediately obvious whether this method should go in the `Hand` class or in the `Deck` class, but since it operates on a
+single deck and (possibly) several hands, it is more natural to put it in `Deck`.
+
+`deal` should be fairly general, since different games will have different requirements. We may want to deal out the entire deck at once or add one card to each hand.
+
+`deal` takes two parameters, a list (or tuple) of hands and the total number of cards to deal. If there are not enough cards in the deck, the method deals out all of the cards and stops:
+
+```python
+class Deck:
+    ...
+    def deal(self, hands, num_cards=999):
+        num_hands = len(hands)
+        for i in range(num_cards):
+            if self.is_empty():
+                break                    # Break if out of cards
+            card = self.pop()            # Take the top card
+            hand = hands[i % num_hands]  # Whose turn is next?
+            hand.add(card)               # Add the card to the hand
+```
+
+The second parameter, `num_cards`, is optional; the default is a large number, which effectively means that all of the cards in the deck will get dealt.
+
+The loop variable `i` goes from 0 to `num_cards-1`. Each time through the loop, a card is removed from the deck using the list method `pop`, which removes and returns the last item in the list.
+
+The modulus operator (`%`) allows us to deal cards in a round robin (one card at a time to each hand). When `i` is equal to the number of hands in the list, the expression `i % num_hands` wraps around to the beginning of the list (index 0).
+
