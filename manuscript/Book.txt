@@ -13,3 +13,12 @@ chapter-8.md
 chapter-9.md
 chapter-10.md
 chapter-11.md
+chapter-12.md
+chapter-13.md
+chapter-14.md
+chapter-15.md
+chapter-16.md
+chapter-17.md
+chapter-18.md
+chapter-19.md
+chapter-20.md
