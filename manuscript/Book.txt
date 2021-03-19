@@ -24,6 +24,3 @@ chapter-19.md
 chapter-20.md
 chapter-21.md
 chapter-22.md
-chapter-23.md
-chapter-24.md
-chapter-25.md
