@@ -74,10 +74,3 @@ class Deck:
 The second parameter, `num_cards`, is optional; the default is a large number, which effectively means that all of the cards in the deck will get dealt.
 
 The loop variable `i` goes from 0 to `num_cards-1`. Each time through the loop, a card is removed from the deck using the list method `pop`, which removes and returns the last item in the list.
-
-The modulus operator (`%`) allows us to deal cards in a round robin (one card at a time to each hand). When `i` is equal to the number of hands in the list, the expression `i % num_hands` wraps around to the beginning of the list (index 0).
-
-## 24.4. Printing a Hand
-
-To print the contents of a hand, we can take advantage of the `__str__` method inherited from `Deck`. For example:
-
