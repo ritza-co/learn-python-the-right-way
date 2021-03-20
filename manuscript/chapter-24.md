@@ -144,27 +144,3 @@ In our computer simulation of the game, the computer plays all hands. Unfortunat
 
 ## 24.6. `OldMaidHand` class
 
-A hand for playing Old Maid requires some abilities beyond the general abilities of a `Hand`. We will define a new class, `OldMaidHand`, that inherits from `Hand` and provides an additional method called `remove_matches`:
-
-```python
-class OldMaidHand(Hand):
-    def remove_matches(self):
-        count = 0
-        original_cards = self.cards[:]
-        for card in original_cards:
-            match = Card(3 - card.suit, card.rank)
-            if match in self.cards:
-                self.cards.remove(card)
-                self.cards.remove(match)
-                print("Hand {0}: {1} matches {2}"
-                        .format(self.name, card, match))
-                count += 1
-        return count
-```
-
-We start by making a copy of the list of cards, so that we can traverse the copy while removing cards from the original. Since `self.cards` is modified in the loop, we don't want to use it to control the traversal. Python can get quite confused if it is traversing a list that is changing!
-
-For each card in the hand, we figure out what the matching card is and go looking for it. The match card has the same rank and the other suit of the same color. The expression `3 - card.suit` turns a Club (suit 0) into a Spade (suit 3) and a Diamond (suit 1) into a Heart (suit 2). You should satisfy yourself that the opposite operations also work. If the match card is also in the hand, both cards are removed.
-
-The following example demonstrates how to use `remove_matches`:
-
