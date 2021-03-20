@@ -120,27 +120,3 @@ It may seem odd to send `self`, which refers to the current `Hand`, to a `Deck` 
 In general, it is always legal to use an instance of a subclass in place of an instance of a parent class.
 
 ## 24.5. The `CardGame` class
-
-The `CardGame` class takes care of some basic chores common to all games, such as creating the deck and shuffling it:
-
-```python
-class CardGame:
-    def __init__(self):
-        self.deck = Deck()
-        self.deck.shuffle()
-```
-
-This is the first case we have seen where the initialization method performs a significant computation, beyond initializing attributes.
-
-To implement specific games, we can inherit from `CardGame` and add features for the new game. As an example, we'll write a simulation of Old Maid.
-
-The object of Old Maid is to get rid of cards in your hand. You do this by matching cards by rank and color. For example, the 4 of Clubs matches the 4 of Spades since both suits are black. The Jack of Hearts matches the Jack of Diamonds since both are red.
-
-To begin the game, the Queen of Clubs is removed from the deck so that the Queen of Spades has no match. The fifty-one remaining cards are dealt to the players in a round robin. After the deal, all players match and discard as many cards as possible.
-
-When no more matches can be made, play begins. In turn, each player picks a card (without looking) from the closest neighbor to the left who still has cards. If the chosen card matches a card in the player's hand, the pair is removed. Otherwise, the card is added to the player's hand. Eventually all possible matches are made, leaving only the Queen of Spades in the loser's hand.
-
-In our computer simulation of the game, the computer plays all hands. Unfortunately, some nuances of the real game are lost. In a real game, the player with the Old Maid goes to some effort to get their neighbor to pick that card, by displaying it a little more prominently, or perhaps failing to display it more prominently, or even failing to fail to display that card more prominently. The computer simply picks a neighbor's card at random.
-
-## 24.6. `OldMaidHand` class
-
