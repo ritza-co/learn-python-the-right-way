@@ -99,6 +99,14 @@ It's not a great hand, but it has the makings of a straight flush.
 
 Although it is convenient to inherit the existing methods, there is additional information in a `Hand` object we might want to include when we print one. To do that, we can provide a `__str__` method in the `Hand` class that overrides the one in the `Deck` class:
 
+```python
+class Hand(Deck)
+    def __str__(self):
+        s = "Hand " + self.name
+        if self.is_empty():
+            s += " is empty\n"
+```
+
 Initially, `s` is a string that identifies the hand. If the hand is empty, the program appends the words `is empty` and returns `s`.
 
 Otherwise, the program appends the word `contains` and the string representation of the `Deck`, computed by invoking the `__str__` method in the `Deck` class on `self`.
