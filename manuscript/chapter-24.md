@@ -49,47 +49,33 @@ class Hand(Deck):
 
 Again, the ellipsis indicates that we have omitted other methods. The list `append` method adds the new card to the end of the list of cards.
 
-## 24.4. Printing a Hand
+## 24.3. Dealing cards
 
-To print the contents of a hand, we can take advantage of the `__str__` method inherited from `Deck`. For example:
+Now that we have a `Hand` class, we want to deal cards from the `Deck` into hands. It is not immediately obvious whether this method should go in the `Hand` class or in the `Deck` class, but since it operates on a
+single deck and (possibly) several hands, it is more natural to put it in `Deck`.
 
-```python
->>> deck = Deck()
->>> deck.shuffle()
->>> hand = Hand("frank")
->>> deck.deal([hand], 5)
->>> print(hand)
-Hand frank contains
-2 of Spades
- 3 of Spades
-  4 of Spades
-   Ace of Hearts
-    9 of Clubs
-```
+`deal` should be fairly general, since different games will have different requirements. We may want to deal out the entire deck at once or add one card to each hand.
 
-It's not a great hand, but it has the makings of a straight flush.
-
-Although it is convenient to inherit the existing methods, there is additional information in a `Hand` object we might want to include when we print one. To do that, we can provide a `__str__` method in the `Hand` class that overrides the one in the `Deck` class:
+`deal` takes two parameters, a list (or tuple) of hands and the total number of cards to deal. If there are not enough cards in the deck, the method deals out all of the cards and stops:
 
 ```python
-class Hand(Deck)
+class Deck:
     ...
-    def __str__(self):
-        s = "Hand " + self.name
-        if self.is_empty():
-            s += " is empty\n"
-        else:
-            s += " contains\n"
-        return s + Deck.__str__(self)
+    def deal(self, hands, num_cards=999):
+        num_hands = len(hands)
+        for i in range(num_cards):
+            if self.is_empty():
+                break                    # Break if out of cards
+            card = self.pop()            # Take the top card
+            hand = hands[i % num_hands]  # Whose turn is next?
+            hand.add(card)               # Add the card to the hand
 ```
 
-Initially, `s` is a string that identifies the hand. If the hand is empty, the program appends the words `is empty` and returns `s`.
+The second parameter, `num_cards`, is optional; the default is a large number, which effectively means that all of the cards in the deck will get dealt.
 
-Otherwise, the program appends the word `contains` and the string representation of the `Deck`, computed by invoking the `__str__` method in the `Deck` class on `self`.
+The loop variable `i` goes from 0 to `num_cards-1`. Each time through the loop, a card is removed from the deck using the list method `pop`, which removes and returns the last item in the list.
 
-It may seem odd to send `self`, which refers to the current `Hand`, to a `Deck` method, until you remember that a `Hand` is a kind of `Deck`. `Hand` objects can do everything `Deck` objects can, so it is legal to send a `Hand` to a `Deck` method.
-
-In general, it is always legal to use an instance of a subclass in place of an instance of a parent class.
+The modulus operator (`%`) allows us to deal cards in a round robin (one card at a time to each hand). When `i` is equal to the number of hands in the list, the expression `i % num_hands` wraps around to the beginning of the list (index 0).
 
 ## 24.5. The `CardGame` class
 
