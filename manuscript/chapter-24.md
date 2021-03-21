@@ -101,10 +101,13 @@ Although it is convenient to inherit the existing methods, there is additional i
 
 ```python
 class Hand(Deck)
+    ...
     def __str__(self):
         s = "Hand " + self.name
         if self.is_empty():
             s += " is empty\n"
+        else:
+            s += " contains\n"
 ```
 
 Initially, `s` is a string that identifies the hand. If the hand is empty, the program appends the words `is empty` and returns `s`.
