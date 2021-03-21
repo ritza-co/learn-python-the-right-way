@@ -81,21 +81,23 @@ The modulus operator (`%`) allows us to deal cards in a round robin (one card at
 
 To print the contents of a hand, we can take advantage of the `__str__` method inherited from `Deck`. For example:
 
+```python
+>>> deck = Deck()
+>>> deck.shuffle()
+>>> hand = Hand("frank")
+>>> deck.deal([hand], 5)
+>>> print(hand)
+Hand frank contains
+2 of Spades
+ 3 of Spades
+  4 of Spades
+   Ace of Hearts
+    9 of Clubs
+```
+
 It's not a great hand, but it has the makings of a straight flush.
 
 Although it is convenient to inherit the existing methods, there is additional information in a `Hand` object we might want to include when we print one. To do that, we can provide a `__str__` method in the `Hand` class that overrides the one in the `Deck` class:
-
-```python
-class Hand(Deck)
-    ...
-    def __str__(self):
-        s = "Hand " + self.name
-        if self.is_empty():
-            s += " is empty\n"
-        else:
-            s += " contains\n"
-        return s + Deck.__str__(self)
-```
 
 Initially, `s` is a string that identifies the hand. If the hand is empty, the program appends the words `is empty` and returns `s`.
 
