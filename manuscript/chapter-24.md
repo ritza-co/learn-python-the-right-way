@@ -106,8 +106,8 @@ class Hand(Deck)
         if self.is_empty():
             s += " is empty\n"
         else:
-            s += " contains\n"
-        return s + Deck.__str__(self)
+            pass
+        return
 ```
 
 Initially, `s` is a string that identifies the hand. If the hand is empty, the program appends the words `is empty` and returns `s`.
