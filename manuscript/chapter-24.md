@@ -105,6 +105,8 @@ class Hand(Deck)
         s = "Hand " + self.name
         if self.is_empty():
             s += " is empty\n"
+        else:
+            s += " contains\n"
         return s + Deck.__str__(self)
 ```
 
