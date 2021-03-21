@@ -106,7 +106,7 @@ class Hand(Deck)
         if self.is_empty():
             s += " is empty\n"
         else:
-            pass
+            s += " contains\n"
         return
 ```
 
