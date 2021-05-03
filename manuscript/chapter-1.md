@@ -16,19 +16,19 @@ Almost all programs are written in high-level languages because of their advanta
 
 The engine that translates and runs Python is called the **Python Interpreter**: There are two ways to use it: *immediate mode* and *script mode*. In immediate mode, you type Python expressions into the Python Interpreter window, and the interpreter immediately shows the result:
 
-![Running a script in Repl.it](https://i.ritzastatic.com/ThinkCS-images/Chapter-1/01-01-python-interpreter.png)
+![Running code in the interpreter (immediate mode)](https://i.ritzastatic.com/ThinkCS-images/Chapter-1/01-01-python-interpreter.png)
 
 The `>>>` or `>` is called the **Python prompt**. The interpreter uses the prompt to indicate that it is ready for instructions. We typed `2 + 2`, and the interpreter evaluated our expression, and replied `4`, and on the next line it gave a new prompt, indicating that it is ready for more input.
 
 Alternatively, you can write a program in a file and use the interpreter to execute the contents of the file. Such a file is called a **script**. Scripts have the advantage that they can be saved to disk, printed, and so on.
 
-In this edition of the textbook, we use a program development environment called **Repl.it**. (It is available at https://repl.it/.) There are various other development environments. If you’re using one of the others, you might be better off working with the authors’ original book rather than this edition.
+In this edition of the textbook, we use a program development environment called **Replit**. (It is available at https://replit.com/.) There are various other development environments. If you’re using one of the others, you might be better off working with the authors’ original book rather than this edition.
 
-For example, we created a file named `main.py` using Repl.it. By convention, files that contain Python programs have names that end with `.py`
+For example, we created a file named `main.py` using Replit. By convention, files that contain Python programs have names that end with `.py`
 
-To execute the program, we can click the **Run** button in Repl.it:
+To execute the program, we can click the **Run** button in Replit:
 
-![Python Interpreter](https://i.ritzastatic.com/ThinkCS-images/Chapter-1/01-02-running-a-script.png)
+![Running code from a file (script mode)](https://i.ritzastatic.com/ThinkCS-images/Chapter-1/01-02-running-a-script.png)
 
 Most programs are more interesting than this one.
 
