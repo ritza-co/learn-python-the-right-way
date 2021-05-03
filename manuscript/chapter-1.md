@@ -16,7 +16,7 @@ Almost all programs are written in high-level languages because of their advanta
 
 The engine that translates and runs Python is called the **Python Interpreter**: There are two ways to use it: *immediate mode* and *script mode*. In immediate mode, you type Python expressions into the Python Interpreter window, and the interpreter immediately shows the result:
 
-![Python Interpreter](https://i.ritzastatic.com/ThinkCS-images/Chapter-1/01-02-running-a-script.png)
+![Running a script in Repl.it](https://i.ritzastatic.com/ThinkCS-images/Chapter-1/01-01-python-interpreter.png)
 
 The `>>>` or `>` is called the **Python prompt**. The interpreter uses the prompt to indicate that it is ready for instructions. We typed `2 + 2`, and the interpreter evaluated our expression, and replied `4`, and on the next line it gave a new prompt, indicating that it is ready for more input.
 
@@ -28,7 +28,7 @@ For example, we created a file named `main.py` using Repl.it. By convention, fil
 
 To execute the program, we can click the **Run** button in Repl.it:
 
-![Running a script in Repl.it](https://i.ritzastatic.com/ThinkCS-images/Chapter-1/01-01-python-interpreter.png)
+![Python Interpreter](https://i.ritzastatic.com/ThinkCS-images/Chapter-1/01-02-running-a-script.png)
 
 Most programs are more interesting than this one.
 
@@ -70,7 +70,7 @@ Programming is a complex process, and because it is done by human beings, it oft
 
 Three kinds of errors can occur in a program: [syntax errors](https://en.wikipedia.org/wiki/Syntax_error), [runtime errors](https://en.wikipedia.org/wiki/Runtime_(program_lifecycle_phase)), and [semantic errors](https://en.wikipedia.org/wiki/Logic_error). It is useful to distinguish between them in order to track them down more quickly.
 
-### 1.4. Syntax errors
+## 1.4. Syntax errors
 
 Python can only execute a program if the program is syntactically correct; otherwise, the process fails and returns an error message. **Syntax** refers to the structure of a program and the rules about that structure. For example, in English, a sentence must begin with a capital letter and end with a period. this sentence contains a **syntax error**. So does this one
 
