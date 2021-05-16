@@ -87,15 +87,6 @@ We've also seen lists previously. The same indexing notation works to extract el
 'Angelina'
 ```
 
-```
-.. index::
-    single: len function
-    single: function; len
-    single: runtime error
-    single: negative index
-    single: index; negative
-```
-
 ## 8.4. Length
 
 The `len` function, when applied to a string, returns the number of characters in a string:
@@ -115,16 +106,6 @@ Alternatively, we can use negative indices, which count backward from the end of
 As you might have guessed, indexing with a negative index also works like this for lists.
 
 We won't use negative indexes in the rest of these notes --- not many computer languages use this idiom, and you'll probably be better off avoiding it. But there is plenty of Python code out on the Internet that will use this trick, so it is best to know that it exists.
-
-```python
-.. index:: traversal, for loop, concatenation, abecedarian series
-```
-
-```python
-.. index::
-    single: McCloskey, Robert
-    single: Make Way for Ducklings
-```
 
 ## 8.5. Traversal and the `for` loop
 
@@ -152,10 +133,6 @@ Qack
 ```
 
 Of course, that's not quite right because Ouack and Quack are misspelled. You'll fix this as an exercise below.
-
-```python
-.. index:: slice, string slice, substring, sublist
-```
 
 ## 8.6. Slices
 
@@ -194,10 +171,6 @@ Three tricks are added to this: if you omit the first index (before the colon), 
 
 What do you think `s[:]` means? What about `friends[4:]`?
 
-```python
-.. index:: string comparison, comparison of strings
-```
-
 ## 8.7. String comparison
 
 The comparison operators work on strings. To see if two strings are equal:
@@ -212,10 +185,6 @@ Your word, Zebra, comes before banana.
 
 A common way to address this problem is to convert strings to a standard format, such as all lowercase, before performing the comparison. A more difficult problem is making the program realize that zebras are not fruit.
 
-```python
-.. index:: mutable, immutable, runtime error
-```
-
 ## 8.8. Strings are immutable
 
 It is tempting to use the `[]` operator on the left side of an assignment, with the intention of changing a character in a string. For example:
@@ -225,12 +194,6 @@ Instead of producing the output `Jello, world!`, this code produces the runtime 
 Strings are **immutable**, which means you can't change an existing string. The best you can do is create a new string that is a variation on the original:
 
 The solution here is to concatenate a new first letter onto a slice of `greeting`. This operation has no effect on the original string.
-
-```python
-.. index::
-    single: in operator
-    single: operator; in
-```
 
 ## 8.9. The `in` and `not in` operators
 
@@ -269,11 +232,6 @@ True
 
 Combining the `in` operator with string concatenation using `+`, we can write a function that removes all the vowels from a string:
 
-```python
-.. index:: traversal, eureka traversal, short-circuit evaluation, pattern of computation,
-           computation pattern
-```
-
 ## 8.10. A `find` function
 
 What does the following function do?
@@ -286,17 +244,9 @@ If the character doesn't appear in the string, then the program exits the loop n
 
 This pattern of computation is sometimes called a **eureka traversal** or **short-circuit evaluation**, because as soon as we find what we are looking for, we can cry "Eureka!", take the short-circuit, and stop looking.
 
-```python
-.. index:: counting pattern
-```
-
 ## 8.11. Looping and counting
 
 The following program counts the number of times the letter `a` appears in a string, and is another example of the counter pattern introduced in counting.
-
-```python
-.. index:: optional parameter, default value, parameter; optional
-```
 
 ## 8.12. Optional parameters
 
@@ -317,11 +267,6 @@ The optional value for `end` is interesting: we give it a default value `None` i
 The semantics of `start` and `end` in this function are precisely the same as they are in the `range` function.
 
 Here are some test cases that should pass:
-
-```python
-.. index:: module, string module, dir function, dot notation, function type,
-           docstring
-```
 
 ## 8.13. The built-in `find` method
 
@@ -366,10 +311,6 @@ The output:
 ```
 
 There are other useful string methods, but this book isn't intended to be a reference manual. On the other hand, the *Python Library Reference* is. Along with a wealth of other documentation, it is available at the [Python website](https://www.python.org/).
-
-```python
-.. index:: string formatting, operations on strings, formatting; strings, justification, field width
-```
 
 ## 8.16. The string format method
 
@@ -468,111 +409,100 @@ i  i**2  i**3    i**5        i**10                   i**20
 
 This chapter introduced a lot of new ideas. The following summary may prove helpful in remembering what you learned.
 
+**indexing (``[]``)**
+Access a single character in a string using its position (starting from
+0).  Example: ``"This"[2]`` evaluates to ``"i"``.
+
+**length function (``len``)**
+Returns the number of characters in a string.  Example:
+``len("happy")`` evaluates to ``5``.
+
+**for loop traversal (``for``)**
+*Traversing* a string means accessing each character in the string, one
+at a time.  For example, the following for loop:
+
 ```python
-.. glossary::
-
-    indexing (``[]``)
-        Access a single character in a string using its position (starting from
-        0).  Example: ``"This"[2]`` evaluates to ``"i"``.
-
-    length function (``len``)
-        Returns the number of characters in a string.  Example:
-        ``len("happy")`` evaluates to ``5``.
-
-    for loop traversal (``for``)
-        *Traversing* a string means accessing each character in the string, one
-        at a time.  For example, the following for loop:
-
-            .. sourcecode:: python3
-
-                for ch in "Example":
-                    ...
-
-        executes the body of the loop 7 times with different values of ``ch`` each time.
-
-    slicing (``[:]``)
-        A *slice* is a substring of a string. Example: ``'bananas and
-        cream'[3:6]`` evaluates to ``ana`` (so does ``'bananas and
-        cream'[1:4]``).
-
-    string comparison (``>, <, >=, <=, ==, !=``)
-        The six common comparison operators work with strings, evaluating according to
-        `lexicographical` order.  Examples:
-        ``"apple" < "banana"`` evaluates to ``True``.  ``"Zeta" < "Appricot"``
-        evaluates to ``False``.  ``"Zebra" <= "aardvark"`` evaluates to
-        ``True`` because all upper case letters precede lower case letters.
-
-    in and not in operator (``in``, ``not in``)
-        The ``in`` operator tests for membership. In the case of
-        strings, it tests whether one string is contained inside another
-        string.  Examples: ``"heck" in "I'll be checking for you."``
-        evaluates to ``True``.  ``"cheese" in "I'll be checking for
-        you."`` evaluates to ``False``.
+for ch in "Example":
+    ...
 ```
+
+executes the body of the loop 7 times with different values of ``ch`` each time.
+
+**slicing (``[:]``)**
+A *slice* is a substring of a string. Example: ``'bananas and
+cream'[3:6]`` evaluates to ``ana`` (so does ``'bananas and
+cream'[1:4]``).
+
+**string comparison (``>, <, >=, <=, ==, !=``)**
+The six common comparison operators work with strings, evaluating according to
+`lexicographical` order.  Examples:
+``"apple" < "banana"`` evaluates to ``True``.  ``"Zeta" < "Appricot"``
+evaluates to ``False``.  ``"Zebra" <= "aardvark"`` evaluates to
+``True`` because all upper case letters precede lower case letters.
+
+**in and not in operator (``in``, ``not in``)**
+The ``in`` operator tests for membership. In the case of
+strings, it tests whether one string is contained inside another
+string.  Examples: ``"heck" in "I'll be checking for you."``
+evaluates to ``True``.  ``"cheese" in "I'll be checking for
+you."`` evaluates to ``False``.
 
 ## 8.18. Glossary
 
-```python
-.. glossary::
+**compound data type**
+A data type in which the values are made up of components, or elements, that are themselves values.
 
-    compound data type
-        A data type in which the values are made up of components, or elements,
-        that are themselves values.
+**default value**
+The value given to an optional parameter if no argument for it is
+provided in the function call.
 
-    default value
-        The value given to an optional parameter if no argument for it is
-        provided in the function call.
+**docstring**
+A string constant on the first line of a function or module definition
+(and as we will see later, in class and method definitions as well).
+Docstrings provide a convenient way to associate documentation with
+code. Docstrings are also used by programming tools to provide interactive help.
 
-    docstring
-        A string constant on the first line of a function or module definition
-        (and as we will see later, in class and method definitions as well).
-        Docstrings provide a convenient way to associate documentation with
-        code. Docstrings are also used by programming tools to provide interactive help.
+**dot notation**
+Use of the **dot operator**, ``.``, to access methods and attributes of an object.
 
-    dot notation
-        Use of the **dot operator**, ``.``, to access methods and attributes of an object.
+**immutable data value**
+A data value which cannot be modified.  Assignments to elements or
+slices (sub-parts) of immutable values cause a runtime error.
 
-    immutable data value
-        A data value which cannot be modified.  Assignments to elements or
-        slices (sub-parts) of immutable values cause a runtime error.
+**index**
+A variable or value used to select a member of an ordered collection, such as
+a character from a string, or an element from a list.
 
-    index
-        A variable or value used to select a member of an ordered collection, such as
-        a character from a string, or an element from a list.
+**mutable data value**
+A data value which can be modified. The types of all mutable values
+are compound types.  Lists and dictionaries are mutable; strings
+and tuples are not.
 
-    mutable data value
-        A data value which can be modified. The types of all mutable values
-        are compound types.  Lists and dictionaries are mutable; strings
-        and tuples are not.
+**optional parameter**
+A parameter written in a function header with an assignment to a
+default value which it will receive if no corresponding argument is
+given for it in the function call.
 
-    optional parameter
-        A parameter written in a function header with an assignment to a
-        default value which it will receive if no corresponding argument is
-        given for it in the function call.
+**short-circuit evaluation**
+A style of programming that shortcuts extra work as soon as the
+outcome is know with certainty. In this chapter our ``find``
+function returned as soon as it found what it was looking for; it
+didn't traverse all the rest of the items in the string.
 
-    short-circuit evaluation
-        A style of programming that shortcuts extra work as soon as the
-        outcome is know with certainty. In this chapter our ``find``
-        function returned as soon as it found what it was looking for; it
-        didn't traverse all the rest of the items in the string.
+**slice**
+A part of a string (substring) specified by a range of indices. More
+generally, a subsequence of any sequence type in Python can be created
+using the slice operator (``sequence[start:stop]``).
 
-    slice
-        A part of a string (substring) specified by a range of indices. More
-        generally, a subsequence of any sequence type in Python can be created
-        using the slice operator (``sequence[start:stop]``).
+**traverse**
+To iterate through the elements of a collection, performing a similar
+operation on each.
 
-    traverse
-        To iterate through the elements of a collection, performing a similar
-        operation on each.
-
-    whitespace
-        Any of the characters that move the cursor without printing visible
-        characters. The constant ``string.whitespace`` contains all the
-        white-space characters.
+**whitespace**
+Any of the characters that move the cursor without printing visible
+characters. The constant ``string.whitespace`` contains all the
+white-space characters.
         
-        
-```
-
 ## 8.19. Exercises
 
 We suggest you create a single file containing the test scaffolding from our previous chapters, and put all functions that require tests into that file.
@@ -592,23 +522,41 @@ We suggest you create a single file containing the test scaffolding from our pre
 ```
 
 2. Modify:
-   so that `Ouack` and `Quack` are spelled correctly.
+
+```python
+prefixes = "JKLMNOPQ"
+suffix = "ack"
+
+for letter in prefixes:
+    print(letter + suffix)
+```
+so that `Ouack` and `Quack` are spelled correctly.
 
 3. Encapsulate 
-   in a function named `count_letters`, and generalize it so that it accepts the string and the letter as arguments. Make the function return the number of characters,              rather than print the answer. The caller should do the printing.
 
-4. Now rewrite the count_letters function so that instead of traversing the string, it repeatedly calls the find method, with the optional third parameter to locate new            occurrences of the letter being counted.
+```
+fruit = "banana"
+count = 0
+for char in fruit:
+    if char == "a":
+        count += 1
+print(count)
+```
+in a function named `count_letters`, and generalize it so that it accepts the string and the letter as arguments. Make the function return the number of characters, rather than print the answer. The caller should do the printing.
 
-5. Assign to a variable in your program a triple-quoted string that contains your favourite paragraph of text --- perhaps a poem, a speech, instructions to bake a cake, some        inspirational verses, etc.
+4. Now rewrite the count_letters function so that instead of traversing the string, it repeatedly calls the find method, with the optional third parameter to locate new occurrences of the letter being counted.
 
-   Write a function which removes all punctuation from the string, breaks the string into a list of words, and counts the number of words in your text that contain the              letter "e". Your program should print an analysis of the text like this:
+5. Assign to a variable in your program a triple-quoted string that contains your favourite paragraph of text --- perhaps a poem, a speech, instructions to bake a cake, some inspirational verses, etc.
 
-   ```python 
-   Your text contains 243 words, of which 109 (44.8%) contain an "e".
-   ```
+   Write a function which removes all punctuation from the string, breaks the string into a list of words, and counts the number of words in your text that contain the letter "e". Your program should print an analysis of the text like this:
+
+```python 
+Your text contains 243 words, of which 109 (44.8%) contain an "e".
+```
 
 6. Print a neat looking multiplication table like this:
-   ```python
+
+```
            1   2   3   4   5   6   7   8   9  10  11  12
       :--------------------------------------------------
      1:     1   2   3   4   5   6   7   8   9  10  11  12
@@ -623,20 +571,76 @@ We suggest you create a single file containing the test scaffolding from our pre
     10:    10  20  30  40  50  60  70  80  90 100 110 120
     11:    11  22  33  44  55  66  77  88  99 110 121 132
     12:    12  24  36  48  60  72  84  96 108 120 132 144
-    ```
+```
 
 7. Write a function that reverses its string argument, and satisfies these tests:
 
+```python
+test(reverse("happy") == "yppah")
+test(reverse("Python") == "nohtyP")
+test(reverse("") == "")
+test(reverse("a") == "a")
+```
+
 8. Write a function that mirrors its argument:
+
+```python
+test(mirror("good") == "gooddoog")
+test(mirror("Python") == "PythonnohtyP")
+test(mirror("") == "")
+test(mirror("a") == "aa")
+```
 
 9. Write a function that removes all occurrences of a given letter from a string:
 
+```python
+test(remove_letter("a", "apple") == "pple")
+test(remove_letter("a", "banana") == "bnn")
+test(remove_letter("z", "banana") == "banana")
+test(remove_letter("i", "Mississippi") == "Msssspp")
+test(remove_letter("b", "") = "")
+test(remove_letter("b", "c") = "c")
+```
+
 10. Write a function that recognizes palindromes. (Hint: use your `reverse` function to make this easy!):
+
+```python
+test(is_palindrome("abba"))
+test(not is_palindrome("abab"))
+test(is_palindrome("tenet"))
+test(not is_palindrome("banana"))
+test(is_palindrome("straw warts"))
+test(is_palindrome("a"))
+# test(is_palindrome(""))    # Is an empty string a palindrome?
+```
 
 11. Write a function that counts how many times a substring occurs in a string:
 
+```python
+test(count("is", "Mississippi") == 2)
+test(count("an", "banana") == 2)
+test(count("ana", "banana") == 2)
+test(count("nana", "banana") == 1)
+test(count("nanan", "banana") == 0)
+test(count("aaa", "aaaaaa") == 4)
+```
+
 12. Write a function that removes the first occurrence of a string from another string:
 
+```python
+test(remove("an", "banana") == "bana")
+test(remove("cyc", "bicycle") == "bile")
+test(remove("iss", "Mississippi") == "Missippi")
+test(remove("eggs", "bicycle") == "bicycle")
+```
+
 13. Write a function that removes all occurrences of a string from another string:   
+
+```python
+test(remove_all("an", "banana") == "ba")
+test(remove_all("cyc", "bicycle") == "bile")
+test(remove_all("iss", "Mississippi") == "Mippi")
+test(remove_all("eggs", "bicycle") == "bicycle")
+```
 
  
