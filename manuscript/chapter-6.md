@@ -78,6 +78,9 @@ def find_first_2_letter_word(xs):
         if len(wd) == 2:
            return wd
     return ""
+```
+
+```python
 >>> find_first_2_letter_word(["This",  "is", "a", "dead", "parrot"])
 'is'
 >>> find_first_2_letter_word(["I",  "like",  "cheese"])
