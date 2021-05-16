@@ -119,7 +119,7 @@ A> *When reading or writing code, say to yourself “n is assigned 17” or “n
 
 A common way to represent variables on paper is to write the name with an arrow pointing to the variable’s value. This kind of figure is called a **state snapshot** because it shows what state each of the variables is in at a particular instant in time. (Think of it as the variable’s state of mind). This diagram shows the result of executing the assignment statements:
 
-![State Snapshot](https://i.ritzastatic.com/ThinkCS-images/Chapter-2/02-01-state.png) 
+![State Snapshot](Chapter-2/02-01-state.png) 
 
 If you ask the interpreter to evaluate a variable, it will produce the value that is currently linked to the variable:
 
