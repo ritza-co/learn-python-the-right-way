@@ -206,15 +206,15 @@ You’ll notice that if you don’t stop when you reach `1`, the sequence gets i
 
 Wikipedia has an informative article about the Collatz conjecture. The sequence also goes under other names (Hailstone sequence, Wonderous numbers, etc.), and you’ll find out just how many integers have already been tested by computer, and found to converge!
 
-A> **Choosing between for and while**
-A> 
-A> Use a `for` loop if you know, before you start looping, the maximum number of times that you’ll need to execute the body. For example, if you’re traversing a list of elements, you know that the maximum number of loop iterations you can possibly need is “all the elements in the list”. Or if you need to print the 12 times table, we know right away how many times the loop will need to run.
-A> 
-A> So any problem like “iterate this weather model for 1000 cycles”, or “search this list of words”, “find all prime numbers up to 10000” suggest that a `for` loop is best.
-A> 
-A> By contrast, if you are required to repeat some computation until some condition is met, and you cannot calculate in advance when (or if) this will happen, as we did in this `3n + 1` problem, you’ll need a `while` loop.
-A>
-A> We call the first case **definite iteration** — we know ahead of time some definite bounds for what is needed. The latter case is called **indefinite iteration** — we’re not sure how many iterations we’ll need — we cannot even establish an upper bound!
+ **Choosing between for and while**
+ 
+ Use a `for` loop if you know, before you start looping, the maximum number of times that you’ll need to execute the body. For example, if you’re traversing a list of elements, you know that the maximum number of loop iterations you can possibly need is “all the elements in the list”. Or if you need to print the 12 times table, we know right away how many times the loop will need to run.
+ 
+ So any problem like “iterate this weather model for 1000 cycles”, or “search this list of words”, “find all prime numbers up to 10000” suggest that a `for` loop is best.
+ 
+ By contrast, if you are required to repeat some computation until some condition is met, and you cannot calculate in advance when (or if) this will happen, as we did in this `3n + 1` problem, you’ll need a `while` loop.
+
+ We call the first case **definite iteration** — we know ahead of time some definite bounds for what is needed. The latter case is called **indefinite iteration** — we’re not sure how many iterations we’ll need — we cannot even establish an upper bound!
 
 ## 7.6. Tracing a program
 
@@ -333,7 +333,7 @@ There are similar abbreviations for `-=`, `*=`, `/=`, `//=` and `%=`:
 
 Python comes with extensive documentation for all its built-in functions, and its libraries. Different systems have different ways of accessing this help. In PyScripter, click on the Help menu item, and select Python Manuals. Then search for help on the built-in function `range`. You’ll get something like this:
 
-![_images/help_range.png](https://i.ritzastatic.com/ThinkCS-images/Chapter-7/07-01-help_range.png)
+![](https://i.ritzastatic.com/ThinkCS-images/Chapter-7/07-01-help_range.png)
 
 Notice the square brackets in the description of the arguments. These are examples of **meta-notation** — notation that describes Python syntax, but is not part of it. The square brackets in this documentation mean that the argument is optional — the programmer can omit it. So what this first line of help tells us is that `range` must always have a `stop` argument, but it may have an optional `start` argument (which must be followed by a comma if it is present), and it can also have an optional `step` argument, preceded by a comma if it is present.
 
@@ -520,11 +520,11 @@ This prints:
 done
 ```
 
-A> **The pre-test loop — standard loop behaviour**
-A> 
-A> `for` and `while` loops do their tests at the start, before executing any part of the body. They’re called **pre-test** loops, because the test happens before (pre) the body. `break` and `return` are our tools for adapting this standard behaviour.
-A> 
-A> ![_images/pre_test_loop.png](https://i.ritzastatic.com/ThinkCS-images/Chapter-7/07-03-pre_test_loop.png)
+**The pre-test loop — standard loop behaviour**
+ 
+`for` and `while` loops do their tests at the start, before executing any part of the body. They’re called **pre-test** loops, because the test happens before (pre) the body. `break` and `return` are our tools for adapting this standard behaviour.
+
+![](https://i.ritzastatic.com/ThinkCS-images/Chapter-7/07-03-pre_test_loop.png)
 
 ## 7.16. Other flavours of loops
 
@@ -532,9 +532,9 @@ Sometimes we’d like to have the **middle-test** loop with the exit test in the
 
 A typical example is a problem where the user has to input numbers to be summed. To indicate that there are no more inputs, the user enters a special value, often the value `-1`, or the empty string. This needs a middle-exit loop pattern: input the next number, then test whether to exit, or else process the number:
 
-A> The middle-test loop flowchart
-A> 
-A> ![_images/mid_test_loop.png](https://i.ritzastatic.com/ThinkCS-images/Chapter-7/07-04-mid_test_loop.png)
+The middle-test loop flowchart
+ 
+![](https://i.ritzastatic.com/ThinkCS-images/Chapter-7/07-04-mid_test_loop.png)
 
 ```python
 total = 0
@@ -561,9 +561,9 @@ while True:
 print("Goodbye!")
 ```
 
-A> **Hint: Think about where you want the exit test to happen.**
-A> 
-A> Once you’ve recognized that you need a loop to repeat something, think about its terminating condition — when will I want to stop iterating? Then figure out whether you need to do the test before starting the first (and every other) iteration, or at the end of the first (and every other) iteration, or perhaps in the middle of each iteration. Interactive programs that require input from the user or read from files often need to exit their loops in the middle or at the end of an iteration, when it becomes clear that there is no more data to process, or the user doesn’t want to play our game anymore.
+ **Hint: Think about where you want the exit test to happen.**
+ 
+Once you’ve recognized that you need a loop to repeat something, think about its terminating condition — when will I want to stop iterating? Then figure out whether you need to do the test before starting the first (and every other) iteration, or at the end of the first (and every other) iteration, or perhaps in the middle of each iteration. Interactive programs that require input from the user or read from files often need to exit their loops in the middle or at the end of an iteration, when it becomes clear that there is no more data to process, or the user doesn’t want to play our game anymore.
 
 ## 7.17. An example
 The following program implements a simple guessing game:
@@ -595,7 +595,7 @@ At line 18 there is a call to the `input` function, but we don’t do anything w
 
 Also notice the use of the `msg` variable, initially an empty string, on lines 6, 12 and 14. Each time through the loop we extend the message being displayed: this allows us to display the program’s feedback right at the same place as we’re asking for the next guess.
 
-![_images/python_input.png](https://i.ritzastatic.com/ThinkCS-images/Chapter-7/07-05-python_input.png)
+![](https://i.ritzastatic.com/ThinkCS-images/Chapter-7/07-05-python_input.png)
 
 ## 7.18. The continue statement
 
@@ -1024,19 +1024,19 @@ The first six questions are typical functions you should be able to write using 
     test(is_prime(19911121))
     ```
 
-    The last case could represent your birth date. Were you born on a prime day? In a class of 100 students, how many do you think would have prime birth dates?
+The last case could represent your birth date. Were you born on a prime day? In a class of 100 students, how many do you think would have prime birth dates?
 
 11. Revisit the drunk pirate problem from the exercises in chapter 3. This time, the drunk pirate makes a turn, and then takes some steps forward, and repeats this. Our social science student now records pairs of data: the angle of each turn, and the number of steps taken after the turn. Her experimental data is [(160, 20), (-43, 10), (270, 8), (-43, 12)]. Use a turtle to draw the path taken by our drunk friend.
 
 12. Many interesting shapes can be drawn by the turtle by giving a list of pairs like we did above, where the first item of the pair is the angle to turn, and the second item is the distance to move forward. Set up a list of pairs so that the turtle draws a house with a cross through the centre, as show here. This should be done without going over any of the lines / edges more than once, and without lifting your pen.
 
-    ![_images/tess_house.png](https://i.ritzastatic.com/ThinkCS-images/Chapter-7/07-06-tess_house.png)
+![](https://i.ritzastatic.com/ThinkCS-images/Chapter-7/07-06-tess_house.png)
 
 13. Not all shapes like the one above can be drawn without lifting your pen, or going over an edge more than once. Which of these can be drawn?
 
-    ![_images/tess_more_houses.png](https://i.ritzastatic.com/ThinkCS-images/Chapter-7/07-07-tess_more_houses.png)
+![](https://i.ritzastatic.com/ThinkCS-images/Chapter-7/07-07-tess_more_houses.png)
 
-    Now read Wikipedia’s article(http://en.wikipedia.org/wiki/Eulerian_path) about Eulerian paths. Learn how to tell immediately by inspection whether it is possible to find a solution or not. If the path is possible, you’ll also know where to put your pen to start drawing, and where you should end up!
+Now read Wikipedia’s article(http://en.wikipedia.org/wiki/Eulerian_path) about Eulerian paths. Learn how to tell immediately by inspection whether it is possible to find a solution or not. If the path is possible, you’ll also know where to put your pen to start drawing, and where you should end up!
 
 14. What will num_digits(0) return? Modify it to return 1 for this case. Why does a call to num_digits(-24) result in an infinite loop? (hint: -1//10 evaluates to -1) Modify num_digits so that it works correctly with any integer value. Add these tests:
 
