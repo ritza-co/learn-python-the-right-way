@@ -28,7 +28,7 @@ For example, we created a file named `main.py` using Replit. By convention, file
 
 To execute the program, we can click the **Run** button in Replit:
 
-![Running code from a file (script mode)](https://i.ritzastatic.com/ThinkCS-images/Chapter-1/01-02-running-a-script.png)
+![Running code from a file (script mode)](Chapter-1/01-02-running-a-script.png)
 
 Most programs are more interesting than this one.
 
