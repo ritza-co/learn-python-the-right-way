@@ -9,20 +9,20 @@ The turtles are fun, but the real purpose of the chapter is to teach ourselves a
 Let’s write a couple of lines of Python program to create a new turtle and start drawing a rectangle. (We’ll call the variable that refers to our first turtle `alex`, but we can choose another name if we follow the naming rules from the previous chapter).
 
 ```python
- import turtle             # Allows us to use turtles
- wn = turtle.Screen()      # Creates a playground for turtles
- alex = turtle.Turtle()    # Create a turtle, assign to alex
+import turtle             # Allows us to use turtles
+wn = turtle.Screen()      # Creates a playground for turtles
+alex = turtle.Turtle()    # Create a turtle, assign to alex
 
- alex.forward(50)          # Tell alex to move forward by 50 units
- alex.left(90)             # Tell alex to turn by 90 degrees
- alex.forward(30)          # Complete the second side of a rectangle
+alex.forward(50)          # Tell alex to move forward by 50 units
+alex.left(90)             # Tell alex to turn by 90 degrees
+alex.forward(30)          # Complete the second side of a rectangle
 
- wn.mainloop()             # Wait for user to close window
+wn.mainloop()             # Wait for user to close window
 ```
 
 When we run this program, a new window pops up:
 
-![Turtle Window](https://i.ritzastatic.com/ThinkCS-images/Chapter-3/03-01-turtle-window.png)
+![Turtle Window](Chapter-3/03-01-turtle-window.png)
 
 Here are a couple of things we’ll need to understand about this program.
 
@@ -45,20 +45,20 @@ The color of the turtle, the width of its pen, the position of the turtle within
 Quite a number of methods exist that allow us to modify the turtle and the window objects. We’ll just show a couple. In this program we’ve only commented those lines that are different from the previous example (and we’ve used a different variable name for this turtle):
 
  ```python
- import turtle
- wn = turtle.Screen()
- wn.bgcolor("lightgreen")      # Set the window background color
- wn.title("Hello, Tess!")      # Set the window title
+import turtle
+wn = turtle.Screen()
+wn.bgcolor("lightgreen")      # Set the window background color
+wn.title("Hello, Tess!")      # Set the window title
 
- tess = turtle.Turtle()
- tess.color("blue")            # Tell tess to change her color
- tess.pensize(3)               # Tell tess to set her pen width
+tess = turtle.Turtle()
+tess.color("blue")            # Tell tess to change her color
+tess.pensize(3)               # Tell tess to set her pen width
 
- tess.forward(50)
- tess.left(120)
- tess.forward(50)
+tess.forward(50)
+tess.left(120)
+tess.forward(50)
 
- wn.mainloop()
+wn.mainloop()
 ```
 
 When we run this program, this new window pops up, and will remain on the screen until we close it.
@@ -79,38 +79,38 @@ When we run this program, this new window pops up, and will remain on the screen
 Just like we can have many different integers in a program, we can have many turtles. Each of them is called an **instance**. Each instance has its own attributes and methods — so alex might draw with a thin black pen and be at some position, while `tess` might be going in her own direction with a fat pink pen.
 
 ```python
- import turtle
- wn = turtle.Screen()         # Set up the window and its attributes
- wn.bgcolor("lightgreen")
- wn.title("Tess & Alex")
+import turtle
+wn = turtle.Screen()         # Set up the window and its attributes
+wn.bgcolor("lightgreen")
+wn.title("Tess & Alex")
 
- tess = turtle.Turtle()       # Create tess and set some attributes
- tess.color("hotpink")
- tess.pensize(5)
+tess = turtle.Turtle()       # Create tess and set some attributes
+tess.color("hotpink")
+tess.pensize(5)
 
- alex = turtle.Turtle()       # Create alex
+alex = turtle.Turtle()       # Create alex
 
- tess.forward(80)             # Make tess draw equilateral triangle
- tess.left(120)
- tess.forward(80)
- tess.left(120)
- tess.forward(80)
- tess.left(120)               # Complete the triangle
+tess.forward(80)             # Make tess draw equilateral triangle
+tess.left(120)
+tess.forward(80)
+tess.left(120)
+tess.forward(80)
+tess.left(120)               # Complete the triangle
 
- tess.right(180)              # Turn tess around
- tess.forward(80)             # Move her away from the origin
+tess.right(180)              # Turn tess around
+tess.forward(80)             # Move her away from the origin
 
- alex.forward(50)             # Make alex draw a square
- alex.left(90)
- alex.forward(50)
- alex.left(90)
- alex.forward(50)
- alex.left(90)
- alex.forward(50)
- alex.left(90)
+alex.forward(50)             # Make alex draw a square
+alex.left(90)
+alex.forward(50)
+alex.left(90)
+alex.forward(50)
+alex.left(90)
+alex.forward(50)
+alex.left(90)
 
- wn.mainloop()
- ```
+wn.mainloop()
+```
 
 Here is what happens when `alex` completes his rectangle, and `tess` completes her triangle:
 
@@ -192,12 +192,12 @@ Some observations:
 
 - The values `[0,1,2,3]` were provided to make the loop body execute 4 times. We could have used any four values, but these are the conventional ones to use. In fact, they are so popular that Python gives us special built-in range objects:
 
-    ```python
-    for i in range(4):
-        # Executes the body with i = 0, then 1, then 2, then 3
-    for x in range(10):
-        # Sets x to each of ... [0, 1, 2, 3, 4, 5, 6, 7, 8, 9] 
-    ```
+```python
+for i in range(4):
+    # Executes the body with i = 0, then 1, then 2, then 3
+for x in range(10):
+    # Sets x to each of ... [0, 1, 2, 3, 4, 5, 6, 7, 8, 9] 
+```
 
 - Computer scientists like to count from `0`!
 
@@ -387,19 +387,19 @@ A condition that occurs which causes a loop to stop repeating its body. In the f
 
 10. At the interactive prompt, anticipate what each of the following lines will do, and then record what happens. Score yourself, giving yourself one point for each one you anticipate correctly:
 
-    ```python
-    >>> import turtle
-    >>> wn = turtle.Screen()
-    >>> tess = turtle.Turtle()
-    >>> tess.right(90)
-    >>> tess.left(3600)
-    >>> tess.right(-90)
-    >>> tess.speed(10)
-    >>> tess.left(3600)
-    >>> tess.speed(0)
-    >>> tess.left(3645)
-    >>> tess.forward(-100)
-    ```
+```python
+>>> import turtle
+>>> wn = turtle.Screen()
+>>> tess = turtle.Turtle()
+>>> tess.right(90)
+>>> tess.left(3600)
+>>> tess.right(-90)
+>>> tess.speed(10)
+>>> tess.left(3600)
+>>> tess.speed(0)
+>>> tess.left(3645)
+>>> tess.forward(-100)
+```
 
 11. Write a program to draw a shape like this:
 
