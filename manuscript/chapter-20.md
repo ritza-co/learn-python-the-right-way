@@ -60,10 +60,6 @@ The key `"two"` yields the value `"dos"`.
 
 Lists, tuples, and strings have been called *sequences*, because their items occur in order. The dictionary is the first compound type that we've seen that is not a sequence, so we can't index or slice a dictionary.
 
-```python
-.. index:: del statement, statement; del
-```
-
 ## 20.1. Dictionary operations
 
 The `del` statement removes a key:value pair from a dictionary. For example, the following dictionary contains the names of various fruits and the number of each fruit in stock:
@@ -184,10 +180,6 @@ Traceback (most recent call last):
 KeyError: 'dog'
 ```
 
-```python
-.. index:: aliases
-```
-
 ## 20.3. Aliasing and copying
 
 As in the case of lists, because dictionaries are mutable, we need to be aware of aliasing. Whenever two variables refer to the same object, changes to one affect the other.
@@ -214,10 +206,6 @@ If we modify `copy`, `opposites` is unchanged:
 >>> copy["right"] = "privilege"
 >>> opposites["right"]
 'left'
-```
-
-```
-.. index:: matrix
 ```
 
 ## 20.4. Sparse matrices
@@ -275,10 +263,6 @@ The first argument is the key; the second argument is the value `get` should ret
 ```
 
 `get` definitely improves the semantics of accessing a sparse matrix. Shame about the syntax.
-
-```
-.. index:: memo
-```
 
 ## 20.5. Memoization
 

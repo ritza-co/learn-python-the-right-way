@@ -2,10 +2,6 @@
 
 A **list** is an ordered collection of values. The values that make up a list are called its **elements**, or its **items**. We will use the term element or item to mean the same thing. Lists are similar to strings, which are ordered collections of characters, except that the elements of a list can be of any type. Lists and strings --- and other collections that maintain the order of their items --- are called **sequences**.
 
-```python
-nested list, list; nested
-```
-
 ## 11.1. List values
 
 There are several ways to create a new list; the simplest is to enclose the elements in square brackets (`[` and `]`):
@@ -33,10 +29,6 @@ We have already seen that we can assign list values to variables or pass lists a
 >>> an_empty_list = []
 >>> print(vocabulary, numbers, an_empty_list)
 ["apple", "cheese", "dog"] [17, 123] []
-```
-
-```python
-.. index:: list index, index, list traversal
 ```
 
 ## 11.2. Accessing elements
@@ -165,10 +157,6 @@ Similarly, the `*` operator repeats a list a given number of times:
 
 The first example repeats `[0]` four times. The second example repeats the list `[1, 2, 3]` three times.
 
-```python
-.. index:: slice, sublist
-```
-
 ## 11.6. List slices
 
 The slice operations we saw previously with strings let us work with sublists:
@@ -183,10 +171,6 @@ The slice operations we saw previously with strings let us work with sublists:
 ['d', 'e', 'f']
 >>> a_list[:]
 ['a', 'b', 'c', 'd', 'e', 'f']
-```
-
-```python
-.. index:: mutable, item assignment, immutable
 ```
 
 ## 11.7. Lists are mutable
@@ -250,10 +234,6 @@ And we can add elements to a list by squeezing them into an empty slice at the d
 ['a', 'b', 'c', 'd', 'e', 'f']
 ```
 
-```python
-.. index:: del statement, statement; del
-```
-
 ## 11.8. List deletion
 
 Using slices to delete list elements can be error-prone. Python provides an alternative that is more readable. The `del` statement removes an element from a list:
@@ -277,10 +257,6 @@ You can also use `del` with a slice to delete a sublist:
 ```
 
 As usual, the sublist selected by slice contains all the elements up to, but not including, the second index.
-
-```python
-.. index:: is operator, objects and values
-```
 
 ## 11.9. Objects and references
 
@@ -327,10 +303,6 @@ The state snapshot here looks like this:
 
 `a` and `b` have the same value but do not refer to the same object.
 
-```
-.. index:: aliases
-```
-
 ## 11.10. Aliasing
 
 Since variables refer to objects, if we assign one variable to another, both variables refer to the same object:
@@ -356,10 +328,6 @@ Because the same list has two different names, `a` and `b`, we say that it is **
 
 Although this behavior can be useful, it is sometimes unexpected or undesirable. In general, it is safer to avoid aliasing when you are working with mutable objects (i.e. lists at this point in our textbook, but we'll meet more mutable objects as we cover classes and objects, dictionaries and sets). Of course, for immutable objects (i.e. strings, tuples), there's no problem --- it is just not possible to change something and get a surprise when you access an alias name. That's why Python is free to alias strings (and any other immutable kinds of data) when it sees an opportunity to economize.
 
-```
-.. index:: clone
-```
-
 ## 11.11. Cloning lists
 
 If we want to modify a list and also keep a copy of the original, we need to be able to make a copy of the list itself, not just the reference. This process is sometimes called **cloning**, to avoid the ambiguity of the word copy.
@@ -383,10 +351,6 @@ Now we are free to make changes to `b` without worrying that we'll inadvertently
 >>> b[0] = 5
 >>> a
 [1, 2, 3]
-```
-
-```
-.. index:: for loop, enumerate
 ```
 
 ## 11.12. Lists and `for` loops
@@ -456,10 +420,6 @@ for (i, v) in enumerate(["banana", "apple", "pear", "lemon"]):
 3 lemon
 ```
 
-```
-.. index:: parameter
-```
-
 ## 11.13. List parameters
 
 Passing a list as an argument actually passes a reference to the list, not a copy or clone of the list. So parameter passing creates an alias for you: the caller has one variable referencing the list, and the called function has an alias, but there is only one underlying list object. For example, the function below takes a list as an argument and multiplies each element in the list by 2:
@@ -496,10 +456,6 @@ If a function modifies the items of a list parameter, the caller sees the change
 Use the Python visualizer!
 
 We've already mentioned the Python visualizer at http://pythontutor.com. It is a very useful tool for building a good understanding of references, aliases, assignments, and passing arguments to functions. Pay special attention to cases where you clone a list or have two separate lists, and cases where there is only one underlying list, but more than one variable is aliased to reference the list.
-
-```python
-.. index:: list; append
-```
 
 ## 11.14. List methods
 
@@ -540,10 +496,6 @@ The dot operator can also be used to access built-in methods of list objects. We
 ```
 
 Experiment and play with the list methods shown here, and read their documentation until you feel confident that you understand how they work.
-
-```python
-.. index:: side effect, modifier
-```
 
 ## 11.15. Pure functions and modifiers
 
@@ -614,10 +566,6 @@ def primes_lessthan(n):
     return result
 ```
 
-```python
-.. index:: strings and lists, split, join
-```
-
 ## 11.17. Strings and lists
 
 Two of the most useful methods on strings involve conversion to and from lists of substrings. The `split` method (which we've already seen) breaks a string into a list of words. By default, any number of whitespace characters is considered a word boundary:
@@ -654,10 +602,6 @@ The list that you glue together (`wds` in this example) is not modified. Also, a
 'The --- rain --- in --- Spain...'
 >>> "".join(wds)
 'TheraininSpain...'
-```
-
-```
-.. index:: promise, range function
 ```
 
 ## 11.18. `list` and `range`
@@ -705,10 +649,6 @@ range(0, 10)
 [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
 ```
 
-```python
-.. index:: nested list, list; nested
-```
-
 ## 11.19. Nested lists
 
 A nested list is a list that appears as an element in another list. In this list, the element with index 3 is a nested list:
@@ -740,10 +680,6 @@ Or we can combine them:
 ```
 
 Bracket operators evaluate from left to right, so this expression gets the 3'th element of `nested` and extracts the 1'th element from it.
-
-```python
-.. index:: matrix
-```
 
 ## 11.20. Matrices
 

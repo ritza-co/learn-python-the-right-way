@@ -2,10 +2,6 @@
 
 These are small summaries of ideas, tips, and commonly seen errors that might be helpful to those beginning Python.
 
-```
-.. index:: function tips, None, return
-```
-
 ## E.1. Functions
 
 Functions help us with our mental chunking: they allow us to group together statements for a high-level purpose, e.g. a function to sort a list of items, a function to make the turtle draw a spiral, or a function to compute the mean and standard deviation of some measurements.
@@ -41,10 +37,6 @@ In math, we're familiar with functions like `f(x) = 3x + 5`. We already understa
 
 
 Quiz: Is the function `f(z) = 3z + 5` the same as function `f` above?
-
-```
-.. index:: control flow
-```
 
 ## E.2. Problems with logic and flow of control
 
@@ -126,10 +118,6 @@ Exercise time:
     numbers are odd? Short-circuit the traversal when the third odd
     number is found --- don't traverse the whole list unless we have to.
 
-```
-.. index:: variables local
-```
-
 ## E.3. Local variables
 
 Functions are called, or activated, and while they're busy they create their own stack frame which holds local variables. A local variable is one that belongs to the current activation. As soon as the function returns (whether from an explicit return statement or because Python reached the last statement), the stack frame and its local variables are all destroyed. The important consequence of this is that a function cannot use its own variables to remember any kind of state between different activations. It cannot count how many times it has been called, or remember to switch colors between red and blue UNLESS it makes use of variables that are global. Global variables will survive even after our function has exited, so they are the correct way to maintain information between calls.
@@ -156,10 +144,6 @@ Tip: Assignment in a function creates a local variable
 
 Any assignment to a variable within a function means Python will make a local variable, unless we override with `global`.
 
-```
-.. index:: event, handler
-```
-
 ## E.4. Event handler functions
 
 Our chapter on event handling showed three different kinds of events that we could handle. They each have their own subtle points that can trip us up.
@@ -180,10 +164,6 @@ Our chapter on event handling showed three different kinds of events that we cou
     the handler. If we want repeated periodic handler activations, then
     from within the handler we call `wn.ontimer(....)` to set up the
     next event.
-
-```
-.. index:: string
-```
 
 ## E.5. String handling
 

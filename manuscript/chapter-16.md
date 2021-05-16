@@ -1,9 +1,5 @@
 # Chapter 16: Classes and Objects --- Digging a little deeper
 
-```python
-.. index:: rectangle
-```
-
 ## 16.1. Rectangles
 
 Let's say that we want a class to represent a rectangle which is located somewhere in the XY plane. The question is, what information do we have to provide in order to specify such a rectangle? To keep things simple, assume that the rectangle is oriented either vertically or horizontally, never at an angle.
@@ -85,11 +81,6 @@ print(r)
 ((0, 15), 125, 40)
 ```
 
-```python
-.. index:: equality, equality; deep, equality; shallow, shallow equality, deep
-equality
-```
-
 ## 16.3. Sameness
 
 The meaning of the word "same" seems perfectly clear until we give it some thought, and then we realize there is more to it than we initially expected.
@@ -164,10 +155,6 @@ This outputs:
 
 So we conclude that even though the two lists (or tuples, etc.) are distinct objects with different memory addresses, for lists the `==` operator tests for deep equality, while in the case of points it makes a
 shallow test.
-
-```python
-.. index:: copy, copy; deep, copy; shallow
-```
 
 ## 16.4. Copying
 

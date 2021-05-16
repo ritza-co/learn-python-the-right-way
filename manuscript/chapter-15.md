@@ -12,10 +12,6 @@ and random number generators, to name a few places where we've already worked wi
 
 Usually, each object definition corresponds to some object or concept in the real world, and the functions that operate on that object correspond to the ways real-world objects interact.
 
-```
-.. index:: compound data type
-```
-
 ## 15.2. User-defined compound data types
 
 We've already seen classes like `str`, `int`, `float` and `Turtle`. We are now ready to create our own user-defined class: the `Point`.
@@ -82,10 +78,6 @@ It may be helpful to think of a class as a *factory* for making objects. The cla
 we're asking the factory to make us a new object. As the object comes off the production line, its initialization method is executed to get the object properly set up with its factory default settings.
 
 The combined process of "make me a new object" and "get its settings initialized to the factory default settings" is called **instantiation**.
-
-```
-.. index:: attribute
-```
 
 ## 15.3. Attributes
 

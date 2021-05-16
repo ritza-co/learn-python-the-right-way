@@ -7,10 +7,6 @@ As in all parts of this book, our expectation is that you, the reader, will copy
 
 Part of this chapter works with the book `Alice in Wonderland` and a `vocabulary file`. Your browser should be able to download and save these files from these links.
 
-```python
-.. index:: Test-driven development, scaffolding
-```
-
 ## 14.1. Test-driven development
 
 Early in our Fruitful functions chapter we introduced the idea of *incremental development*, where we added
@@ -23,10 +19,6 @@ We can still retain our mode of working in small incremental steps, but now we'l
 each stage.
 
 We'll turn our attention to some standard algorithms that process lists now, but as we proceed through this chapter we'll attempt to do so in the spirit envisaged by TDD.
-
-```
-.. index:: single: search: linear search
-```
 
 ## 14.2. The linear search algorithm
 
@@ -204,10 +196,6 @@ There are 3398 unknown words.
 That took 49.8014 seconds. 
 ```
 
-```
-.. index:: single: search; binary search
-```
-
 ## 14.4. Binary Search
 
 If you think about what we've just done, it is not how we work in real life. If you were given a vocabulary and asked to tell if some word was present, you'd probably start in the middle. You can do this because the
@@ -353,10 +341,6 @@ This tells us that searching 1000 items needs 10 probes. (Well technically, with
 
 You will rarely encounter algorithms that scale to large datasets as beautifully as binary search does!
 
-```
-.. index:: single: duplicate removal
-```
-
 ## 14.5. Removing adjacent duplicates from a list
 
 We often want to get the unique elements in a list, i.e. produce a new list in which each different element occurs just once. Consider our case of looking for words in Alice in Wonderland that are not in our vocabulary. We had a report that there are 3398 such words, but there are duplicates in that list. In fact, the word "alice" occurs 398 times in the book, and it is not in our vocabulary! How should we remove these
@@ -428,10 +412,6 @@ The first 100 words are
 ```
 
 Lewis Carroll was able to write a classic piece of literature using only 2570 different words!
-
-```
-.. index:: single: sort; merge sort
-```
 
 ## 14.6. Merging sorted lists
 
@@ -555,10 +535,6 @@ Let's review what we've done. We started with a word-by-word linear lookup in th
 times faster. But then we did something even better: we sorted the words from the book, eliminated duplicates, and used a merging pattern to find words from the book that were not in the dictionary. This was about five times faster than even the binary lookup algorithm. At the end of the chapter our algorithm is more than a 1000 times faster than our first attempt!
 
 That is what we can call a good day at the office!
-
-```
-.. index:: Eight Queens puzzle, data representation, data structure
-```
 
 ## 14.8. Eight Queens puzzle, part 1
 

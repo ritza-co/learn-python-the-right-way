@@ -106,11 +106,6 @@ the different layers of the recursion.
 
 This might be a useful hint to build your understanding.  The mental goal is, however, to be able to do the abstraction!
 
-```python
-.. index:: single: data structure single: data structure; recursive single: recursive definition single: definition; recursive single: recursive data structure
-```
-
-
 ## 18.2. Recursive data structures
 
 All of the Python data types we have seen can be grouped inside lists and tuples in a variety of ways. Lists and tuples can also be nested, providing many possibilities for organizing data. The organization of data for the purpose of making it easier to use is called a **data structure**.
@@ -142,11 +137,6 @@ TypeError: unsupported operand type(s) for +: 'int' and 'list'
 ```
 
 The problem is that the third element of this list, `[11, 13]`, is itself a list, so it cannot just be added to `1`, `2`, and `8`.
-
-```python
-.. index:: recursion, recursive call, base case, infinite recursion, recursion;
-infinite
-```
 
 ## 18.3. Processing recursive number lists
 
@@ -223,10 +213,6 @@ RuntimeError: maximum recursion depth exceeded ...
 We would certainly never want something like this to happen to a user of
 one of our programs, so in the next chapter we'll see how errors, any
 kinds of errors, are handled in Python.
-
-```
-.. index:: fibonacci numbers
-```
 
 ## 18.4. Case study: Fibonacci numbers
 
@@ -451,9 +437,6 @@ recursive definition
 1.  Modify the Koch fractal program so that it draws a Koch snowflake, like this:
 
     ![](Chapter-18/koch_snowflake.png)
-
-    
-    .. index:: fractal; Cesaro torn square
 
 
 2.  1.  Draw a Cesaro torn line fractal, of the order given by the user.

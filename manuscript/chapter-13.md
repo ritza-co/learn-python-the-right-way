@@ -1,9 +1,5 @@
 # Chapter 13: Files
 
-```python
-.. index:: file, handle, file handle
-```
-
 ## 13.1. About files
 
 While a program is running, its data is stored in *random access memory* (RAM). RAM is fast and inexpensive, but it is also **volatile**, which means that when the program ends, or the computer shuts down, data in
@@ -116,10 +112,6 @@ g.close()
 There are a few new things here. In lines 1 and 2 we added a `"b"` to the mode to tell Python that the files are binary rather than text files. In line 5, we see `read` can take an argument which tells it how many bytes to attempt to read from the file. Here we chose to read and write up to 1024 bytes on each iteration of the loop. When we get back an empty buffer from our attempt to read, we know we can break out of the loop and close both the files.
 
 If we set a breakpoint at line 6, (or print `type(buf)` there) we'll see that the type of `buf` is `bytes`. We don't do any detailed work with `bytes` objects in this textbook.
-
-```python
-.. index:: file; text, text file
-```
 
 ## 13.7. An example
 

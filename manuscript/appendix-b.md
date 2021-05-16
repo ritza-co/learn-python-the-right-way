@@ -34,10 +34,6 @@ But it is also an amazingly accurate fit for what we need for proficiency in Com
 
 Check out http://mason.gmu.edu/~jsuh4/teaching/strands.htm, or Kilpatrick's book at http://www.nap.edu/openbook.php?isbn=0309069955
 
-```
-.. index:: email sending
-```
-
 ## B.2. Sending Email
 
 Sometimes it is fun to do powerful things with Python --- remember that part of the "productive disposition" we saw under the five threads of proficiency included *efficacy* --- the sense of being able to accomplish something useful. Here is a Python example of how you can send email to someone.
@@ -74,10 +70,6 @@ svr.quit()                                   # Close the connection
 ```
 
 In the context of the course, notice how we use the two objects in this program: we create a message object on line 9, and set some attributes at lines 16-18. We then create a connection object at line 21, and ask it to send our message.
-
-```
-.. index:: web server in Python
-```
 
 ## B.3. Write your own Web Server
 
@@ -152,10 +144,6 @@ def classlist(env, resp):
 ```
 
 Notice how `gettime` returns an (admittedly simple) html document which is built on the fly by using `format` to substitute content into a predefined template.
-
-```
-.. index:: database
-```
 
 ## B.4. Using a Database
 

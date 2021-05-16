@@ -134,10 +134,6 @@ recursion_depth(0)
 
 Run this version and observe the results.
 
-```python
-.. index:: try ... except ... finally
-```
-
 ## 19.4. The `finally` clause of the `try` statement
 
 A common programming pattern is to grab a resource of some kind --- e.g. we create a window for turtles to draw on, or we dial up a connection to our internet service provider, or we may open a file for writing. Then we perform some computation which may raise an exception, or may work without any problems.

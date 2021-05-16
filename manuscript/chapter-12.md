@@ -4,10 +4,6 @@ A **module** is a file containing Python definitions and statements intended for
 
 We have also shown you how to access help. The help system contains a listing of all the standard modules that are available with Python. Play with help!
 
-```python
-.. index:: random numbers, shuffle, promise
-```
-
 ## 12.1. Random numbers
 
 We often want to use random numbers in programs, here are a few typical uses:
@@ -48,10 +44,6 @@ This example shows how to shuffle a list. (`shuffle` cannot work directly with a
 cards = list(range(52))  # Generate ints [0 .. 51] 
                          #    representing a pack of cards.
 rng.shuffle(cards)       # Shuffle the pack
-```
-
-```python
-.. index:: deterministic algorithm, algorithm; deterministic, unit tests
 ```
 
 ### 12.1.1. Repeatability and Testing
@@ -211,10 +203,6 @@ Notice another difference between this module and our use of `random` and `turtl
 
 Mathematical functions are "pure" and don't have any state --- calculating the square root of 2.0 doesn't depend on any kind of state or history about what happened in the past. So the functions are not methods of an object --- they are simply functions that are grouped together in a module called `math`.
 
-```python
-.. index:: import statement, statement; import
-```
-
 ## 12.4. Creating your own modules
 
 All we need to do to create our own modules is to save our script as a file with a `.py` extension. Suppose, for example, this script is saved as a file named `seqtools.py`:
@@ -236,10 +224,6 @@ We can now use our module, both in scripts we write, or in the interactive Pytho
 We do not include the `.py` file extension when importing. Python expects the file names of Python modules to end in `.py`, so the file extension is not included in the **import statement**.
 
 The use of modules makes it possible to break up very large programs into manageable sized parts, and to keep related parts together.
-
-```python
-.. index:: namespace
-```
 
 ## 12.5. Namespaces
 
@@ -330,10 +314,6 @@ So in Python, if you rename the file `math.py`, its module name also changes, yo
 
 In other languages this is not necessarily the case. So don't blur the concepts, just because Python blurs them!
 
-```python
-.. index:: scope, scope; global, scope; local, scope; builtin, builtin scope, global scope, local scope
-```
-
 ## 12.6. Scope and lookup rules
 
 The **scope** of an identifier is the region of program code in which the identifier can be accessed, or used.
@@ -377,10 +357,6 @@ Notice too that the `def` puts name `f` into the global namespace here. So it ca
 
 What is the scope of the variable `n` on line 1? Its scope --- the region in which it is visible --- is lines 1, 2, 6, 7. It is hidden from view in lines 3, 4, 5 because of the local variable `n`.
 
-```python
-.. index:: attribute, dot operator
-```
-
 ## 12.7. Attributes and the dot operator
 
 Variables defined inside a module are called **attributes** of the module. We've seen that objects have attributes too: for example, most objects have a `__doc__` attribute, some functions have a `__annotations__` attribute. Attributes are accessed using the **dot operator** (`.`). The `question` attribute of `module1` and `module2` is accessed using `module1.question` and `module2.question`.
@@ -388,10 +364,6 @@ Variables defined inside a module are called **attributes** of the module. We've
 Modules contain functions as well as attributes, and the dot operator is used to access them in the same way. `seqtools.remove_at` refers to the `remove_at` function in the `seqtools` module.
 
 When we use a dotted name, we often refer to it as a **fully qualified name**, because we're saying exactly which `question` attribute we mean.
-
-```python
-.. index:: import statement
-```
 
 ## 12.8. Three `import` statement variants
 

@@ -26,10 +26,6 @@ The state diagram for the object looks like this:
 
 We'll leave it as an exercise for the readers to add a `__str__` method so that MyTime objects can print themselves decently.
 
-```
-.. index:: function; pure
-```
-
 ## 22.2. Pure functions
 
 In the next few sections, we'll write two versions of a function called `add_time`, which calculates the sum of two `MyTime` objects. They will demonstrate two kinds of functions: pure functions and modifiers.
@@ -83,10 +79,6 @@ def add_time(t1, t2):
 ```
 
 This function is starting to get bigger, and still doesn't work for all possible cases. Later we will suggest an alternative approach that yields better code.
-
-```
-.. index:: modifier
-```
 
 ## 22.3. Modifiers
 
@@ -219,10 +211,6 @@ def add_time(t1, t2):
 ```
 
 This version is much shorter than the original, and it is much easier to demonstrate or reason that it is correct.
-
-```
-.. index:: generalization
-```
 
 ## 22.6. Generalization
 

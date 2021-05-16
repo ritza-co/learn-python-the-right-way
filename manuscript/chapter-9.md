@@ -54,12 +54,6 @@ To create a tuple with a single element (but you\'re probably not likely to do t
 <class 'int'>     
 ```
 
-```
-.. index::
-    single: assignment; tuple
-    single: tuple; assignment
-```
-
 ## 9.2. Tuple assignment
 
 Python has a very powerful **tuple assignment** feature that allows a tuple of variables on the left of an assignment to be assigned values from a tuple on the right of the assignment. (We already saw this used for pairs, but it generalizes.)
@@ -102,15 +96,6 @@ Naturally, the number of variables on the left and the number of values on the r
 ```python
 >>> (a, b, c, d) = (1, 2, 3)
 ValueError: need more than 3 values to unpack 
-```
-
-```
-.. index::
-    single: tuple; return value
-```
-
-```
-.. index:: return a tuple
 ```
 
 ## 9.3. Tuples as return values
