@@ -378,9 +378,9 @@ There is a built-in function in Python for getting input from the user:
 n = input("Please enter your name: ")
 ```
 
-A sample run of this script in Repl.it would populate your input question in the console to the left like this:
+A sample run of this script in Replit would populate your input question in the console to the left like this:
 
-![Input Prompt](https://i.ritzastatic.com/ThinkCS-images/Chapter-2/02-02-input-prompt.png)
+![Input Prompt](Chapter-2/02-02-input-prompt.png)
 
 The user of the program can enter the name and press enter, and when this happens the text that has been entered is returned from the input function, and in this case assigned to the variable n.
 
@@ -394,7 +394,7 @@ One of the most useful features of programming languages is their ability to tak
 
 For example, we know how to get the user to enter some input, we know how to convert the string we get into a float, we know how to write a complex expression, and we know how to print values. Let’s put these together in a small four-step program that asks the user to input a value for the radius of a circle, and then computes the area of the circle from the formula
 
-![Area of a circle](https://i.ritzastatic.com/ThinkCS-images/Chapter-2/02-03-circle_area.png)
+![Area of a circle](Chapter-2/02-03-circle_area.png)
 
 Firstly, we’ll do the four steps one at a time:
 
@@ -544,7 +544,7 @@ A name that refers to a value.
 
 **variable name**
 
-A name given to a variable. Variable names in Python consist of a sequence of letters (a..z, A..Z, and _) and digits (0..9) that begins with a letter. In best programming practice, variable names should be chosen so that they describe their use in the program, making the program *self documenting*.
+A name given to a variable. Variable names in Python consist of a sequence of letters (`a..z`, `A..Z`, and `_`) and digits (0..9) that begins with a letter. In best programming practice, variable names should be chosen so that they describe their use in the program, making the program *self documenting*.
 
 ## 2.14. Exercises
 
@@ -563,7 +563,7 @@ A name given to a variable. Variable names in Python consist of a sequence of le
 
 5. The formula for computing the final amount if one is earning compound interest is given on Wikipedia as
 
-    ![Compounded Interest Formula](https://i.ritzastatic.com/ThinkCS-images/Chapter-2/02-04-compoundInterest.png)
+    ![Compounded Interest Formula](Chapter-2/02-04-compoundInterest.png)
 
     Write a Python program that assigns the principal amount of $10000 to variable `P`, assign to n the value `12`, and assign to `r` the interest rate of 8%. Then have the program prompt the user for the number of years `t` that the money will be compounded for. Calculate and print the final amount after `t` years.
 
