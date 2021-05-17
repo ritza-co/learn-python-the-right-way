@@ -135,36 +135,30 @@ Tuples items can themselves be other tuples. For example, we could improve the i
 Notice in this case that the tuple has just five elements \-\-- but each of those in turn can be another tuple, a list, a string, or any other kind of Python value. This property is known as being **heterogeneous**, meaning that it can be composed of elements of different types.
 
 ## 9.5. Glossary
+**data structure**
+An organization of data for the purpose of making it easier to use.
 
-```python
-.. glossary::
+**immutable data value**
+A data value which cannot be modified.  Assignments to elements or
+slices (sub-parts) of immutable values cause a runtime error.
 
+**mutable data value**
+A data value which can be modified. The types of all mutable values
+are compound types.  Lists and dictionaries are mutable; strings
+and tuples are not.
 
-    data structure
-        An organization of data for the purpose of making it easier to use.
+**tuple**
+An immutable data value that contains related elements. Tuples are used
+to group together related data, such as a person's name, their age,
+and their gender.
 
-    immutable data value
-        A data value which cannot be modified.  Assignments to elements or
-        slices (sub-parts) of immutable values cause a runtime error.
+**tuple assignment**
+An assignment to all of the elements in a tuple using a single
+assignment statement. Tuple assignment occurs *simultaneously* rather than
+in sequence, making it useful for swapping values.
 
-    mutable data value
-        A data value which can be modified. The types of all mutable values
-        are compound types.  Lists and dictionaries are mutable; strings
-        and tuples are not.
-
-    tuple
-        An immutable data value that contains related elements. Tuples are used
-        to group together related data, such as a person's name, their age,
-        and their gender.
-
-    tuple assignment
-        An assignment to all of the elements in a tuple using a single
-        assignment statement. Tuple assignment occurs *simultaneously* rather than
-        in sequence, making it useful for swapping values.
-```        
-        
 ## 9.6. Exercises
 
-1.  We\'ve said nothing in this chapter about whether you can pass tuples as arguments to a function. Construct a small Python example to test whether this is possible, and         write up your findings.
+1.  We've said nothing in this chapter about whether you can pass tuples as arguments to a function. Construct a small Python example to test whether this is possible, and write up your findings.
 2.  Is a pair a generalization of a tuple, or is a tuple a generalization of a pair?
 3.  Is a pair a kind of tuple, or is a tuple a kind of pair?

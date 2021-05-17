@@ -74,8 +74,6 @@ The function we've just shown is not one we'd recommend. It opens and closes the
 Python provides a module called ``os.path`` within the ``os`` module. It provides a number of useful functions to work with paths, files and directories, so you should check out the help.  
 
 ```python
-:linenos:
-
 import os
 
 # This is the preferred way to check if a file exists.

@@ -425,7 +425,6 @@ from unit_tester import test
 
 ## 12.10. Glossary
 
-```python
 attribute  
     A variable defined inside a module (or class or instance -- as we will
     see later). Module attributes are accessed by using the **dot operator**
@@ -502,7 +501,6 @@ naming collision
     the development of other software. The standard library of a programming
     language is the set of such tools that are distributed with the core
     programming language. Python comes with an extensive standard library.
-```
 
 ## 12.11. Exercises
 

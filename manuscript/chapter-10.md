@@ -67,22 +67,17 @@ Each time the space bar is pressed, the event handler causes the traffic light m
 
 ## 10.6. Glossary
 
-```python
-.. glossary::
+**bind**
+We bind a function (or associate it) with an event, meaning that when the event occurs, 
+the function is called to handle it.
 
-    bind
-        We bind a function (or associate it) with an event, meaning that when the event occurs, 
-        the function is called to handle it.
+event
+Something that happens "outside" the normal control flow of our program, usually from some 
+user action. Typical events are mouse operations and keypresses. We've also seen that a 
+timer can be primed to create an event.
 
-    event
-        Something that happens "outside" the normal control flow of our program, usually from some 
-        user action. Typical events are mouse operations and keypresses. We've also seen that a 
-        timer can be primed to create an event.
-
-    handler
-        A function that is called in response to an event.
-
-```
+handler
+A function that is called in response to an event.
 
 ## 10.7. Exercises
 
@@ -96,13 +91,12 @@ Each time the space bar is pressed, the event handler causes the traffic light m
 
 3.  In an earlier chapter we saw two turtle methods, `hideturtle` and `showturtle` that can hide or show a turtle. This suggests that we could take a different approach to the       traffic lights program. Add to your program above as follows: draw a second housing for another set of traffic lights. Create three separate turtles to represent each of the     green, orange and red lights, and position them appropriately within your new housing. As your state changes occur, just make one of the three turtles visible at any time.       Once you\'ve made the changes, sit back and ponder some deep thoughts: you\'ve now got two different ways to use turtles to simulate the traffic lights, and both seem to         work. Is one approach somehow preferable to the other? Which one more closely resembles reality \-\-- i.e. the traffic lights in your town?
 
-4.  Now that you\'ve got a traffic light program with different turtles for each light, perhaps the visibility / invisibility trick wasn\'t such a great idea. If we watch           traffic lights, they turn on and off \-\-- but when they\'re off they are still there, perhaps just a darker color. Modify the program now so that the lights don\'t
+4.  Now that you\'ve got a traffic light program with different turtles for each light, perhaps the visibility / invisibility trick wasn\'t such a great idea. If we watch           traffic lights, they turn on and off -- but when they\'re off they are still there, perhaps just a darker color. Modify the program now so that the lights don\'t
     disappear: they are either on, or off. But when they\'re off, they\'re still visible.
 
 5.  Your traffic light controller program has been patented, and you\'re about to become seriously rich. But your new client needs a change. They want four states in their state     machine: Green, then Green and Orange together, then Orange only, and then Red. Additionally, they want different times spent in each state. The machine should spend 3
     seconds in the Green state, followed by one second in the Green+Orange state, then one second in the Orange state, and then 2 seconds in the Red state. Change the logic in       the state machine.
 
-6.  If you don\'t know how tennis scoring works, ask a friend or consult Wikipedia. A single game in tennis between player A and player B always has a score. We want to think       about the \"state of the score\" as a state machine. The game starts in state (0, 0), meaning neither player has any score yet. We\'ll assume the first element in this pair     is the score for player A. If player A wins the first point, the score becomes (15, 0). If B wins the first point, the state becomes (0, 15). Below are the first few states     and transitions for a state diagram. In this diagram, each state has two possible outcomes (A wins the next point, or B does), and the uppermost arrow is always the             transition that happens when A wins the point. Complete the diagram, showing all transitions and all states. (Hint: there are twenty states, if you include the duece
-    state, the advantage states, and the \"A wins\" and \"B wins\" states in your diagram.)
+6.  If you don\'t know how tennis scoring works, ask a friend or consult Wikipedia. A single game in tennis between player A and player B always has a score. We want to think       about the \"state of the score\" as a state machine. The game starts in state (0, 0), meaning neither player has any score yet. We\'ll assume the first element in this pair     is the score for player A. If player A wins the first point, the score becomes (15, 0). If B wins the first point, the state becomes (0, 15). Below are the first few states     and transitions for a state diagram. In this diagram, each state has two possible outcomes (A wins the next point, or B does), and the uppermost arrow is always the             transition that happens when A wins the point. Complete the diagram, showing all transitions and all states. (Hint: there are twenty states, if you include the duece state, the advantage states, and the \"A wins\" and \"B wins\" states in your diagram.)
 
-    ![](Chapter-10/fsm_tennis_scores.png)
+![](Chapter-10/fsm_tennis_scores.png)
