@@ -97,7 +97,7 @@ To deal with increasingly complex programs, we are going to suggest a technique 
 
 As an example, suppose we want to find the distance between two points, given by the coordinates `(x1, y1)` and `(x2, y2)`. By the Pythagorean theorem, the distance is:
 
-![Distance formula](https://i.ritzastatic.com/ThinkCS-images/Chapter-6/06-01-distance_formula.png)
+![Distance formula](Chapter-6/06-01-distance_formula.png)
 
 The first step is to consider what a `distance` function should look like in Python. In other words, what are the inputs (parameters) and what is the output (return value)?
 
@@ -542,7 +542,7 @@ In the third case above, the requirement seems quite ambiguous and fuzzy. But th
 
 Unit tests often have this secondary benefit of clarifying the specifications. If you write your own test suites, consider it part of the problem-solving process as you ask questions about what you really expect to happen, and whether you’ve considered all the possible cases.
 
-Since our book is titled *How to Think Like* ... you might enjoy reading at least one reference about thinking, and about fun ideas like *fluid intelligence*, a key ingredient in problem solving. See, for example, http://psychology.about.com/od/cognitivepsychology/a/fluid-crystal.htm. Learning Computer Science requires a good mix of both fluid and crystallized kinds of intelligence.
+Given our emphasis on *thinking like a computer scientist*, you might enjoy reading at least one reference about thinking, and about fun ideas like *fluid intelligence*, a key ingredient in problem solving. See, for example, http://psychology.about.com/od/cognitivepsychology/a/fluid-crystal.htm. Learning Computer Science requires a good mix of both fluid and crystallized kinds of intelligence.
 
 10. Which of these tests fail? Explain why.
 
