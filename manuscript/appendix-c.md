@@ -1,6 +1,6 @@
 # Appendix C: Configuring Ubuntu for Python Development
 
-*Note:* the following instructions assume that you are connected to the Internet and that you have both the `main` and `universe` package repositories enabled. All unix shell commands are assumed to be running from your home directory ($HOME). Finally, any command that begins with `sudo` assums that you have administrative rights on your machine. If you do not --- please ask your system administrator about installing the software you need.
+*Note:* the following instructions assume that you are connected to the Internet and that you have both the `main` and `universe` package repositories enabled. All unix shell commands are assumed to be running from your home directory ($HOME). Finally, any command that begins with `sudo` assumes that you have administrative rights on your machine. If you do not --- please ask your system administrator about installing the software you need.
 
 What follows are instructions for setting up an Ubuntu 9.10 (Karmic) home environment for use with this book. I use Ubuntu GNU/Linux for both development and testing of the book, so it is the only system about which I can personally answer setup and configuration questions.
 
@@ -31,7 +31,7 @@ To use Vim, do the following:
         set smarttab
         map <f2> :w\|!python %
 
-When you edit a file with a .py extension, you should now have color systax highlighting and auto indenting. Pressing the key should run your program, and bring you back to the editor when the program completes.
+When you edit a file with a .py extension, you should now have color syntax highlighting and auto indenting. Pressing the key should run your program, and bring you back to the editor when the program completes.
 
 To learn to use vim, run the following command at a unix command prompt:
 

@@ -472,4 +472,4 @@ The opposite of a fruitful function: one that does not return a value. It is exe
 
 ![Five Stars](https://i.ritzastatic.com/ThinkCS-images/Chapter-4/04-10-five_stars.png)
 
-    What would it look like if you didn’t pick up the pen?
+What would it look like if you didn’t pick up the pen?

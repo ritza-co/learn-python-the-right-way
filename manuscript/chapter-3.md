@@ -174,7 +174,7 @@ Control flow until now has been strictly top to bottom, one statement at a time.
 
 Control flow is often easy to visualize and understand if we draw a flowchart. This shows the exact steps and logic of how the for statement executes.
 
-![For loop flowchart](https://i.ritzastatic.com/ThinkCS-images/Chapter-3/03-04-flowchart_for.png)
+![For loop flowchart](Chapter-3/03-04-flowchart_for.png)
 
 ## 3.5. The loop simplifies our turtle program
 
