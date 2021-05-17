@@ -63,7 +63,7 @@ wn.mainloop()
 
 When we run this program, this new window pops up, and will remain on the screen until we close it.
 
-![tess mainloop](https://i.ritzastatic.com/ThinkCS-images/Chapter-3/03-02-turtle-green.png)
+![tess mainloop](Chapter-3/03-02-turtle-green.png)
 
 
 **Extend this program …**
@@ -114,7 +114,7 @@ wn.mainloop()
 
 Here is what happens when `alex` completes his rectangle, and `tess` completes her triangle:
 
-![Alex and Tess](https://i.ritzastatic.com/ThinkCS-images/Chapter-3/03-03-tess%26alex.png)
+![Alex and Tess](Chapter-3/03-03-tess-alex.png)
 
 Here are some *How to think like a computer scientist* observations:
 
@@ -257,7 +257,7 @@ Every turtle can have its own shape. The ones available “out of the box” are
 alex.shape("turtle")
 ```
 
-![Turtle Shape](https://i.ritzastatic.com/ThinkCS-images/Chapter-3/03-05-turtle-shape.png)
+![Turtle Shape](Chapter-3/03-05-turtle-shape.png)
 
 We can speed up or slow down the turtle’s animation speed. (Animation controls how quickly the turtle turns and moves forward). Speed settings can be set between `1` (slowest) to `10` (fastest). But if we set the speed to `0`, it has a special meaning — turn off animation and go as fast as possible.
 
@@ -288,7 +288,7 @@ for i in range(30):
 wn.mainloop()
 ```
 
-![Turtle Spiral](https://i.ritzastatic.com/ThinkCS-images/Chapter-3/03-06-spiral.png)
+![Turtle Spiral](Chapter-3/03-06-spiral.png)
 
 Be careful now! How many times was the body of the loop executed? How many turtle images do we see on the screen? All except one of the shapes we see on the screen here are footprints created by stamp. But the program still only has one turtle instance — can you figure out which one here is the real tess? (*Hint: if you’re not sure, write a new line of code after the for loop to change tess’ color, or to put her pen down and draw a line, or to change her shape, etc.*)
 
@@ -403,7 +403,7 @@ A condition that occurs which causes a loop to stop repeating its body. In the f
 
 11. Write a program to draw a shape like this:
 
-    ![Star](https://i.ritzastatic.com/ThinkCS-images/Chapter-3/03-07-star.png)
+![Star](Chapter-3/03-07-star.png)
 
 Hints:
 
@@ -413,7 +413,7 @@ Hints:
 
 12. Write a program to draw a face of a clock that looks something like this:
 
-    ![Clock face](https://i.ritzastatic.com/ThinkCS-images/Chapter-3/04-08-turtle-clock.png)
+![Clock face](Chapter-3/04-08-turtle-clock.png)
 
 13. Create a turtle, and assign it to a variable. When you ask for its type, what do you get?
 

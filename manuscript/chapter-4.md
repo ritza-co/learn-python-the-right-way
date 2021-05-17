@@ -44,7 +44,7 @@ Suppose we’re working with turtles, and a common operation we need is to draw 
  wn.mainloop()
 ```
 
-![alex function](https://i.ritzastatic.com/ThinkCS-images/Chapter-4/04-01-alex-function.png)
+![alex function](Chapter-4/04-01-alex-function.png)
 
 This function is named `draw_square`. It has two parameters: one to tell the function which turtle to move around, and the other to tell it the size of the square we want drawn. Make sure you know where the body of the function ends — it depends on the indentation, and the blank lines don’t count for this purpose!
 
@@ -89,7 +89,7 @@ for i in range(15):
 wn.mainloop()
 ```
 
-![Draw multicolor square](https://i.ritzastatic.com/ThinkCS-images/Chapter-4/04-02-tess05.png)
+![Draw multicolor square](Chapter-4/04-02-tess05.png)
 
 ## 4.2. Functions can call other functions
 
@@ -156,7 +156,7 @@ What’s the moral of this sordid tale? When we read a program, don’t read fro
 
 **Watch the flow of execution in action**
 
-Repl.it does not have "single-stepping" functionality. For this we would recommend a different IDE like [PyScripter](https://sourceforge.net/projects/pyscripter/)
+Repl.it does not have "single-stepping" functionality. For this we would recommend a different IDE like [PyScripter](https://sourceforge.net/projects/pyscripter/).
 
 In PyScripter, we can watch the flow of execution by “single-stepping” through any program. PyScripter will highlight each line of code just before it is about to be executed.
 
@@ -173,7 +173,7 @@ __import__("turtle").__traceable__ = False
 
 Now we’re ready to begin. Put the mouse cursor on the line of the program where we create the turtle screen, and press the F4 key. This will run the Python program up to, but not including, the line where we have the cursor. Our program will “break” now, and provide a highlight on the next line to be executed, something like this:
 
-![PyScripter Breakpoint](https://i.ritzastatic.com/ThinkCS-images/Chapter-4/pyscripter.png)
+![PyScripter Breakpoint](Chapter-4/pyscripter.png)
 
 At this point we can press the `F7` key (*step into*) repeatedly to single step through the code. Observe as we execute lines 10, 11, 12, … how the turtle window gets created, how its canvas color is changed, how the title gets changed, how the turtle is created on the canvas, and then how the flow of execution gets into the loop, and from there into the function, and into the function’s loop, and then repeatedly through the body of that loop.
 
@@ -228,7 +228,7 @@ A function that returns a value is called a **fruitful function** in this book. 
 
 How do we write our own fruitful function? In the exercises at the end of chapter 2 we saw the standard formula for compound interest, which we’ll now write as a fruitful function:
 
-![Compound interest](https://i.ritzastatic.com/ThinkCS-images/Chapter-4/04-03-compoundInterest.png)
+![Compound interest](Chapter-4/04-03-compoundInterest.png)
 
 ```python
 def final_amt(p, r, n, t):
@@ -440,23 +440,19 @@ The opposite of a fruitful function: one that does not return a value. It is exe
 
 1. Write a void (non-fruitful) function to draw a square. Use it in a program to draw the image shown below. Assume each side is 20 units. (*Hint: notice that the turtle has already moved away from the ending point of the last square when the program ends.*)
 
-![Five Squares](https://i.ritzastatic.com/ThinkCS-images/Chapter-4/04-04-five_squares.png)
+![Five Squares](Chapter-4/04-04-five_squares.png)
 
 2. Write a program to draw this. Assume the innermost square is 20 units per side, and each successive square is 20 units bigger, per side, than the one inside it.
 
-![Nested Squares](https://i.ritzastatic.com/ThinkCS-images/Chapter-4/04-05-nested_squares.png)
+![Nested Squares](Chapter-4/04-05-nested_squares.png)
 
 3. Write a void function `draw_poly(t, n, sz)` which makes a turtle draw a regular polygon. When called with `draw_poly(tess, 8, 50)`, it will draw a shape like this:
 
-![Regular Polygon](https://i.ritzastatic.com/ThinkCS-images/Chapter-4/04-06-regularpolygon.png)
-
-4. Draw this pretty pattern.
-
-![Pretty Pattern](https://i.ritzastatic.com/ThinkCS-images/Chapter-4/04-07-pretty-pattern.png)
+![Regular Polygon](Chapter-4/04-07-pretty-pattern.png)
 
 5. The two spirals in this picture differ only by the turn angle. Draw both.
 
-![Spirals](https://i.ritzastatic.com/ThinkCS-images/Chapter-4/04-08-tess_spirals.png)
+![Spirals](Chapter-4/04-08-tess_spirals.png)
 
 6. Write a void function `draw_equitriangle(t, sz)` which calls `draw_poly` from the previous question to have its turtle draw a equilateral triangle.
 
@@ -466,10 +462,10 @@ The opposite of a fruitful function: one that does not return a value. It is exe
 
 9. Write a void function to draw a star, where the length of each side is 100 units. (*Hint: You should turn the turtle by 144 degrees at each point.*)
 
-![Star](https://i.ritzastatic.com/ThinkCS-images/Chapter-4/04-09-star.png)
+![Star](Chapter-4/04-09-star.png)
 
 10. Extend your program above. Draw five stars, but between each, pick up the pen, move forward by 350 units, turn right by 144, put the pen down, and draw the next star. You’ll get something like this:
 
-![Five Stars](https://i.ritzastatic.com/ThinkCS-images/Chapter-4/04-10-five_stars.png)
+![Five Stars](Chapter-4/04-10-five_stars.png)
 
 What would it look like if you didn’t pick up the pen?
