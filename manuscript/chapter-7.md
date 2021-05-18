@@ -333,7 +333,7 @@ There are similar abbreviations for `-=`, `*=`, `/=`, `//=` and `%=`:
 
 Python comes with extensive documentation for all its built-in functions, and its libraries. Different systems have different ways of accessing this help. In PyScripter, click on the Help menu item, and select Python Manuals. Then search for help on the built-in function `range`. You’ll get something like this:
 
-![](https://i.ritzastatic.com/ThinkCS-images/Chapter-7/07-01-help_range.png)
+![](Chapter-7/07-01-help_range.png)
 
 Notice the square brackets in the description of the arguments. These are examples of **meta-notation** — notation that describes Python syntax, but is not part of it. The square brackets in this documentation mean that the argument is optional — the programmer can omit it. So what this first line of help tells us is that `range` must always have a `stop` argument, but it may have an optional `start` argument (which must be followed by a comma if it is present), and it can also have an optional `step` argument, preceded by a comma if it is present.
 
@@ -491,7 +491,7 @@ Python examines all the statements in a function — if any of them assign a val
 
 The stack diagram for this program shows that the two variables named `i` are not the same variable. They can refer to different values, and changing one does not affect the other.
 
-![Stack 2 diagram](https://i.ritzastatic.com/ThinkCS-images/Chapter-7/07-02-stack2.png)
+![Stack 2 diagram](Chapter-7/07-02-stack2.png)
 
 The value of `i` in `print_mult_table` goes from `1` to `6`. In the diagram it happens to be `3`. The next time through the loop it will be `4`. Each time through the loop, `print_mult_table` calls `print_multiples` with the current value of `i` as an argument. That value gets assigned to the parameter `n`.
 
@@ -524,7 +524,7 @@ done
  
 `for` and `while` loops do their tests at the start, before executing any part of the body. They’re called **pre-test** loops, because the test happens before (pre) the body. `break` and `return` are our tools for adapting this standard behaviour.
 
-![](https://i.ritzastatic.com/ThinkCS-images/Chapter-7/07-03-pre_test_loop.png)
+![](Chapter-7/07-03-pre_test_loop.png)
 
 ## 7.16. Other flavours of loops
 
@@ -534,7 +534,7 @@ A typical example is a problem where the user has to input numbers to be summed.
 
 The middle-test loop flowchart
  
-![](https://i.ritzastatic.com/ThinkCS-images/Chapter-7/07-04-mid_test_loop.png)
+![](Chapter-7/07-04-mid_test_loop.png)
 
 ```python
 total = 0
@@ -595,7 +595,7 @@ At line 18 there is a call to the `input` function, but we don’t do anything w
 
 Also notice the use of the `msg` variable, initially an empty string, on lines 6, 12 and 14. Each time through the loop we extend the message being displayed: this allows us to display the program’s feedback right at the same place as we’re asking for the next guess.
 
-![](https://i.ritzastatic.com/ThinkCS-images/Chapter-7/07-05-python_input.png)
+![](Chapter-7/07-05-python_input.png)
 
 ## 7.18. The continue statement
 
@@ -1030,11 +1030,11 @@ The last case could represent your birth date. Were you born on a prime day? In 
 
 12. Many interesting shapes can be drawn by the turtle by giving a list of pairs like we did above, where the first item of the pair is the angle to turn, and the second item is the distance to move forward. Set up a list of pairs so that the turtle draws a house with a cross through the centre, as show here. This should be done without going over any of the lines / edges more than once, and without lifting your pen.
 
-![](https://i.ritzastatic.com/ThinkCS-images/Chapter-7/07-06-tess_house.png)
+![](Chapter-7/07-06-tess_house.png)
 
 13. Not all shapes like the one above can be drawn without lifting your pen, or going over an edge more than once. Which of these can be drawn?
 
-![](https://i.ritzastatic.com/ThinkCS-images/Chapter-7/07-07-tess_more_houses.png)
+![](Chapter-7/07-07-tess_more_houses.png)
 
 Now read Wikipedia’s article(http://en.wikipedia.org/wiki/Eulerian_path) about Eulerian paths. Learn how to tell immediately by inspection whether it is possible to find a solution or not. If the path is possible, you’ll also know where to put your pen to start drawing, and where you should end up!
 
