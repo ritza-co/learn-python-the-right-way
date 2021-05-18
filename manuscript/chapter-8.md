@@ -232,9 +232,41 @@ True
 
 Combining the `in` operator with string concatenation using `+`, we can write a function that removes all the vowels from a string:
 
+```python
+def remove_vowels(s):
+    vowels = "aeiouAEIOU"
+    s_sans_vowels = ""
+    for x in s:
+        if x not in vowels:
+            s_sans_vowels += x
+    return s_sans_vowels
+
+test(remove_vowels("compsci") == "cmpsc")
+test(remove_vowels("aAbEefIijOopUus") == "bfjps")
+```
+
 ## 8.10. A `find` function
 
 What does the following function do?
+
+```python
+def find(strng, ch):
+    """
+      Find and return the index of ch in strng.
+      Return -1 if ch does not occur in strng.
+    """
+    ix = 0
+    while ix < len(strng):
+        if strng[ix] == ch:
+            return ix
+        ix += 1
+    return -1
+
+test(find("Compsci", "p") == 3)
+test(find("Compsci", "C") == 0)
+test(find("Compsci", "i") == 6)
+test(find("Compsci", "x") == -1)
+```
 
 In a sense, `find` is the opposite of the indexing operator. Instead of taking an index and extracting the corresponding character, it takes a character and finds the index where that character appears. If the character is not found, the function returns `-1`.
 
@@ -248,13 +280,46 @@ This pattern of computation is sometimes called a **eureka traversal** or **shor
 
 The following program counts the number of times the letter `a` appears in a string, and is another example of the counter pattern introduced in counting.
 
+```python
+def count_a(text):
+    count = 0
+    for c in text:
+        if c == "a":
+            count += 1
+    return(count)
+
+test(count_a("banana") == 3)
+```
+
 ## 8.12. Optional parameters
 
 To find the locations of the second or third occurrence of a character in a string, we can modify the `find` function, adding a third parameter for the starting position in the search string:
 
+```python
+def find2(strng, ch, start):
+    ix = start
+    while ix < len(strng):
+        if strng[ix] == ch:
+            return ix
+        ix += 1
+    return -1
+
+test(find2("banana", "a", 2) == 3)
+```
+
 The call `find2("banana", "a", 2)` now returns `3`, the index of the first occurrence of "a" in "banana" starting the search at index 2. What does `find2("banana", "n", 3)` return? If you said, 4, there is a good chance you understand how `find2` works.
 
 Better still, we can combine `find` and `find2` using an **optional parameter**:
+
+```python
+def find(strng, ch, start=0):
+    ix = start
+    while ix < len(strng):
+        if strng[ix] == ch:
+            return ix
+        ix += 1
+    return -1
+```
 
 When a function has an optional parameter, the caller may provide a matching argument. If the third argument is provided to `find`, it gets assigned to `start`. But if the caller leaves the argument out, then start is given a default value indicated by the assignment `start=0` in the function definition.
 
@@ -262,11 +327,32 @@ So the call `find("banana", "a", 2)` to this version of `find` behaves just like
 
 Adding another optional parameter to `find` makes it search from a starting position, up to but not including the end position:
 
+```python
+def find(strng, ch, start=0, end=None):
+    ix = start
+    if end is None:
+       end = len(strng)
+    while ix < end:
+        if strng[ix] == ch:
+            return ix
+        ix += 1
+    return -1
+```
+
 The optional value for `end` is interesting: we give it a default value `None` if the caller does not supply any argument. In the body of the function we test what `end` is, and if the caller did not supply any argument, we reassign `end` to be the length of the string. If the caller has supplied an argument for `end`, however, the caller's value will be used in the loop.
 
 The semantics of `start` and `end` in this function are precisely the same as they are in the `range` function.
 
 Here are some test cases that should pass:
+
+```python
+ss = "Python strings have some interesting methods."
+test(find(ss, "s") == 7)
+test(find(ss, "s", 7) == 7)
+test(find(ss, "s", 8) == 13)
+test(find(ss, "s", 8, 13) == -1)
+test(find(ss, ".") == len(ss)-1)
+```
 
 ## 8.13. The built-in `find` method
 
@@ -276,7 +362,7 @@ The built-in `find` method is more general than our version. It can find substri
 
 ```python 
 >>> "banana".find("nan")
-2
+
 >>> "banana".find("na", 3)
 4
 ```
@@ -300,9 +386,53 @@ We'll often work with strings that contain punctuation, or tab and newline chara
 
 We'll show just one example of how to strip punctuation from a string. Remember that strings are immutable, so we cannot change the string with the punctuation --- we need to traverse the original string and create a new string, omitting any punctuation:
 
+```python
+punctuation = "!\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~"
+
+def remove_punctuation(s):
+    s_sans_punct = ""
+    for letter in s:
+        if letter not in punctuation:
+            s_sans_punct += letter
+    return s_sans_punct
+```
+
+
+
 Setting up that first assignment is messy and error-prone. Fortunately, the Python `string` module already does it for us. So we will make a slight improvement to this program --- we'll import the `string` module and use its definition:
 
+```python
+import string
+
+def remove_punctuation(s):
+    s_without_punct = ""
+    for letter in s:
+        if letter not in string.punctuation:
+            s_without_punct += letter
+    return s_without_punct
+
+test(remove_punctuation('"Well, I never did!", said Alice.') ==
+                            "Well I never did said Alice")
+test(remove_punctuation("Are you very, very, sure?") ==
+                             "Are you very very sure")
+```
+
 Composing together this function and the `split` method from the previous section makes a useful combination --- we'll clean out the punctuation, and `split` will clean out the newlines and tabs while turning the string into a list of words:
+
+```python
+my_story = """
+Pythons are constrictors, which means that they will 'squeeze' the life
+out of their prey. They coil themselves around their prey and with
+each breath the creature takes the snake will squeeze a little tighter
+until they stop breathing completely. Once the heart stops the prey
+is swallowed whole. The entire animal is digested in the snake's
+stomach except for fur or feathers. What do you think happens to the fur,
+feathers, beaks, and eggshells? The 'extra stuff' gets passed out as ---
+you guessed it --- snake POOP! """
+
+wds = remove_punctuation(my_story).split()
+print(wds)
+```
 
 The output:
 
@@ -316,9 +446,24 @@ There are other useful string methods, but this book isn't intended to be a refe
 
 The easiest and most powerful way to format a string in Python 3 is to use the `format` method. To see how this works, let's start with a few examples:
 
+```python
+s1 = "His name is {0}!".format("Arthur")
+print(s1)
+
+name = "Alice"
+age = 10
+s2 = "I am {1} and I am {0} years old.".format(age, name)
+print(s2)
+
+n1 = 4
+n2 = 5
+s3 = "2**10 = {0} and {1} * {2} = {3:f}".format(2**10, n1, n2, n1 * n2)
+print(s3)
+```
+
 Running the script produces:
 
-```python
+```
 His name is Arthur!
 I am Alice and I am 10 years old.
 2**10 = 1024 and 4 * 5 = 20.000000
@@ -334,6 +479,19 @@ But there's more! Each of the replacement fields can also contain a **format spe
 * if the type conversion is a float, you can also specify how many decimal places are wanted (typically, `.2f` is useful for working with currencies to two decimal places.)
 Let's do a few simple and common examples that should be enough for most needs. If you need to do anything more esoteric, use help and read all the powerful, gory details.
 
+```python
+n1 = "Paris"
+n2 = "Whitney"
+n3 = "Hilton"
+
+print("Pi to three decimal places is {0:.3f}".format(3.1415926))
+print("123456789 123456789 123456789 123456789 123456789 123456789")
+print("|||{0:<15}|||{1:^15}|||{2:>15}|||Born in {3}|||"
+        .format(n1,n2,n3,1981))
+print("The decimal value {0} converts to hex value {0:x}"
+        .format(123456))
+```
+
 This script produces the output:
 
 ```python
@@ -345,9 +503,21 @@ The decimal value 123456 converts to hex value 1e240
 
 You can have multiple placeholders indexing the same argument, or perhaps even have extra arguments that are not referenced at all:
 
+```python
+letter = """
+Dear {0} {2}.
+ {0}, I have an interesting money-making proposition for you!
+ If you deposit $10 million into my bank account, I can
+ double your money ...
+"""
+
+print(letter.format("Paris", "Whitney", "Hilton"))
+print(letter.format("Bill", "Henry", "Gates"))
+```
+
 This produces the following:
 
-```python
+```
 Dear Paris Hilton.
  Paris, I have an interesting money-making proposition for you!
  If you deposit $10 million into my bank account, I can
@@ -371,6 +541,13 @@ IndexError: tuple index out of range
 
 The following example illustrates the real utility of string formatting. First, we'll try to print a table without using string formatting:
 
+```python
+print("i\ti**2\ti**3\ti**5\ti**10\ti**20")
+for i in range(1, 11):
+    print(i, "\t", i**2, "\t", i**3, "\t", i**5, "\t",
+                                            i**10, "\t", i**20)
+```
+
 This program prints out a table of various powers of the numbers from 1 to 10. (This assumes that the tab width is 8. You might see something even worse than this if you tab width is set to 4.) In its current form it relies on the tab character ( `\t`) to align the columns of values, but this breaks down when the values in the table get larger than the tab width:
 
 ```python
@@ -388,6 +565,14 @@ i       i**2    i**3    i**5    i**10   i**20
 ```
 
 One possible solution would be to change the tab width, but the first column already has more space than it needs. The best solution would be to set the width of each column independently. As you may have guessed by now, string formatting provides a much nicer solution. We can also right-justify each field:
+
+```python
+layout = "{0:>4}{1:>6}{2:>6}{3:>8}{4:>13}{5:>24}"
+
+print(layout.format("i", "i**2", "i**3", "i**5", "i**10", "i**20"))
+for i in range(1, 11):
+    print(layout.format(i, i**2, i**3, i**5, i**10, i**20))
+```
 
 Running this version produces the following (much more satisfying) output:
 
@@ -534,7 +719,7 @@ so that `Ouack` and `Quack` are spelled correctly.
 
 3. Encapsulate 
 
-```
+```python
 fruit = "banana"
 count = 0
 for char in fruit:
