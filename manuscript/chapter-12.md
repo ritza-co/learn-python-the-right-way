@@ -21,7 +21,7 @@ Python provides a module `random` that helps with tasks like this. You can look 
 import random
 
 # Create a black box object that generates random numbers
-rng = random.Random()    
+rng = random.Random()
 
 dice_throw = rng.randrange(1,7)   # Return an int, one of 1,2,3,4,5,6
 delay_in_seconds = rng.random() * 5.0
@@ -42,7 +42,7 @@ This example shows how to shuffle a list. (`shuffle` cannot work directly with a
 
 ```python
 cards = list(range(52))  # Generate ints [0 .. 51] 
-                         #    representing a pack of cards.
+                         # representing a pack of cards.
 rng.shuffle(cards)       # Shuffle the pack
 ```
 
@@ -425,82 +425,83 @@ from unit_tester import test
 
 ## 12.10. Glossary
 
-attribute  
-    A variable defined inside a module (or class or instance -- as we will
-    see later). Module attributes are accessed by using the **dot operator**
-    (`.`).
+**attribute**
+A variable defined inside a module (or class or instance -- as we will
+see later). Module attributes are accessed by using the **dot operator**
+(`.`).
 
-dot operator  
-    The dot operator (`.`) permits access to attributes and functions of a
-    module (or attributes and methods of a class or instance -- as we have
-    seen elsewhere).
+**dot operator**
+The dot operator (`.`) permits access to attributes and functions of a
+module (or attributes and methods of a class or instance -- as we have
+seen elsewhere).
 
-fully qualified name  
-    A name that is prefixed by some namespace identifier and the dot
-    operator, or by an instance object, e.g. `math.sqrt` or
-    `tess.forward(10)`.
+**fully qualified name**
+A name that is prefixed by some namespace identifier and the dot
+operator, or by an instance object, e.g. `math.sqrt` or
+`tess.forward(10)`.
 
-import statement  
-    A statement which makes the objects contained in a module available for
-    use within another module. There are two forms for the import statement.
-    Using hypothetical modules named `mymod1` and `mymod2` each containing
-    functions `f1` and `f2`, and variables `v1` and `v2`, examples of these
-    two forms include:
+**import statement**
+A statement which makes the objects contained in a module available for
+use within another module. There are two forms for the import statement.
+Using hypothetical modules named `mymod1` and `mymod2` each containing
+functions `f1` and `f2`, and variables `v1` and `v2`, examples of these
+two forms include:
 
-    ```python
-    import mymod1 
-    from mymod2 import f1, f2, v1, v2 
-    ```
+```python
+import mymod1 
+from mymod2 import f1, f2, v1, v2 
+```
 
-    The second form brings the imported objects into the namespace of the
-    importing module, while the first form preserves a separate namespace
-    for the imported module, requiring `mymod1.v1` to access the `v1`
-    variable from that module.
+The second form brings the imported objects into the namespace of the
+importing module, while the first form preserves a separate namespace
+for the imported module, requiring `mymod1.v1` to access the `v1`
+variable from that module.
 
-method  
-    Function-like attribute of an object. Methods are *invoked* (called) on
-    an object using the dot operator. For example:
+**method**
+Function-like attribute of an object. Methods are *invoked* (called) on
+an object using the dot operator. For example:
 
-    ```python
-    >>> s = "this is a string."
-    >>> s.upper()
-    'THIS IS A STRING.'
-    >>>
-    ```
+```python
+>>> s = "this is a string."
+>>> s.upper()
+'THIS IS A STRING.'
+>>>
+```
 
-    We say that the method, `upper` is invoked on the string, `s`. `s` is
-    implicitely the first argument to `upper`.
+We say that the method, `upper` is invoked on the string, `s`. `s` is
+implicitely the first argument to `upper`.
 
-module  
-    A file containing Python definitions and statements intended for use in
-    other Python programs. The contents of a module are made available to
-    the other program by using the `import` statement.
+**module**
+A file containing Python definitions and statements intended for use in
+other Python programs. The contents of a module are made available to
+the other program by using the `import` statement.
 
-namespace  
-    A syntactic container providing a context for names so that the same
-    name can reside in different namespaces without ambiguity. In Python,
-    modules, classes, functions and methods all form namespaces.
+**namespace**
+A syntactic container providing a context for names so that the same
+name can reside in different namespaces without ambiguity. In Python,
+modules, classes, functions and methods all form namespaces.
 
-naming collision  
-    A situation in which two or more names in a given namespace cannot be
-    unambiguously resolved. Using
+**naming collision**
+A situation in which two or more names in a given namespace cannot be
+unambiguously resolved. Using
 
-    ```python
-    import string
-    ```
+```python
+import string
+```
 
-    instead of
+instead of
 
-    ```python
-    from string import *
-    ```
+```python
+from string import *
+```
 
-    prevents naming collisions.
+prevents naming collisions.
 
-    standard library A library is a collection of software used as tools in
-    the development of other software. The standard library of a programming
-    language is the set of such tools that are distributed with the core
-    programming language. Python comes with an extensive standard library.
+**standard library**
+A library is a collection of software used as tools in
+the development of other software. The standard library of a programming
+language is the set of such tools that are distributed with the core
+programming language. Python comes with an extensive standard library.
 
 ## 12.11. Exercises
 
