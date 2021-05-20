@@ -36,6 +36,6 @@ To generate the html version of the book:
     the book source.
 3.  `make html`.
 
-The last command will run sphinx and create a directory named `build` containing the html verion of the text.
+The last command will run sphinx and create a directory named `build` containing the html version of the text.
 
 *Note*: Sphinx supports building other output types as well, such as [PDF](http://en.wikipedia.org/wiki/PDF). This requires that [LaTeX](http://en.wikipedia.org/wiki/LaTeX) be present on your system. Since I only personally use the html version, I will not attempt to document that process here.
