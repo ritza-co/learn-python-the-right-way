@@ -711,200 +711,196 @@ The first index selects the row, and the second index selects the column. Althou
 
 ## 11.21. Glossary
 
-```python
-aliases  
-    Multiple variables that contain references to the same object.
+**aliases**
+Multiple variables that contain references to the same object.
 
-clone  
-    To create a new object that has the same value as an existing object.
-    Copying a reference to an object creates an alias but doesn't clone the
-    object.
+**clone**
+To create a new object that has the same value as an existing object.
+Copying a reference to an object creates an alias but doesn't clone the
+object.
 
-delimiter  
-    A character or string used to indicate where a string should be split.
+**delimiter**
+A character or string used to indicate where a string should be split.
 
-element  
-    One of the values in a list (or other sequence). The bracket operator
-    selects elements of a list. Also called *item*.
+**element**
+One of the values in a list (or other sequence). The bracket operator
+selects elements of a list. Also called *item*.
 
-immutable data value  
-    A data value which cannot be modified. Assignments to elements or slices
-    (sub-parts) of immutable values cause a runtime error.
+**immutable data value**
+A data value which cannot be modified. Assignments to elements or slices
+(sub-parts) of immutable values cause a runtime error.
 
-index  
-    An integer value that indicates the position of an item in a list.
-    Indexes start from 0.
+**index**
+An integer value that indicates the position of an item in a list.
+Indexes start from 0.
 
-item  
-    See *element*.
+**item**
+See *element*.
 
-list  
-    A collection of values, each in a fixed position within the list. Like
-    other types `str`, `int`, `float`, etc. there is also a `list`
-    type-converter function that tries to turn whatever argument you give it
-    into a list.
+**list**
+A collection of values, each in a fixed position within the list. Like
+other types `str`, `int`, `float`, etc. there is also a `list`
+type-converter function that tries to turn whatever argument you give it
+into a list.
 
-list traversal  
-    The sequential accessing of each element in a list.
+**list traversal**
+The sequential accessing of each element in a list.
 
-modifier  
-    A function which changes its arguments inside the function body. Only
-    mutable types can be changed by modifiers.
+**modifier**
+A function which changes its arguments inside the function body. Only
+mutable types can be changed by modifiers.
 
-mutable data value  
-    A data value which can be modified. The types of all mutable values are
-    compound types. Lists and dictionaries are mutable; strings and tuples
-    are not.
+**mutable data value**
+A data value which can be modified. The types of all mutable values are
+compound types. Lists and dictionaries are mutable; strings and tuples
+are not.
 
-nested list  
-    A list that is an element of another list.
+**nested list**
+A list that is an element of another list.
 
-object  
-    A thing to which a variable can refer.
+**object**
+A thing to which a variable can refer.
 
-pattern  
-    A sequence of statements, or a style of coding something that has
-    general applicability in a number of different situations. Part of
-    becoming a mature Computer Scientist is to learn and establish the
-    patterns and algorithms that form your toolkit. Patterns often
-    correspond to your "mental chunking".
+**pattern**
+A sequence of statements, or a style of coding something that has
+general applicability in a number of different situations. Part of
+becoming a mature Computer Scientist is to learn and establish the
+patterns and algorithms that form your toolkit. Patterns often
+correspond to your "mental chunking".
 
-promise  
-    An object that promises to do some work or deliver some values if
-    they're eventually needed, but it lazily puts off doing the work
-    immediately. Calling `range` produces a promise.
+**promise**
+An object that promises to do some work or deliver some values if
+they're eventually needed, but it lazily puts off doing the work
+immediately. Calling `range` produces a promise.
 
-pure function  
-    A function which has no side effects. Pure functions only make changes
-    to the calling program through their return values.
+**pure function**
+A function which has no side effects. Pure functions only make changes
+to the calling program through their return values.
 
-sequence  
-    Any of the data types that consist of an ordered collection of elements,
-    with each element identified by an index.
+**sequence**
+Any of the data types that consist of an ordered collection of elements,
+with each element identified by an index.
 
-side effect  
-    A change in the state of a program made by calling a function. Side
-    effects can only be produced by modifiers.
+**side effect**
+A change in the state of a program made by calling a function. Side
+effects can only be produced by modifiers.
 
-step size  
-    The interval between successive elements of a linear sequence. The third
-    (and optional argument) to the `range` function is called the step size.
-    If not specified, it defaults to 1.
-
-```
+**step size**
+The interval between successive elements of a linear sequence. The third
+(and optional argument) to the `range` function is called the step size.
+If not specified, it defaults to 1.
 
 ## 11.22. Exercises
 
 1.  What is the Python interpreter's response to the following?
 
-    ```python
-    >>> list(range(10, 0, -2))
-    ```
+```python
+>>> list(range(10, 0, -2))
+```
 
     The three arguments to the *range* function are *start*, *stop*, and *step*, respectively. In this example, `start` is greater than `stop`. What happens if `start < stop` and `step < 0`? Write a rule
     for the relationships among `start`, `stop`, and `step`.
 
 2.  Consider this fragment of code:
 
-    ```python
-    import turtle
+```python
+import turtle
 
-    tess = turtle.Turtle()
-    alex = tess
-    alex.color("hotpink")
-    ```
+tess = turtle.Turtle()
+alex = tess
+alex.color("hotpink")
+```
 
     Does this fragment create one or two turtle instances? Does setting the color of `alex` also change the color of `tess`? Explain in detail.
 
 3.  Draw a state snapshot for `a` and `b` before and after the third line of the following Python code is     
     executed:
 
-    ```python
-    a = [1, 2, 3]
-    b = a[:]
-    b[0] = 5
-    ```
+```python
+a = [1, 2, 3]
+b = a[:]
+b[0] = 5
+```
 
 4.  What will be the output of the following program?
 
-    ```python
-    this = ["I", "am", "not", "a", "crook"]
-    that = ["I", "am", "not", "a", "crook"]
-    print("Test 1: {0}".format(this is that))
-    that = this
-    print("Test 2: {0}".format(this is that))
-    ```
+```python
+this = ["I", "am", "not", "a", "crook"]
+that = ["I", "am", "not", "a", "crook"]
+print("Test 1: {0}".format(this is that))
+that = this
+print("Test 2: {0}".format(this is that))
+```
 
-    Provide a *detailed* explanation of the results.
+Provide a *detailed* explanation of the results.
 
 5.  Lists can be used to represent mathematical *vectors*. In this exercise and several that follow you will 
     write functions to perform standard operations on vectors. Create a script named `vectors.py` and write Python code to pass the tests in each case.
 
     Write a function `add_vectors(u, v)` that takes two lists of numbers of the same length, and returns a new list containing the sums of the corresponding elements of each:
 
-    ```python
-    test(add_vectors([1, 1], [1, 1]) == [2, 2])
-    test(add_vectors([1, 2], [1, 4]) == [2, 6])
-    test(add_vectors([1, 2, 1], [1, 4, 3]) == [2, 6, 4])
-    ```
+```python
+test(add_vectors([1, 1], [1, 1]) == [2, 2])
+test(add_vectors([1, 2], [1, 4]) == [2, 6])
+test(add_vectors([1, 2, 1], [1, 4, 3]) == [2, 6, 4])
+```
 
-6.  Write a function `scalar_mult(s, v)` that takes a number, `s`, and a list, `v` and returns the [scalar
-    multiple](http://en.wikipedia.org/wiki/Scalar_multiple) of `v` by `s`. :
+6.  Write a function `scalar_mult(s, v)` that takes a number, `s`, and a list, `v` and returns the [scalar multiple](http://en.wikipedia.org/wiki/Scalar_multiple) of `v` by `s`:
 
-    ```python
-    test(scalar_mult(5, [1, 2]) == [5, 10])
-    test(scalar_mult(3, [1, 0, -1]) == [3, 0, -3])
-    test(scalar_mult(7, [3, 0, 5, 11, 2]) == [21, 0, 35, 77, 14])
-    ```
+```python
+test(scalar_mult(5, [1, 2]) == [5, 10])
+test(scalar_mult(3, [1, 0, -1]) == [3, 0, -3])
+test(scalar_mult(7, [3, 0, 5, 11, 2]) == [21, 0, 35, 77, 14])
+```
 
 7.  Write a function `dot_product(u, v)` that takes two lists of numbers of the same length, and returns the 
     sum of the products of the corresponding elements of each (the [dot\_product](http://en.wikipedia.org/wiki/Dot_product)).
 
-    ```python
-    test(dot_product([1, 1], [1, 1]) ==  2)
-    test(dot_product([1, 2], [1, 4]) ==  9)
-    test(dot_product([1, 2, 1], [1, 4, 3]) == 12)
-    ```
+```python
+test(dot_product([1, 1], [1, 1]) ==  2)
+test(dot_product([1, 2], [1, 4]) ==  9)
+test(dot_product([1, 2, 1], [1, 4, 3]) == 12)
+```
 
-8.  *Extra challenge for the mathematically inclined*: Write a function `cross_product(u, v)` that takes two 
+8.  **Extra challenge for the mathematically inclined**: Write a function `cross_product(u, v)` that takes two 
     lists of numbers of length 3 and returns their [cross product](http://en.wikipedia.org/wiki/Cross_product). You should write your own tests.
 
 9.  Describe the relationship between `" ".join(song.split())` and `song` in the fragment of code below. Are 
     they the same for all strings assigned to `song`? When would they be different?
 
-    ```python
-    song = "The rain in Spain..."
-    ```
+```python
+song = "The rain in Spain..."
+```
 
 10. Write a function `replace(s, old, new)` that replaces all occurrences of `old` with `new` in a string `s`:
 
-    ```python
-    test(replace("Mississippi", "i", "I") == "MIssIssIppI")
-    
-    s = "I love spom! Spom is my favorite food. Spom, spom, yum!"
-    test(replace(s, "om", "am") ==
-        "I love spam! Spam is my favorite food. Spam, spam, yum!")
-    
-    test(replace(s, "o", "a") ==
-        "I lave spam! Spam is my favarite faad. Spam, spam, yum!")
-    ```
+```python
+test(replace("Mississippi", "i", "I") == "MIssIssIppI")
 
-    *Hint*: use the `split` and `join` methods.
+s = "I love spom! Spom is my favorite food. Spom, spom, yum!"
+test(replace(s, "om", "am") ==
+    "I love spam! Spam is my favorite food. Spam, spam, yum!")
+
+test(replace(s, "o", "a") ==
+    "I lave spam! Spam is my favarite faad. Spam, spam, yum!")
+```
+
+**Hint**: use the `split` and `join` methods.
 
 11. Suppose you want to swap around the values in two variables. You decide to factor this out into a 
     reusable function, and write this code:
 
-    ```python
-    def swap(x, y):      # Incorrect version
-        print("before swap statement: x:", x, "y:", y)
-        (x, y) = (y, x)
-        print("after swap statement: x:", x, "y:", y)
-    
-    a = ["This", "is", "fun"]
-    b = [2,3,4] 
-    print("before swap function call: a:", a, "b:", b)
-    swap(a, b)
-    print("after swap function call: a:", a, "b:", b)
-    ```
+```python
+def swap(x, y):      # Incorrect version
+    print("before swap statement: x:", x, "y:", y)
+    (x, y) = (y, x)
+    print("after swap statement: x:", x, "y:", y)
 
-    Run this program and describe the results. Oops! So it didn't do what you intended! Explain why not. Using a Python visualizer like the one at http://pythontutor.com may help you build a good conceptual model of what is going on. What will be the values of `a` and `b` after the call to `swap`?
+a = ["This", "is", "fun"]
+b = [2,3,4] 
+print("before swap function call: a:", a, "b:", b)
+swap(a, b)
+print("after swap function call: a:", a, "b:", b)
+```
+
+Run this program and describe the results. Oops! So it didn't do what you intended! Explain why not. Using a Python visualizer like the one at http://pythontutor.com may help you build a good conceptual model of what is going on. What will be the values of `a` and `b` after the call to `swap`?

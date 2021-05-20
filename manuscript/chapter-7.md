@@ -1036,16 +1036,16 @@ The last case could represent your birth date. Were you born on a prime day? In 
 
 ![](Chapter-7/07-07-tess_more_houses.png)
 
-Now read Wikipedia’s article(http://en.wikipedia.org/wiki/Eulerian_path) about Eulerian paths. Learn how to tell immediately by inspection whether it is possible to find a solution or not. If the path is possible, you’ll also know where to put your pen to start drawing, and where you should end up!
+Now read Wikipedia’s article (http://en.wikipedia.org/wiki/Eulerian_path) about Eulerian paths. Learn how to tell immediately by inspection whether it is possible to find a solution or not. If the path is possible, you’ll also know where to put your pen to start drawing, and where you should end up!
 
-14. What will num_digits(0) return? Modify it to return 1 for this case. Why does a call to num_digits(-24) result in an infinite loop? (hint: -1//10 evaluates to -1) Modify num_digits so that it works correctly with any integer value. Add these tests:
+14. What will `num_digits(0)` return? Modify it to return 1 for this case. Why does a call to `num_digits(-24)` result in an infinite loop? (hint: -1//10 evaluates to -1) Modify `num_digits` so that it works correctly with any integer value. Add these tests:
 
     ```python
     test(num_digits(0) == 1)
     test(num_digits(-12345) == 5)
     ```
 
-15. Write a function num_even_digits(n) that counts the number of even digits in n. These tests should pass:
+15. Write a function `num_even_digits(n)` that counts the number of even digits in n. These tests should pass:
 
     ```python
     test(num_even_digits(123456) == 3)
@@ -1054,7 +1054,7 @@ Now read Wikipedia’s article(http://en.wikipedia.org/wiki/Eulerian_path) about
     test(num_even_digits(0) == 1)
     ```
 
-16. Write a function sum_of_squares(xs) that computes the sum of the squares of the numbers in the list xs. For example, sum_of_squares([2, 3, 4]) should return 4+9+16 which is 29:
+16. Write a function `sum_of_squares(xs)` that computes the sum of the squares of the numbers in the list xs. For example, `sum_of_squares([2, 3, 4])` should return 4+9+16 which is 29:
 
     ```python
     test(sum_of_squares([2, 3, 4]) == 29)
