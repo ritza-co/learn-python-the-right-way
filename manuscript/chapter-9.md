@@ -87,7 +87,17 @@ In tuple unpacking, the values in a tuple on the right are \'unpacked\' into the
 
 Once in a while, it is useful to swap the values of two variables. With conventional assignment statements, we have to use a temporary variable. For example, to swap `a` and `b`:
 
+```python
+temp = a
+a = b
+b = temp
+```
+
 Tuple assignment solves this problem neatly:
+
+```python
+(a, b) = (b, a)
+```
 
 The left side is a tuple of variables; the right side is a tuple of values. Each value is assigned to its respective variable. All the expressions on the right side are evaluated before any of the assignments. This feature makes tuple assignment quite versatile.
 
@@ -104,6 +114,14 @@ Functions can always only return a single value, but by making that value a tupl
 and the day, or if we\'re doing some some ecological modelling we may want to know the number of rabbits and the number of wolves on an island at a given time.
 
 For example, we could write a function that returns both the area and the circumference of a circle of radius r:
+
+```python
+def f(r):
+    """ Return (circumference, area) of a circle of radius r """
+    c = 2 * math.pi * r
+    a = math.pi * r * r
+    return (c, a)
+```
 
 ## 9.4. Composability of Data Structures
 
