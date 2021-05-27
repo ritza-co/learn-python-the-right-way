@@ -160,7 +160,7 @@ The Python libraries are pretty messy in places. But here is a very simple examp
 ```python
 import urllib.request
 
-url = "http://xml.resource.org/public/rfc/txt/rfc793.txt" 
+url = "https://www.ietf.org/rfc/rfc793.txt"
 destination_filename = "rfc793.txt"
 
 urllib.request.urlretrieve(url, destination_filename)
