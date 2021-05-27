@@ -2,7 +2,7 @@
 
 This is the source of the book available on https://learnpythontherightway.com.
 
-It is a work-in-progress translation of How to Think Like a Computer Scientist [github](https://github.com/csev/py4e) [website](https://openbookproject.net/thinkcs/python/english3e/index.html).
+It is a work-in-progress translation of How to Think Like a Computer Scientist ([GitHub](https://github.com/csev/py4e), [Website](https://openbookproject.net/thinkcs/python/english3e/index.html).)
 
 Our goals are to allow students to follow the entire book on Replit.com. This is a controversial stance as learning how to install and configure programming languages is an important part of learning to be a software engineer, but it is also a huge sticking point for beginners. Especially with remote learning, many get frustrated by virtual environments, conflicting interpreters, and mangled PATHs before they discover the joy of coding.
 
