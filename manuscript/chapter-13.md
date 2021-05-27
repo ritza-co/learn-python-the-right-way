@@ -34,27 +34,36 @@ To put data in the file we invoke the `write` method on the handle, shown in lin
 
 Closing the file handle (line 5) tells the system that we are done writing and makes the disk file available for reading by other programs (or by our own program).
 
-
-A handle is somewhat like a TV remote control
+**A handle is somewhat like a TV remote control**
 
 We're all familiar with a remote control for a TV. We perform operations on the remote control --- switch channels, change the volume, etc. But the real action happens on the TV. So, by simple analogy, we'd call the remote control our handle to the underlying TV.
 
 Sometimes we want to emphasize the difference --- the file handle is not the same as the file, and the remote control is not the same as the TV. But at other times we prefer to treat them as a single mental chunk, or abstraction, and we'll just say "close the file", or "flip the TV channel".
 
-
 ## 13.3. Reading a file line-at-a-time
 
 Now that the file exists on our disk, we can open it, this time for reading, and read all the lines in the file, one at a time. This time, the mode argument is `"r"` for reading:
 
+```python
+mynewhandle = open("test.txt", "r")
+while True:                            # Keep reading forever
+    theline = mynewhandle.readline()   # Try to read next line
+    if len(theline) == 0:              # If there are no more lines
+        break                          #     leave the loop
+
+    # Now process the line we've just read
+    print(theline, end="")
+
+mynewhandle.close()
+```
+
 This is a handy pattern for our toolbox. In bigger programs, we'd squeeze more extensive logic into the body of the loop at line 8 ---for example, if each line of the file contained the name and email address of one of our friends, perhaps we'd split the line into some pieces and call a function to send the friend a party invitation.
 
-On line 8 we suppress the newline character that `print` usually appends to our strings. Why? This is because the string already has its own newline: the `readline` method in line 3 returns everything up to *and
-including* the newline character. This also explains the end-of-file detection logic: when there are no more lines to be read from the file, `readline` returns an empty string --- one that does not even have a newline at the end, hence its length is 0.
+On line 8 we suppress the newline character that `print` usually appends to our strings. Why? This is because the string already has its own newline: the `readline` method in line 3 returns everything up to *and including* the newline character. This also explains the end-of-file detection logic: when there are no more lines to be read from the file, `readline` returns an empty string --- one that does not even have a newline at the end, hence its length is 0.
 
-Fail first ...
+**Fail first ...**
 
-In our sample case here, we have three lines in the file, yet we enter the loop *four* times. In Python, you only learn that the file has no more lines by failure to read another line. In some other programming
-languages (e.g. Pascal), things are different: there you read three lines, but you have what is called *look ahead* --- after reading the third line you already know that there are no more lines in the file. You're not even allowed to try to read the fourth line.
+In our sample case here, we have three lines in the file, yet we enter the loop *four* times. In Python, you only learn that the file has no more lines by failure to read another line. In some other programming languages (e.g. Pascal), things are different: there you read three lines, but you have what is called *look ahead* --- after reading the third line you already know that there are no more lines in the file. You're not even allowed to try to read the fourth line.
 
 So the templates for working line-at-a-time in Pascal and Python are subtly different!
 
@@ -71,6 +80,19 @@ IOError: [Errno 2] No such file or directory: "wharrah.txt"
 
 It is often useful to fetch data from a disk file and turn it into a list of lines. Suppose we have a file containing our friends and their email addresses, one per line in the file. But we'd like the lines sorted into alphabetical order. A good plan is to read everything into a list of lines, then sort the list, and then write the sorted list back to another file:
 
+```python
+f = open("friends.txt", "r")
+xs = f.readlines()
+f.close()
+
+xs.sort()
+
+g = open("sortedfriends.txt", "w")
+for v in xs:
+    g.write(v)
+g.close()
+```
+
 The `readlines` method in line 2 reads all the lines and returns a list of the strings.
 
 We could have used the template from the previous section to read each line one-at-a-time, and to build up the list ourselves, but it is a lot easier to use the method that the Python implementors gave us!
@@ -81,19 +103,26 @@ Another way of working with text files is to read the complete contents of the f
 
 We'd normally use this method of processing files if we were not interested in the line structure of the file. For example, we've seen the `split` method on strings which can break a string into words. So here is how we might count the number of words in a file:
 
+```python
+f = open("somefile.txt")
+content = f.read()
+f.close()
+
+words = content.split()
+print("There are {0} words in the file.".format(len(words)))
+```
+
 Notice here that we left out the `"r"` mode in line 1. By default, if we don't supply the mode, Python opens the file for reading.
 
-Your file paths may need to be explicitly named.
+**Your file paths may need to be explicitly named.**
 
-In the above example, we're assuming that the file `somefile.txt` is in the same directory as your Python source code. If this is not the case, you may need to provide a full or a relative path to the file. On
-Windows, a full path could look like `"C:\\temp\\somefile.txt"`, while on a Unix system the full path could be `"/home/jimmy/somefile.txt"`.
+In the above example, we're assuming that the file `somefile.txt` is in the same directory as your Python source code. If this is not the case, you may need to provide a full or a relative path to the file. On Windows, a full path could look like `"C:\\temp\\somefile.txt"`, while on a Unix system the full path could be `"/home/jimmy/somefile.txt"`.
 
 We'll return to this later in this chapter.
 
 ## 13.6. Working with binary files
 
-Files that hold photographs, videos, zip files, executable programs, etc. are called **binary** files: they're not organized into lines, and cannot be opened with a normal text editor. Python works just as easily
-with binary files, but when we read from the file we're going to get bytes back rather than a string. Here we'll copy one binary file to another:
+Files that hold photographs, videos, zip files, executable programs, etc. are called **binary** files: they're not organized into lines, and cannot be opened with a normal text editor. Python works just as easily with binary files, but when we read from the file we're going to get bytes back rather than a string. Here we'll copy one binary file to another:
 
 ```python
 f = open("somefile.zip", "rb")
@@ -119,16 +148,29 @@ Many useful line-processing programs will read a text file line-at-a-time and do
 
 Here is a filter that copies one file to another, omitting any lines that begin with `#`:
 
+```python
+ def filter(oldfile, newfile):
+     infile = open(oldfile, "r")
+     outfile = open(newfile, "w")
+     while True:
+         text = infile.readline()
+         if len(text) == 0:
+            break
+         if text[0] == "#":
+            continue
+
+         # Put any more processing logic here
+         outfile.write(text)
+
+     infile.close()
+     outfile.close()
+```
+
 The `continue` statement at line 9 skips over the remaining lines in the current iteration of the loop, but the loop will still iterate. This style looks a bit contrived here, but it is often useful to say *"get the lines we're not concerned with out of the way early, so that we have cleaner more focused logic in the meaty part of the loop that might be written around line 11."*
 
 Thus, if `text` is the empty string, the loop exits. If the first character of `text` is a hash mark, the flow of execution goes to the top of the loop, ready to start processing the next line. Only if both conditions fail do we fall through to do the processing at line 11, in this example, writing the line into the new file.
 
-Let's consider one more case: suppose our original file contained empty lines. At line 6 above, would this program find the first empty line in the file, and terminate immediately? No! Recall that `readline` always
-includes the newline character in the string it returns. It is only when we try to read *beyond* the end of the file that we get back the empty string of length 0.
-
-```python
-directory
-```
+Let's consider one more case: suppose our original file contained empty lines. At line 6 above, would this program find the first empty line in the file, and terminate immediately? No! Recall that `readline` always includes the newline character in the string it returns. It is only when we try to read *beyond* the end of the file that we get back the empty string of length 0.
 
 ## 13.8. Directories
 
@@ -186,11 +228,11 @@ def retrieve_page(url):
         The contents is converted to a string before returning it.
     """
     my_socket = urllib.request.urlopen(url)
-    dta = str(my_socket.readall())  
+    dta = str(my_socket.read())  
     my_socket.close()
     return dta        
 
-the_text = retrieve_page("http://xml.resource.org/public/rfc/txt/rfc793.txt")
+the_text = retrieve_page("https://www.ietf.org/rfc/rfc793.txt")
 print(the_text)
 ```
 
@@ -199,56 +241,54 @@ object in much the same way as we can work with a file handle.
 
 ## 13.10. Glossary
 
-```
-delimiter  
-    A sequence of one or more characters used to specify the boundary
-    between separate parts of text.
+**delimiter**
+A sequence of one or more characters used to specify the boundary
+between separate parts of text.
 
-directory  
-    A named collection of files, also called a folder. Directories can
-    contain files and other directories, which are referred to as
-    *subdirectories* of the directory that contains them.
+**directory**
+A named collection of files, also called a folder. Directories can
+contain files and other directories, which are referred to as
+*subdirectories* of the directory that contains them.
 
-file  
-    A named entity, usually stored on a hard drive, floppy disk, or CD-ROM,
-    that contains a stream of characters.
+**file**
+A named entity, usually stored on a hard drive, floppy disk, or CD-ROM,
+that contains a stream of characters.
 
-file system  
-    A method for naming, accessing, and organizing files and the data they
-    contain.
+**file system**
+A method for naming, accessing, and organizing files and the data they
+contain.
 
-handle  
-    An object in our program that is connected to an underlying resource
-    (e.g. a file). The file handle lets our program
-    manipulate/read/write/close the actual file that is on our disk.
+**handle**
+An object in our program that is connected to an underlying resource
+(e.g. a file). The file handle lets our program
+manipulate/read/write/close the actual file that is on our disk.
 
-mode  
-    A distinct method of operation within a computer program. Files in
-    Python can be opened in one of four modes: read (`"r"`), write (`"w"`),
-    append (`"a"`), and read and write (`"+"`).
+**mode**
+A distinct method of operation within a computer program. Files in
+Python can be opened in one of four modes: read (`"r"`), write (`"w"`),
+append (`"a"`), and read and write (`"+"`).
 
-non-volatile memory  
-    Memory that can maintain its state without power. Hard drives, flash
-    drives, and rewritable compact disks (CD-RW) are each examples of
-    non-volatile memory.
+**non-volatile memory**
+Memory that can maintain its state without power. Hard drives, flash
+drives, and rewritable compact disks (CD-RW) are each examples of
+non-volatile memory.
 
-path  
-    A sequence of directory names that specifies the exact location of a
-    file.
+**path**
+A sequence of directory names that specifies the exact location of a
+file.
 
-text file  
-    A file that contains printable characters organized into lines separated
-    by newline characters.
+**text file**
+A file that contains printable characters organized into lines separated
+by newline characters.
 
-socket  
-    One end of a connection allowing one to read and write information to or
-    from another computer.
+**socket**
+One end of a connection allowing one to read and write information to or
+from another computer.
 
-volatile memory  
-    Memory which requires an electrical current to maintain state. The *main
-    memory* or RAM of a computer is volatile. Information stored in RAM is
-    lost when the computer is turned off.
-```
+**volatile memory**
+Memory which requires an electrical current to maintain state. The *main
+memory* or RAM of a computer is volatile. Information stored in RAM is
+lost when the computer is turned off.
 
 ## 13.11. Exercises
 
