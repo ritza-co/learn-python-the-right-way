@@ -1,6 +1,6 @@
 # Learn Python the Right Way
 
-This is the book available on https://learnpythontherightway.com.
+This is the source of the book available on https://learnpythontherightway.com.
 
 It is a work-in-progress translation of How to Think Like a Computer Scientist [github](https://github.com/csev/py4e) [website](https://openbookproject.net/thinkcs/python/english3e/index.html).
 
