@@ -5,7 +5,7 @@ lists.
 
 As in all parts of this book, our expectation is that you, the reader, will copy our code into your Python environment, play and experiment, and work along with us.
 
-Part of this chapter works with the book `Alice in Wonderland` and a `vocabulary file`. Your browser should be able to download and save these files from these links.
+Part of this chapter works with the book *Alice in Wonderland* and a *vocabulary file*. Download these two files to your local machine at the following links. [https://learnpythontherightway.com/_downloads/alice_in_wonderland.txt](https://learnpythontherightway.com/_downloads/alice_in_wonderland.txt) and [https://learnpythontherightway.com/_downloads/vocab.txt](https://learnpythontherightway.com/_downloads/vocab.txt).
 
 ## 14.1. Test-driven development
 
@@ -68,8 +68,7 @@ our list? What happens for really large datasets, e.g. how does Google search so
 As children learn to read, there are expectations that their vocabulary will grow. So a child of age 14 is expected to know more words than a child of age 8. When prescribing reading books for a grade, an important
 question might be *"which words in this book are not in the expected vocabulary at this level?"*
 
-Let us assume we can read a vocabulary of words into our program, and read the text of a book, and split it into words. Let us write some tests for what we need to do next. Test data can usually be very small,
-even if we intend to finally use our program for larger cases:
+Let us assume we can read a vocabulary of words into our program, and read the text of a book, and split it into words. Let us write some tests for what we need to do next. Test data can usually be very small, even if we intend to finally use our program for larger cases:
 
 ```python
 vocab = ["apple", "boy", "dog", "down", 
@@ -82,8 +81,7 @@ test(find_unknown_words(vocab, ["the", "boy", "fell"]) == [])
 
 Notice we were a bit lazy, and used `split` to create our list of words ---it is easier than typing out the list, and very convenient if you want to input a sentence into the program and turn it into a list of words.
 
-We now need to implement the function for which we've written tests, and we'll make use of our linear search. The basic strategy is to run through each of the words in the book, look it up in the vocabulary, and
-if it is not in the vocabulary, save it into a new resulting list which we return from the function:
+We now need to implement the function for which we've written tests, and we'll make use of our linear search. The basic strategy is to run through each of the words in the book, look it up in the vocabulary, and if it is not in the vocabulary, save it into a new resulting list which we return from the function:
 
 ```python
 def find_unknown_words(vocab, wds):
@@ -97,7 +95,11 @@ def find_unknown_words(vocab, wds):
 
 We can happily report now that the tests all pass.
 
-Now let us look at the scalability. We have more realistic vocabulary in the text file that could be downloaded at the beginning of this chapter, so let us read in the file (as a single string) and split it into a list of words. For convenience, we'll create a function to do this for us, and test it on a file we happen to have available:
+Now let us look at the scalability. We have more realistic vocabulary in the text file that could be downloaded at the beginning of this chapter. Upload the `vocab.txt` file to a new repl so that you can access it from your code.
+
+![](Chapter-14/upload-example.png)
+
+Now let us read in the file (as a single string) and split it into a list of words. For convenience, we'll create a function to do this for us, and test it on the vocab file.
 
 ```python
 def load_words_from_file(filename):
@@ -131,6 +133,24 @@ test(text_to_words('"Well, I never!", said Alice.') ==
 
 There is a powerful `translate` method available for strings. The idea is that one sets up desired substitutions --- for every character, we can give a corresponding replacement character. The `translate` method will apply these replacements throughout the whole string. So here we go:
 
+```python
+def text_to_words(the_text):
+    """ return a list of words with all punctuation removed,
+        and all in lowercase.
+    """
+
+    my_substitutions = the_text.maketrans(
+      # If you find any of these
+      "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\"#$%&()*+,-./:;<=>?@[]^_`{|}~'\\",
+      # Replace them by these
+      "abcdefghijklmnopqrstuvwxyz                                          ")
+
+    # Translate the text now.
+    cleaned_text = the_text.translate(my_substitutions)
+    wds = cleaned_text.split()
+    return wds
+```
+
 The translation turns all uppercase characters into lowercase, and all punctuation characters and digits into spaces. Then, of course, `split` will get rid of the spaces as it breaks the text into a list of words.
 The tests pass.
 
@@ -145,7 +165,7 @@ def get_words_in_book(filename):
     wds = text_to_words(content)
     return wds
 
-book_words = get_words_in_book("AliceInWonderland.txt")
+book_words = get_words_in_book("alice_in_wonderland.txt")
 print("There are {0} words in the book, the first 100 are\n{1}".
            format(len(book_words), book_words[:100]))
 ```
@@ -378,7 +398,7 @@ Let us go back now to our analysis of Alice in Wonderland. Before checking the w
 vocabulary, we'll sort those words into order, and eliminate duplicates. So our new code looks like this:
 
 ```python
-all_words = get_words_in_book("AliceInWonderland.txt")
+all_words = get_words_in_book("alice_in_wonderland.txt")
 all_words.sort()
 book_words = remove_adjacent_dups(all_words)
 print("There are {0} words in the book. Only {1} are unique.".
@@ -773,43 +793,41 @@ In the chapter on PyGame we plan to write a module to draw the board with its qu
 
 ## 14.10. Glossary
 
-```
-binary search  
-    A famous algorithm that searches for a target in a sorted list. Each
-    probe in the list allows us to discard half the remaining items, so the
-    algorithm is very efficient.
+**binary search**
+A famous algorithm that searches for a target in a sorted list. Each
+probe in the list allows us to discard half the remaining items, so the
+algorithm is very efficient.
 
-linear  
-    Relating to a straight line. Here, we talk about graphing how the time
-    taken by an algorithm depends on the size of the data it is processing.
-    Linear algorithms have straight-line graphs that can describe this
-    relationship.
+**linear**
+Relating to a straight line. Here, we talk about graphing how the time
+taken by an algorithm depends on the size of the data it is processing.
+Linear algorithms have straight-line graphs that can describe this
+relationship.
 
-linear search  
-    A search that probes each item in a list or sequence, from first, until
-    it finds what it is looking for. It is used for searching for a target
-    in unordered lists of items.
+**linear search**
+A search that probes each item in a list or sequence, from first, until
+it finds what it is looking for. It is used for searching for a target
+in unordered lists of items.
 
-Merge algorithm  
-    An efficient algorithm that merges two already sorted lists, to produce
-    a sorted list result. The merge algorithm is really a pattern of
-    computation that can be adapted and reused for various other scenarios,
-    such as finding words that are in a book, but not in a vocabulary.
+**Merge algorithm**
+An efficient algorithm that merges two already sorted lists, to produce
+a sorted list result. The merge algorithm is really a pattern of
+computation that can be adapted and reused for various other scenarios,
+such as finding words that are in a book, but not in a vocabulary.
 
-probe  
-    Each time we take a look when searching for an item is called a probe.
-    In our chapter on <span class="title-ref">Iteration</span> we also
-    played a guessing game where the computer tried to guess the user's
-    secret number. Each of those tries would also be called a probe.
+**probe**
+Each time we take a look when searching for an item is called a probe.
+In our chapter on <span class="title-ref">Iteration</span> we also
+played a guessing game where the computer tried to guess the user's
+secret number. Each of those tries would also be called a probe.
 
-test-driven development (TDD)  
-    A software development practice which arrives at a desired feature
-    through a series of small, iterative steps motivated by automated tests
-    which are *written first* that express increasing refinements of the
-    desired feature. (see the Wikipedia article on [Test-driven
-    development](http://en.wikipedia.org/wiki/Test_driven_development) for
-    more information.)
-```
+**test-driven development (TDD)**
+A software development practice which arrives at a desired feature
+through a series of small, iterative steps motivated by automated tests
+which are *written first* that express increasing refinements of the
+desired feature. (see the Wikipedia article on [Test-driven
+development](http://en.wikipedia.org/wiki/Test_driven_development) for
+more information.)
 
 ## 14.11. Exercises
 
