@@ -156,7 +156,7 @@ The `x` and `y` parameters here are both optional. If the caller does not supply
 4 3 0 
 ```
 
-Technically speaking ...
+**Technically speaking ...**
 
 If we are really fussy, we would argue that the `__init__` method's docstring is inaccurate. `__init__` doesn't *create* the object (i.e. set aside memory for it), --- it just initializes the object to its
 factory-default settings after its creation.
@@ -366,53 +366,51 @@ a payment. Making a payment would include an amount, and a description, so that 
 
 ## 15.11. Glossary
 
-```
-attribute  
-    One of the named data items that makes up an instance.
+**attribute**
+One of the named data items that makes up an instance.
 
-class  
-    A user-defined compound type. A class can also be thought of as a
-    template for the objects that are instances of it. (The iPhone is a
-    class. By December 2010, estimates are that 50 million instances had
-    been sold!)
+**class**
+A user-defined compound type. A class can also be thought of as a
+template for the objects that are instances of it. (The iPhone is a
+class. By December 2010, estimates are that 50 million instances had
+been sold!)
 
-constructor  
-    Every class has a "factory", called by the same name as the class, for
-    making new instances. If the class has an *initializer method*, this
-    method is used to get the attributes (i.e. the state) of the new object
-    properly set up.
+**constructor**
+Every class has a "factory", called by the same name as the class, for
+making new instances. If the class has an *initializer method*, this
+method is used to get the attributes (i.e. the state) of the new object
+properly set up.
 
-initializer method  
-    A special method in Python (called `__init__`) that is invoked
-    automatically to set a newly created object's attributes to their
-    initial (factory-default) state.
+**initializer method**
+A special method in Python (called `__init__`) that is invoked
+automatically to set a newly created object's attributes to their
+initial (factory-default) state.
 
-instance  
-    An object whose type is of some class. Instance and object are used
-    interchangeably.
+**instance**
+An object whose type is of some class. Instance and object are used
+interchangeably.
 
-instantiate  
-    To create an instance of a class, and to run its initializer.
+**instantiate**
+To create an instance of a class, and to run its initializer.
 
-method  
-    A function that is defined inside a class definition and is invoked on
-    instances of that class.
+**method**
+A function that is defined inside a class definition and is invoked on
+instances of that class.
 
-object  
-    A compound data type that is often used to model a thing or concept in
-    the real world. It bundles together the data and the operations that are
-    relevant for that kind of data. Instance and object are used
-    interchangeably.
+**object**
+A compound data type that is often used to model a thing or concept in
+the real world. It bundles together the data and the operations that are
+relevant for that kind of data. Instance and object are used
+interchangeably.
 
-object-oriented programming  
-    A powerful style of programming in which data and the operations that
-    manipulate it are organized into objects.
+**object-oriented programming**
+A powerful style of programming in which data and the operations that
+manipulate it are organized into objects.
 
-object-oriented language  
-    A language that provides features, such as user-defined classes and
-    inheritance, that facilitate object-oriented programming.
+**object-oriented language**
+A language that provides features, such as user-defined classes and
+inheritance, that facilitate object-oriented programming.
 
-```
 
 ## 15.12. Exercises
 
@@ -423,25 +421,25 @@ object-oriented language
     about the x-axis. For example, `Point(3, 5).reflect_x()` is (3, -5)
 
 3.  Add a method `slope_from_origin` which returns the slope of the line joining the origin to the point. For 
-    example, :
+    example:
 
-        ```python
-        >>> Point(4, 10).slope_from_origin()
-        2.5 
-        ```    
+```python
+>>> Point(4, 10).slope_from_origin()
+2.5 
+```    
 
-    What cases will cause this method to fail?
+What cases will cause this method to fail?
 
 4.  The equation of a straight line is "y = ax + b", (or perhaps "y = mx + c"). The coefficients a and b 
     completely describe the line. Write a method in the `Point` class so that if a point instance is
     given another point, it will compute the equation of the straight ine joining the two points. It must return the two coefficients as a tuple of two values. For example, :
 
-        ```python
-        >>> print(Point(4, 11).get_line_to(Point(6, 15))) 
-        >>> (2, 3)
-        ```
+```python
+>>> print(Point(4, 11).get_line_to(Point(6, 15))) 
+>>> (2, 3)
+```
 
-    This tells us that the equation of the line joining the two points is "y = 2x + 3". When will this method fail?
+This tells us that the equation of the line joining the two points is "y = 2x + 3". When will this method fail?
 
 5.  Given four points that fall on the circumference of a circle, find the midpoint of the circle. When will 
     this function fail?
@@ -452,31 +450,37 @@ object-oriented language
 6.  Create a new class, SMS\_store. The class will instantiate SMS\_store objects, similar to an inbox or 
     outbox on a cellphone:
 
-        my_inbox = SMS_store()
+```python
+my_inbox = SMS_store()
+```
 
-    This store can hold multiple SMS messages (i.e. its internal state will just be a list of messages). Each message will be represented as a tuple:
+This store can hold multiple SMS messages (i.e. its internal state will just be a list of messages). Each message will be represented as a tuple:
 
-        (has_been_viewed, from_number, time_arrived, text_of_SMS) 
+```python
+(has_been_viewed, from_number, time_arrived, text_of_SMS) 
+```
 
-    The inbox object should provide these methods:
+The inbox object should provide these methods:
 
-        my_inbox.add_new_arrival(from_number, time_arrived, text_of_SMS)    
-          # Makes new SMS tuple, inserts it after other messages 
-          # in the store. When creating this message, its 
-          # has_been_viewed status is set False.
+```python
+my_inbox.add_new_arrival(from_number, time_arrived, text_of_SMS)    
+  # Makes new SMS tuple, inserts it after other messages 
+  # in the store. When creating this message, its 
+  # has_been_viewed status is set False.
 
-        my_inbox.message_count()         
-          # Returns the number of sms messages in my_inbox
+my_inbox.message_count()         
+  # Returns the number of sms messages in my_inbox
 
-        my_inbox.get_unread_indexes()    
-          # Returns list of indexes of all not-yet-viewed SMS messages
+my_inbox.get_unread_indexes()    
+  # Returns list of indexes of all not-yet-viewed SMS messages
 
-        my_inbox.get_message(i)          
-          # Return (from_number, time_arrived, text_of_sms) for message[i]
-          # Also change its state to "has been viewed".
-          # If there is no message at position i, return None
+my_inbox.get_message(i)          
+  # Return (from_number, time_arrived, text_of_sms) for message[i]
+  # Also change its state to "has been viewed".
+  # If there is no message at position i, return None
 
-        my_inbox.delete(i)     # Delete the message at index i
-        my_inbox.clear()       # Delete all messages from inbox
+my_inbox.delete(i)     # Delete the message at index i
+my_inbox.clear()       # Delete all messages from inbox
+```
 
-    Write the class, create a message store object, write tests for these methods, and implement the methods.
+Write the class, create a message store object, write tests for these methods, and implement the methods.
