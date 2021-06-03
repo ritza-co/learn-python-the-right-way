@@ -351,7 +351,7 @@ if __name__ == "__main__":
 There is one more thing worth reviewing here. The conditional statement on line 50 tests whether the name of the currently executing program is `__main__`. This allows us to distinguish whether this module is being
 run as a main program, or whether it has been imported elsewhere, and used as a module. If we run this module in Python, the test cases in lines 51-54 will be executed. However, if we import this module into another program (i.e. our N queens solver from earlier) the condition at line 50 will be false, and the statements on lines 51-54 won't run.
 
-In the section `eightqueensmainprog` our main program looked like this:
+In Chapter 14, (14.9. Eight Queens puzzle, part 2) our main program looked like this:
 
 ```python
 def main():
