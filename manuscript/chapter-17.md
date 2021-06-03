@@ -122,7 +122,7 @@ ball = pygame.image.load("ball.png")
 and after line 28 in the program above, we'd add this code to display our image at position (100,120):
 
 ```python
-main_surface.blit(ball, (100, 120))
+main_surface.blit(ball, (50, 70))
 ```
 
 To display text, we need do do three things. Before we enter the game loop, we instantiate a `font` object:
@@ -144,6 +144,8 @@ main_surface.blit(the_text, (10, 10))
 We'll demonstrate these two new features by counting the frames --- the iterations of the game loop --- and keeping some timing information. On each frame, we'll display the frame count, and the frame rate. We will
 only update the frame rate after every 500 frames, when we'll look at the timing interval and can do the calculations.
 
+First download an image of a beach ball. You can find one at https://learnpythontherightway.com/_downloads/ball.png. Upload it to your repl by using the "Upload file" menu. Now you can run the following code.
+
 ```python
 import pygame     
 import time
@@ -162,7 +164,7 @@ def main():
 
     frame_count = 0
     frame_rate = 0
-    t0 = time.clock()
+    t0 = time.process_time()
 
     while True:
 
@@ -174,7 +176,7 @@ def main():
         # Do other bits of logic for the game here
         frame_count += 1
         if frame_count % 500 == 0:
-            t1 = time.clock()
+            t1 = time.process_time()
             frame_rate = 500 / (t1-t0)
             t0 = t1
 
@@ -185,7 +187,7 @@ def main():
         main_surface.fill((255,0,0), (300, 100, 150, 90))
 
         # Copy our image to the surface, at this (x,y) posn
-        main_surface.blit(ball, (100, 120))
+        main_surface.blit(ball, (50, 70))
 
         # Make a new surface with an image of the text
         the_text = my_font.render("Frame = {0},  rate = {1:.2f} fps"
@@ -266,9 +268,9 @@ In this chapter we already have a beach ball image, so we'll use that for our qu
 
 ```python
 surface.blit(ball, (col * sq_sz, row * sq_sz))
-
-.. image:: illustrations/pygame_screenshot04.png
 ```
+
+![](Chapter-17/pygame_screenshot04.png)
 
 We're getting there, but those queens need to be centred in their squares! Our problem arises from the fact that both the ball and the rectangle have their upper left corner as their reference points. If we're going to centre this ball in the square, we need to give it an extra offset in both the x and y direction. (Since the ball is round and the square is square, the offset in the two directions will be the same, so we'll just compute a single offset value, and use it in both directions.)
 
@@ -370,7 +372,9 @@ main()
 
 Now we just need two changes. At the top of that program, we import the module that we've been working on here (assume we called it `draw_queens`). (You'll have to ensure that the two modules are saved in the same folder.) Then after line 10 here we add a call to draw the solution that we've just discovered:
 
-    draw_queens.draw_board(bd)
+```python
+draw_queens.draw_board(bd)
+```
 
 And that gives a very satisfying combination of program that can search for solutions to the N queens problem, and when it finds each, it pops up the board showing the solution.
 
@@ -816,52 +820,49 @@ of target positions, and so on --- our code would likely have been much more com
 
 ## 17.9. Glossary
 
-```
-animation rate  
-    The rate at which we play back successive patches to create the illusion
-    of movement. In the sample we considered in this chapter, we played
-    Duke's 10 patches over the duration of one second. Not the same as the
-    frame rate.
+**animation rate**
+The rate at which we play back successive patches to create the illusion
+of movement. In the sample we considered in this chapter, we played
+Duke's 10 patches over the duration of one second. Not the same as the
+frame rate.
 
-baked animation  
-    An animation that is designed to look good at a predetermined fixed
-    frame rate. This reduces the amount of computation that needs to be done
-    when the game is running. High-end commercial games usually bake their
-    animations.
+**baked animation**
+An animation that is designed to look good at a predetermined fixed
+frame rate. This reduces the amount of computation that needs to be done
+when the game is running. High-end commercial games usually bake their
+animations.
 
-blit  
-    A verb used in computer graphics, meaning to make a fast copy of an
-    image or pixels from a sub-rectangle of one image or surface to another
-    surface or image.
+**blit**
+A verb used in computer graphics, meaning to make a fast copy of an
+image or pixels from a sub-rectangle of one image or surface to another
+surface or image.
 
-frame rate  
-    The rate at which the game loop executes and updates the display.
+**frame rate**
+The rate at which the game loop executes and updates the display.
 
-game loop  
-    A loop that drives the logic of a game. It will usually poll for events,
-    then update each of the objects in the game, then get everything drawn,
-    and then put the newly drawn frame on display.
+**game loop**
+A loop that drives the logic of a game. It will usually poll for events,
+then update each of the objects in the game, then get everything drawn,
+and then put the newly drawn frame on display.
 
-pixel  
-    A single picture element, or dot, from which images are made.
+**pixel**
+A single picture element, or dot, from which images are made.
 
-poll  
-    To ask whether something like a keypress or mouse movement has happened.
-    Game loops usually poll to discover what events have occurred. This is
-    different from event-driven programs like the ones seen in the chapter
-    titled "Events". In those cases, the button click or keypress event
-    triggers the call of a handler function in your program, but this
-    happens behind your back.
+**poll**
+To ask whether something like a keypress or mouse movement has happened.
+Game loops usually poll to discover what events have occurred. This is
+different from event-driven programs like the ones seen in the chapter
+titled "Events". In those cases, the button click or keypress event
+triggers the call of a handler function in your program, but this
+happens behind your back.
 
-sprite  
-    An active agent or element in a game, with its own state, position and
-    behaviour.
+**sprite**
+An active agent or element in a game, with its own state, position and
+behaviour.
 
-surface  
-    This is PyGame's term for what the Turtle module calls a *canvas*. A
-    surface is a rectangle of pixels used for displaying shapes and images.
-
-```
+**surface**
+This is PyGame's term for what the Turtle module calls a *canvas*. A
+surface is a rectangle of pixels used for displaying shapes and images.
 
 ## 17.10. Exercises
 
