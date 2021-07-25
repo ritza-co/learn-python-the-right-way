@@ -202,9 +202,9 @@ while we think about how we can improve this in the next section.
 ```python
 import time
 
-t0 = time.clock()
+t0 = time.process_time()
 missing_words = find_unknown_words(bigger_vocab, book_words) 
-t1 = time.clock()
+t1 = time.process_time()
 print("There are {0} unknown words.".format(len(missing_words)))
 print("That took {0:.4f} seconds.".format(t1-t0))
 ```
@@ -276,9 +276,9 @@ With this code in place, our tests pass. Great. Now if we substitute a call to t
 again run this test:
 
 ```python
-t0 = time.clock()
+t0 = time.process_time()
 missing_words = find_unknown_words(bigger_vocab, book_words) 
-t1 = time.clock()
+t1 = time.process_time()
 print("There are {0} unknown words.".format(len(missing_words)))
 print("That took {0:.4f} seconds.".format(t1-t0))
 ```

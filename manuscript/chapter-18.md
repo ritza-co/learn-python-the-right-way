@@ -406,31 +406,34 @@ Another interesting effect --- instructive too, if you wish to reinforce the ide
 
 ## 18.7. Glossary
 
-```
-base case  
-    A branch of the conditional statement in a recursive function that does
-    not give rise to further recursive calls.
+**base case**
 
-infinite recursion  
-    A function that calls itself recursively without ever reaching any base
-    case. Eventually, infinite recursion causes a runtime error.
+A branch of the conditional statement in a recursive function that does
+not give rise to further recursive calls.
 
-recursion  
-    The process of calling a function that is already executing.
+**infinite recursion**
 
-recursive call  
-    The statement that calls an already executing function. Recursion can
-    also be indirect --- function f can call
-    g which calls h, and h could make a call back to f.
+A function that calls itself recursively without ever reaching any base
+case. Eventually, infinite recursion causes a runtime error.
 
-recursive definition  
-    A definition which defines something in terms of itself. To be useful it
-    must include *base cases* which are not recursive. In this way it
-    differs from a *circular definition*. Recursive definitions often
-    provide an elegant way to express complex data structures, like a
-    directory that can contain other directories, or a menu that can contain
-    other menus.
-```
+**recursion**
+
+The process of calling a function that is already executing.
+
+**recursive call**
+
+The statement that calls an already executing function. Recursion can
+also be indirect --- function f can call
+g which calls h, and h could make a call back to f.
+
+**recursive definition**
+
+A definition which defines something in terms of itself. To be useful it
+must include *base cases* which are not recursive. In this way it
+differs from a *circular definition*. Recursive definitions often
+provide an elegant way to express complex data structures, like a
+directory that can contain other directories, or a menu that can contain
+other menus.
 
 ## 18.8. Exercises
 
@@ -443,16 +446,14 @@ recursive definition
         We show four different lines of orders 0,1,2,3. In this example,
         the angle of the tear is 10 degrees.
 
-        ![](Chapter-18/cesaro_torn_line.png)
+    ![](Chapter-18/cesaro_torn_line.png)
 
     2.  Four lines make a square. Use the code in part a) to draw cesaro
         squares. Varying the angle gives interesting effects ---
         experiment a bit, or perhaps let the user input the angle of the
         tear.
 
-        ![](Chapter-18/cesaro_torn_square.png)
-
-        fractal; Sierpinski triangle
+    ![](Chapter-18/cesaro_torn_square.png)
 
 
     3.  (For the mathematically inclined). In the squares shown here,
@@ -479,35 +480,35 @@ recursive definition
 5.  Write a function, `recursive_min`, that returns the smallest value in a nested number list. Assume there 
     are no empty lists or sublists:
 
-    ```python
-    test(recursive_min([2, 9, [1, 13], 8, 6]) == 1)
-    test(recursive_min([2, [[100, 1], 90], [10, 13], 8, 6]) == 1)
-    test(recursive_min([2, [[13, -7], 90], [1, 100], 8, 6]) == -7)
-    test(recursive_min([[[-13, 7], 90], 2, [1, 100], 8, 6]) == -13)
-    ```
+```python
+test(recursive_min([2, 9, [1, 13], 8, 6]) == 1)
+test(recursive_min([2, [[100, 1], 90], [10, 13], 8, 6]) == 1)
+test(recursive_min([2, [[13, -7], 90], [1, 100], 8, 6]) == -7)
+test(recursive_min([[[-13, 7], 90], 2, [1, 100], 8, 6]) == -13)
+```
 
 6.  Write a function `count` that returns the number of occurrences of `target` in a nested list:
 
-    ```python
-    test(count(2, []), 0)
-    test(count(2, [2, 9, [2, 1, 13, 2], 8, [2, 6]]) == 4)
-    test(count(7, [[9, [7, 1, 13, 2], 8], [7, 6]]) == 2)
-    test(count(15, [[9, [7, 1, 13, 2], 8], [2, 6]]) == 0)
-    test(count(5, [[5, [5, [1, 5], 5], 5], [5, 6]]) == 6)
-    test(count("a", 
-         [["this",["a",["thing","a"],"a"],"is"], ["a","easy"]]) == 4)
-    ```
+```python
+test(count(2, []), 0)
+test(count(2, [2, 9, [2, 1, 13, 2], 8, [2, 6]]) == 4)
+test(count(7, [[9, [7, 1, 13, 2], 8], [7, 6]]) == 2)
+test(count(15, [[9, [7, 1, 13, 2], 8], [2, 6]]) == 0)
+test(count(5, [[5, [5, [1, 5], 5], 5], [5, 6]]) == 6)
+test(count("a", 
+     [["this",["a",["thing","a"],"a"],"is"], ["a","easy"]]) == 4)
+```
 
 7.  Write a function `flatten` that returns a simple list containing all the values in a nested list:
 
-    ```python
-    test(flatten([2,9,[2,1,13,2],8,[2,6]]) == [2,9,2,1,13,2,8,2,6])
-    test(flatten([[9,[7,1,13,2],8],[7,6]]) == [9,7,1,13,2,8,7,6])
-    test(flatten([[9,[7,1,13,2],8],[2,6]]) == [9,7,1,13,2,8,2,6])
-    test(flatten([["this",["a",["thing"],"a"],"is"],["a","easy"]]) ==
-                  ["this","a","thing","a","is","a","easy"])
-    test(flatten([]) == [])
-    ```
+```python
+test(flatten([2,9,[2,1,13,2],8,[2,6]]) == [2,9,2,1,13,2,8,2,6])
+test(flatten([[9,[7,1,13,2],8],[7,6]]) == [9,7,1,13,2,8,7,6])
+test(flatten([[9,[7,1,13,2],8],[2,6]]) == [9,7,1,13,2,8,2,6])
+test(flatten([["this",["a",["thing"],"a"],"is"],["a","easy"]]) ==
+              ["this","a","thing","a","is","a","easy"])
+test(flatten([]) == [])
+```
 
 8.  Rewrite the fibonacci algorithm without using recursion. Can you find bigger terms of the sequence? Can 
     you find `fib(200)`?
@@ -529,6 +530,6 @@ recursive definition
 11. Write a program named `litter.py` that creates an empty file named `trash.txt` in each subdirectory of a 
     directory tree given the root of the tree as an argument (or the current directory as a default). Now write a program named `cleanup.py` that removes all these files.
 
-    *Hint \#1:* Use the program from the example in the last section of this chapter as a basis for these two recursive programs. Because you're going to destroy files on your disks, you better get this right, or you risk losing files you care about. So excellent advice is that initially you should fake the deletion of the files --- just print the full path names of each file that you intend to delete. Once you're happy that your logic is correct, and you can see that you're not deleting the wrong things, you can replace the print statement with the real thing.
+**Hint \#1:** Use the program from the example in the last section of this chapter as a basis for these two recursive programs. Because you're going to destroy files on your disks, you better get this right, or you risk losing files you care about. So excellent advice is that initially you should fake the deletion of the files --- just print the full path names of each file that you intend to delete. Once you're happy that your logic is correct, and you can see that you're not deleting the wrong things, you can replace the print statement with the real thing.
 
-    *Hint \#2:* Look in the `os` module for a function that removes files.
+**Hint \#2:** Look in the `os` module for a function that removes files.

@@ -135,9 +135,9 @@ xs = make_random_ints_no_dups(10, 1, 6)
 
 ## 12.2. The `time` module
 
-As we start to work with more sophisticated algorithms and bigger programs, a natural concern is *"is our code efficient?"* One way to experiment is to time how long various operations take. The `time` module has a function called `clock` that is recommended for this purpose. Whenever `clock` is called, it returns a floating point number representing how many seconds have elapsed since your program started running.
+As we start to work with more sophisticated algorithms and bigger programs, a natural concern is *"is our code efficient?"* One way to experiment is to time how long various operations take. The `time` module has a function called `process_time` that is recommended for this purpose. Whenever `process_time` is called, it returns a floating point number representing how many seconds have elapsed since your program started running.
 
-The way to use it is to call `clock` and assign the result to a variable, say `t0`, just before you start executing the code you want to measure. Then after execution, call `clock` again, (this time we'll save
+The way to use it is to call `process_time` assign the result to a variable, say `t0`, just before you start executing the code you want to measure. Then after execution, call `process_time` again, (this time we'll save
 the result in variable `t1`). The difference `t1-t0` is the time elapsed, and is a measure of how fast your program is running.
 
 Let's try a small example. Python has a built-in `sum` function that can sum the elements in a list. We can also write our own. How do we think they would compare for speed? We'll try to do the summation of a list
@@ -155,15 +155,15 @@ def do_my_sum(xs):
 sz = 10000000        # Lets have 10 million elements in the list
 testdata = range(sz)
 
-t0 = time.clock()
+t0 = time.process_time()
 my_result = do_my_sum(testdata)
-t1 = time.clock()
+t1 = time.process_time()
 print("my_result    = {0} (time taken = {1:.4f} seconds)"
         .format(my_result, t1-t0))
 
-t2 = time.clock()
+t2 = time.process_time()
 their_result = sum(testdata)
-t3 = time.clock()
+t3 = time.process_time()
 print("their_result = {0} (time taken = {1:.4f} seconds)"
         .format(their_result, t3-t2))
 ```
