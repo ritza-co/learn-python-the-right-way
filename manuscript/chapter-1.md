@@ -14,25 +14,26 @@ As you might infer from the name high-level language, there are also **low-level
 
 Almost all programs are written in high-level languages because of their advantages. It is much easier to program in a high-level language so programs take less time to write, they are shorter and easier to read, and they are more likely to be correct. Second, high-level languages are **portable**, meaning that they can run on different kinds of computers with few or no modifications.
 
+In this edition of the textbook, we use an online programming environment called **Replit**. To follow along with the examples and complete the exercises, all you need is a free account - just navigate to https://replit.com and complete the sign up process.
+
+Once you have an account, create a new repl and choose Python as the language from the dropdown. You'll see it automatically creates a file called `main.py`. By convention, files that contain Python programs have names that end with `.py`.
+
 The engine that translates and runs Python is called the **Python Interpreter**: There are two ways to use it: *immediate mode* and *script mode*. In immediate mode, you type Python expressions into the Python Interpreter window, and the interpreter immediately shows the result:
 
 ![Running code in the interpreter (immediate mode)](Chapter-1/01-01-python-interpreter.png)
 
 The `>>>` or `>` is called the **Python prompt**. The interpreter uses the prompt to indicate that it is ready for instructions. We typed `2 + 2`, and the interpreter evaluated our expression, and replied `4`, and on the next line it gave a new prompt, indicating that it is ready for more input.
 
-Alternatively, you can write a program in a file and use the interpreter to execute the contents of the file. Such a file is called a **script**. Scripts have the advantage that they can be saved to disk, printed, and so on.
-
-In this edition of the textbook, we use a program development environment called **Replit**. (It is available at https://replit.com/.) There are various other development environments. If you’re using one of the others, you might be better off working with the authors’ original book rather than this edition.
-
-For example, we created a file named `main.py` using Replit. By convention, files that contain Python programs have names that end with `.py`
-
-To execute the program, we can click the **Run** button in Replit:
+Working directly in the interpreter is convenient for testing short bits of code because you get immediate feedback. Think of it as scratch paper used to help you work out problems. Anything longer than a few lines should be put into a script. Scripts have the advantage that they can be saved to disk, printed, and so on. To create a script, you can enter the code into the middle pane, as shown below
 
 ![Running code from a file (script mode)](Chapter-1/01-02-running-a-script.png)
 
-Most programs are more interesting than this one.
+```python
+print("My first program adds two numbers")
+print(2+3)
+```
 
-Working directly in the interpreter is convenient for testing short bits of code because you get immediate feedback. Think of it as scratch paper used to help you work out problems. Anything longer than a few lines should be put into a script.
+To execute the program, click the **Run** button in Replit. You're now a computer programmer! Let's take a look at some more theory before we start writing more advanced programs.
 
 ## 1.2. What is a program?
 

@@ -230,24 +230,21 @@ This case study has shown an excellent example of this. Our JSON serializer and 
 
 
 ## 21.5. Glossary
+**deserialization**
+Reconstruction an in-memory object from some external text
+representation
 
-```
-deserialization  
-    Reconstruction an in-memory object from some external text
-    representation
+**gzip**
+A lossless compression technique that reduces the storage size of data.
+(Lossless means you can recover the original data exactly.)
 
-gzip  
-    A lossless compression technique that reduces the storage size of data.
-    (Lossless means you can recover the original data exactly.)
+**JSON**
+JavaScript Object Notation is a format for serializing and transporting
+objects, often used between web servers and web browsers that run
+JavasScript. Python contains a `json` module to provide this capability.
 
-JSON  
-    JavaScript Object Notation is a format for serializing and transporting
-    objects, often used between web servers and web browsers that run
-    JavasScript. Python contains a `json` module to provide this capability.
+**serialization**
+Turning an object into a string (or bytes) so that it can be sent over
+the internet, or saved in a file. The recipient can reconstruct a new
+object from the data.
 
-serialization  
-    Turning an object into a string (or bytes) so that it can be sent over
-    the internet, or saved in a file. The recipient can reconstruct a new
-    object from the data.
-
-```
