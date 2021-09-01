@@ -67,7 +67,7 @@ def exists(filename):
 
 pw:  HI Victor - I looked at the else: and went against it! It is just a horrible language feature in my view. Not only do we complicate things by overload the keyword else (here, in the if, and in the for loop), but it adds no new expressive power over just doing the "didn't get an exception" inline.  And the allowable combinations are hard to explain.  You can omit the except clause if you have a finally clause. But you cannot have the else if you omit except, ... and so on.  Too much risk for too little return, in my view.
 
-A template to test if a file exists, without using exceptions
+**A template to test if a file exists, without using exceptions**
 
 The function we've just shown is not one we'd recommend. It opens and closes the file, which is semantically different from asking "does it exist?". How?  Firstly, it might update some timestamps on the file. Secondly, it might tell us that there is no such file if some other program already happens to have the file open, or if our permission settings don't allow us to open the file.
 
