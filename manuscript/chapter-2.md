@@ -1,5 +1,7 @@
 # Chapter 2: Variables, expressions and statements
 
+(Watch a video based on this chapter [here on YouTube](https://youtu.be/gIvstR16coI).
+
 ## 2.1. Values and data types
 
 A **value** is one of the fundamental things — like a letter or a number — that a program manipulates. The values we have seen so far are `4` (the result when we added `2 + 2`), and `"Hello, World!"`.
