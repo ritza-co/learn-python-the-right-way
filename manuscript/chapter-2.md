@@ -1,6 +1,6 @@
 # Chapter 2: Variables, expressions and statements
 
-(Watch a video based on this chapter [here on YouTube](https://youtu.be/gIvstR16coI).
+(Watch a video based on this chapter [here on YouTube](https://youtu.be/gIvstR16coI).)
 
 ## 2.1. Values and data types
 
