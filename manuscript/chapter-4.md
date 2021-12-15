@@ -448,6 +448,10 @@ The opposite of a fruitful function: one that does not return a value. It is exe
 
 3. Write a void function `draw_poly(t, n, sz)` which makes a turtle draw a regular polygon. When called with `draw_poly(tess, 8, 50)`, it will draw a shape like this:
 
+![Regular polygon](Chapter-4/04-06-regularpolygon.png)
+
+4. Draw this pretty pattern.
+
 ![Regular Polygon](Chapter-4/04-07-pretty-pattern.png)
 
 5. The two spirals in this picture differ only by the turn angle. Draw both.
