@@ -8,7 +8,7 @@ Part of this chapter works with the book *Alice in Wonderland* and a *vocabulary
 
 ## 14.1. Test-driven development
 
-Early in our Fruitful functions chapter we introduced the idea of *incremental development*, where we added small fragments of code to slowly build up the whole, so that we could easily find problems early. Later in that same chapter we introduced unit testing and gave code for our testing framework so that we could capture, in code, appropriate tests for the functions we were writing.
+Early in our **Fruitful functions** chapter we introduced the idea of *incremental development*, where we added small fragments of code to slowly build up the whole, so that we could easily find problems early. Later in that same chapter we introduced unit testing and gave code for our testing framework so that we could capture, in code, appropriate tests for the functions we were writing.
 
 **Test-driven development (TDD)** is a software development practice which takes these practices one step further. The key idea is that automated tests should be written *first*. This technique is called *test-driven* because --- if we are to believe the extremists --- non-testing code should only be written when there is a failing test to make pass.
 
@@ -291,8 +291,7 @@ The beauty of the algorithm is that we could double the size of the vocabulary, 
 
 Can we put a formula to this? If our list size is N, what is the biggest number of probes k we could need? The maths is a bit easier if we turn the question around: how big a list N could we deal with, given that we were only allowed to make k probes?
 
-With 1 probe, we can only search a list of size 1. With two probes we could cope with lists up to size 3 - (test the middle item with the first probe, then test either the left or right sublist with the second
-probe). With one more probe, we could cope with 7 items (the middle item, and two sublists of size 3). With four probes, we can search 15 items, and 5 probes lets us search up to 31 items. So the general relationship is given by the formula
+With 1 probe, we can only search a list of size 1. With two probes we could cope with lists up to size 3 - (test the middle item with the first probe, then test either the left or right sublist with the second probe). With one more probe, we could cope with 7 items (the middle item, and two sublists of size 3). With four probes, we can search 15 items, and 5 probes lets us search up to 31 items. So the general relationship is given by the formula
 
 ```python
 N = 2 ** k - 1
@@ -597,9 +596,8 @@ Let us now take some grand insight into the problem. Do you think it is a coinci
 
 A little thinking should convince you that there can never be duplicate numbers in a solution: the numbers represent the row on which the queen is placed, and because we are never permitted to put two queens in the same row, no solution will ever have duplicate row numbers in it.
 
-Our key insight
-
-*In our representation, any solution to the N queens problem musttherefore be a permutation of the numbers \[0 .. N-1\].*
+> **Our key insight**
+> In our representation, any solution to the N queens problem must therefore be a permutation of the numbers \[0 .. N-1\].
 
 
 Note that not all permutations are solutions. For example, `[0,1,2,3,4,5,6,7]` has all queens on the same diagonal.
@@ -631,9 +629,7 @@ def share_diagonal(x0, y0, x1, y1):
 
 If you copy the code and run it, you'll be happy to learn that the tests pass!
 
-Now let's consider how we construct a solution by hand. We'll put a queen somewhere in the first column, then place one in the second column, only if it does not clash with the one already on the board. And
-then we'll put a third one on, checking it against the two queens already to its left. When we consider the queen on column 6, we'll need to check for clashes against those in all the columns to its left, i.e.
-in columns 0,1,2,3,4,5.
+Now let's consider how we construct a solution by hand. We'll put a queen somewhere in the first column, then place one in the second column, only if it does not clash with the one already on the board. And then we'll put a third one on, checking it against the two queens already to its left. When we consider the queen on column 6, we'll need to check for clashes against those in all the columns to its left, i.e. in columns 0,1,2,3,4,5.
 
 So the next building block is a function that, given a partially completed puzzle, can check whether the queen at column `c` clashes with any of the queens to its left, at columns 0,1,2,..c-1:
 
@@ -689,21 +685,17 @@ def has_clashes(the_board):
     return False
 ```
 
-Summary of what we've done so far: we now have a powerful function called `has_clashes` that can tell if a configuration is a solution to the queens puzzle. Let's get on now with generating lots of permutations
-and finding solutions!
+Summary of what we've done so far: we now have a powerful function called `has_clashes` that can tell if a configuration is a solution to the queens puzzle. Let's get on now with generating lots of permutations and finding solutions!
 
 ## 14.9. Eight Queens puzzle, part 2
 
 This is the fun, easy part. We could try to find all permutations of `[0,1,2,3,4,5,6,7]` --- that might be algorithmically challenging, and would be a *brute force* way of tackling the problem. We just try everything, and find all possible solutions.
 
-Of course we know there are N! permutations of N things, so we can get an early idea of how long it would take to search all of them for all solutions. Not too long at all, actually -8! is only 40320 different
-cases to check out. This is vastly better than starting with 64 places to put eight queens. If you do the sums for how many ways can you choose 8 of the 64 squares for your queens, the formula (called *N choose k*
-where you're choosing k=8 squares of the available N=64) yields a whopping 4426165368, obtained from (64! / (8! x 56!)).
+Of course we know there are N! permutations of N things, so we can get an early idea of how long it would take to search all of them for all solutions. Not too long at all, actually -8! is only 40320 different cases to check out. This is vastly better than starting with 64 places to put eight queens. If you do the sums for how many ways can you choose 8 of the 64 squares for your queens, the formula (called *N choose k* where you're choosing k=8 squares of the available N=64) yields a whopping 4426165368, obtained from (64! / (8! x 56!)).
 
 So our earlier key insight --- that we only need to consider permutations --- has reduced what we call the *problem space* from about 4.4 billion cases to just 40320!
 
-We're not even going to explore all those, however. When we introduced the random number module, we learned that it had a `shuffle` method that randomly permuted a list of items. So we're going to write a "random"
-algorithm to find solutions to the N queens problem. We'll begin with the permutation \[0,1,2,3,4,5,6,7\] and we'll repeatedly shuffle the list, and test each to see if it works! Along the way we'll count how many attempts we need before we find each solution, and we'll find 10 solutions (we could hit the same solution more than once, because shuffle is random!):
+We're not even going to explore all those, however. When we introduced the random number module, we learned that it had a `shuffle` method that randomly permuted a list of items. So we're going to write a "random" algorithm to find solutions to the N queens problem. We'll begin with the permutation \[0,1,2,3,4,5,6,7\] and we'll repeatedly shuffle the list, and test each to see if it works! Along the way we'll count how many attempts we need before we find each solution, and we'll find 10 solutions (we could hit the same solution more than once, because shuffle is random!):
 
 ```python
 def main():
@@ -739,8 +731,7 @@ Found solution [5, 1, 6, 0, 3, 7, 4, 2] in 177 tries.
 Found solution [1, 6, 2, 5, 7, 4, 0, 3] in 478 tries.
 ```
 
-Here is an interesting fact. On an 8x8 board, there are known to be 92 different solutions to this puzzle. We are randomly picking one of 40320 possible permutations of our representation. So our chances of picking a
-solution on each try are 92/40320. Put another way, on average we'll need 40320/92 tries --- about 438.26 --- before we stumble across a solution. The number of tries we printed looks like our experimental data agrees quite nicely with our theory!
+Here is an interesting fact. On an 8x8 board, there are known to be 92 different solutions to this puzzle. We are randomly picking one of 40320 possible permutations of our representation. So our chances of picking a solution on each try are 92/40320. Put another way, on average we'll need 40320/92 tries --- about 438.26 --- before we stumble across a solution. The number of tries we printed looks like our experimental data agrees quite nicely with our theory!
 
 Save this code for later.
 
@@ -748,97 +739,50 @@ In the chapter on PyGame we plan to write a module to draw the board with its qu
 
 ## 14.10. Glossary
 
-**binary search**
-A famous algorithm that searches for a target in a sorted list. Each
-probe in the list allows us to discard half the remaining items, so the
-algorithm is very efficient.
+ **binary search** A famous algorithm that searches for a target in a sorted list. Each probe in the list allows us to discard half the remaining items, so the algorithm is very efficient.
 
-**linear**
-Relating to a straight line. Here, we talk about graphing how the time
-taken by an algorithm depends on the size of the data it is processing.
-Linear algorithms have straight-line graphs that can describe this
-relationship.
+ **linear** Relating to a straight line. Here, we talk about graphing how the time taken by an algorithm depends on the size of the data it is processing. Linear algorithms have straight-line graphs that can describe this relationship.
 
-**linear search**
-A search that probes each item in a list or sequence, from first, until
-it finds what it is looking for. It is used for searching for a target
-in unordered lists of items.
+ **linear search** A search that probes each item in a list or sequence, from first, until it finds what it is looking for. It is used for searching for a target in unordered lists of items.
 
-**Merge algorithm**
-An efficient algorithm that merges two already sorted lists, to produce
-a sorted list result. The merge algorithm is really a pattern of
-computation that can be adapted and reused for various other scenarios,
-such as finding words that are in a book, but not in a vocabulary.
+ **Merge algorithm** An efficient algorithm that merges two already sorted lists, to produce a sorted list result. The merge algorithm is really a pattern of computation that can be adapted and reused for various other scenarios, such as finding words that are in a book, but not in a vocabulary.
+ 
+**probe** Each time we take a look when searching for an item is called a probe. In our chapter on <span class="title-ref">Iteration</span> we also played a guessing game where the computer tried to guess the user's secret number. Each of those tries would also be called a probe.
 
-**probe**
-Each time we take a look when searching for an item is called a probe.
-In our chapter on <span class="title-ref">Iteration</span> we also
-played a guessing game where the computer tried to guess the user's
-secret number. Each of those tries would also be called a probe.
-
-**test-driven development (TDD)**
-A software development practice which arrives at a desired feature
-through a series of small, iterative steps motivated by automated tests
-which are *written first* that express increasing refinements of the
-desired feature. (see the Wikipedia article on [Test-driven
-development](http://en.wikipedia.org/wiki/Test_driven_development) for
-more information.)
+**test-driven development (TDD)** A software development practice which arrives at a desired feature through a series of small, iterative steps motivated by automated tests which are *written first* that express increasing refinements of the desired feature. (see the Wikipedia article on [Test-driven development](http://en.wikipedia.org/wiki/Test_driven_development) for more information.)
 
 ## 14.11. Exercises
 
-1.  The section in this chapter called Alice in Wonderland, again started with the observation that the merge 
-    algorithm uses a pattern that can be reused in other situations. Adapt the merge algorithm to write each of these functions, as was suggested there:
+1.  The section in this chapter called Alice in Wonderland, again started with the observation that the merge  algorithm uses a pattern that can be reused in other situations. Adapt the merge algorithm to write each of these functions, as was suggested there:
 
     1.  Return only those items that are present in both lists.
-    2.  Return only those items that are present in the first list,
-        but not in the second.
-    3.  Return only those items that are present in the second list,
-        but not in the first.
-    4.  Return items that are present in either the first or the
-        second list.
-    5.  Return items from the first list that are not eliminated by a
-        matching element in the second list. In this case, an item in
-        the second list "knocks out" just one matching item in the
-        first list. This operation is sometimes called *bagdiff*. For
-        example `bagdiff([5,7,11,11,11,12,13], [7,8,11])` would return
-        `[5,11,11,12,13]`
+    2.  Return only those items that are present in the first list, but not in the second.
+    3.  Return only those items that are present in the second list, but not in the first.
+    4.  Return items that are present in either the first or the second list.
+    5.  Return items from the first list that are not eliminated by a matching element in the second list. In this case, an item in the second list "knocks out" just one matching item in the first list. This operation is sometimes called *bagdiff*. For example `bagdiff([5,7,11,11,11,12,13], [7,8,11])` would return `[5,11,11,12,13]`
 
-2.  Modify the queens program to solve some boards of size 4, 12, and 16. What is the maximum size puzzle you 
-    can usually solve in under a minute?
+2.  Modify the queens program to solve some boards of size 4, 12, and 16. What is the maximum size puzzle you can usually solve in under a minute?
 
-3.  Adapt the queens program so that we keep a list of solutions that have already printed, so that we don't 
-    print the same solution more than once.
+3.  Adapt the queens program so that we keep a list of solutions that have already printed, so that we don't  print the same solution more than once.
 
-4.  Chess boards are symmetric: if we have a solution to the queens problem, its mirror solution --- either 
-    flipping the board on the X or in the Y axis, is also a solution. And giving the board a 90
-    degree, 180 degree, or 270 degree rotation is also a solution. In some sense, solutions that are just mirror images or rotations of other solutions --- in the same family ---are less interesting than
-    the unique "core cases". Of the 92 solutions for the 8 queens problem, there are only 12 unique families if you take rotations and mirror images into account. Wikipedia has some fascinating stuff about this.
+4.  Chess boards are symmetric: if we have a solution to the queens problem, its mirror solution --- either  flipping the board on the X or in the Y axis, is also a solution. And giving the board a 90 degree, 180 degree, or 270 degree rotation is also a solution. In some sense, solutions that are just mirror images or rotations of other solutions --- in the same family ---are less interesting than the unique "core cases". Of the 92 solutions for the 8 queens problem, there are only 12 unique families if you take rotations and mirror images into account. Wikipedia has some fascinating stuff about this.
 
     1.  Write a function to mirror a solution in the Y axis,
     
     2.  Write a function to mirror a solution in the X axis,
     
-    3.  Write a function to rotate a solution by 90 degrees
-        anti-clockwise, and use this to provide 180 and 270 degree
-        rotations too.
+    3.  Write a function to rotate a solution by 90 degrees anti-clockwise, and use this to provide 180 and 270 degree rotations too.
     
-    4.  Write a function which is given a solution, and it generates
-        the family of symmetries for that solution. For example, the
-        symmetries of `[0,4,7,5,2,6,1,3]` are :
+    4.  Write a function which is given a solution, and it generates the family of symmetries for that solution. For example, the symmetries of `[0,4,7,5,2,6,1,3]` are :
     
             [[0,4,7,5,2,6,1,3],[7,1,3,0,6,4,2,5],
              [4,6,1,5,2,0,3,7],[2,5,3,1,7,4,6,0],
              [3,1,6,2,5,7,4,0],[0,6,4,7,1,3,5,2],
              [7,3,0,2,5,1,6,4],[5,2,4,6,0,3,1,7]] 
     
-    5.  Now adapt the queens program so it won't list solutions that
-        are in the same family. It only prints solutions from unique
-        families.
+    5.  Now adapt the queens program so it won't list solutions that are in the same family. It only prints solutions from unique families.
 
-5.  Every week a computer scientist buys four lotto tickets. She always chooses the same prime numbers, with 
-    the hope that if she ever hits the jackpot, she will be able to go onto TV and Facebook and tell
-    everyone her secret. This will suddenly create widespread public interest in prime numbers, and will be the trigger event that ushers in a new age of enlightenment. She represents her weekly tickets in
-    Python as a list of lists:
+5.  Every week a computer scientist buys four lotto tickets. She always chooses the same prime numbers, with the hope that if she ever hits the jackpot, she will be able to go onto TV and Facebook and tell everyone her secret. This will suddenly create widespread public interest in prime numbers, and will be the trigger event that ushers in a new age of enlightenment. She represents her weekly tickets in Python as a list of lists:
 
         my_tickets = [ [ 7, 17, 37, 19, 23, 43], 
                        [ 7,  2, 13, 41, 31, 43], 
@@ -847,50 +791,32 @@ more information.)
 
     Complete these exercises.
 
-    1.  Each lotto draw takes six random balls, numbered from 1 to 49.
-        Write a function to return a lotto draw.
+    1.  Each lotto draw takes six random balls, numbered from 1 to 49. Write a function to return a lotto draw.
 
-    2.  Write a function that compares a single ticket and a draw, and
-        returns the number of correct picks on that ticket:
+    2.  Write a function that compares a single ticket and a draw, and returns the number of correct picks on that ticket:
 
             test(lotto_match([42,4,7,11,1,13], [2,5,7,11,13,17]) == 3)
 
-    3.  Write a function that takes a list of tickets and a draw, and
-        returns a list telling how many picks were correct on each
-        ticket:
+    3.  Write a function that takes a list of tickets and a draw, and returns a list telling how many picks were correct on each ticket:
 
             test(lotto_matches([42,4,7,11,1,13], my_tickets) == [1,2,3,1])
 
-    4.  Write a function that takes a list of integers, and returns the
-        number of primes in the list:
+    4.  Write a function that takes a list of integers, and returns the number of primes in the list:
 
             test(primes_in([42, 4, 7, 11, 1, 13]) == 3)
 
-    5.  Write a function to discover whether the computer scientist has
-        missed any prime numbers in her selection of the four tickets.
-        Return a list of all primes that she has missed:
+    5.  Write a function to discover whether the computer scientist has missed any prime numbers in her selection of the four tickets. Return a list of all primes that she has missed:
 
             test(prime_misses(my_tickets) == [3, 29, 47])
 
-    6.  Write a function that repeatedly makes a new draw, and compares
-        the draw to the four tickets.
+    6.  Write a function that repeatedly makes a new draw, and compares the draw to the four tickets.
 
-        1.  Count how many draws are needed until one of the computer
-            scientist's tickets has at least 3 correct picks. Try the
-            experiment twenty times, and average out the number of draws
+        1.  Count how many draws are needed until one of the computer scientist's tickets has at least 3 correct picks. Try the experiment twenty times, and average out the number of draws
             needed.
-        2.  How many draws are needed, on average, before she gets at
-            least 4 picks correct?
-        3.  How many draws are needed, on average, before she gets at
-            least 5 correct? (Hint: this might take a while. It would be
-            nice if you could print some dots, like a progress bar, to
+        2.  How many draws are needed, on average, before she gets at least 4 picks correct?
+        3.  How many draws are needed, on average, before she gets at least 5 correct? (Hint: this might take a while. It would be nice if you could print some dots, like a progress bar, to
             show when each of the 20 experiments has completed.)
 
-        Notice that we have difficulty constructing test cases here,
-        because our random numbers are not deterministic. Automated
-        testing only really works if you already know what the answer
-        should be!
+Notice that we have difficulty constructing test cases here, because our random numbers are not deterministic. Automated testing only really works if you already know what the answer should be!
 
-6.  Read *Alice in Wonderland*. You can read the plain text version we have with this textbook, or if you   
-    have e-book reader software on your PC, or a Kindle, iPhone, Android, etc. you'll be able to find a
-    suitable version for your device at http://www.gutenberg.org. They also have html and pdf versions, with pictures, and thousands of other classic books!
+6.  Read *Alice in Wonderland*. You can read the plain text version we have with this textbook, or if you have e-book reader software on your PC, or a Kindle, iPhone, Android, etc. you'll be able to find a suitable version for your device at http://www.gutenberg.org. They also have html and pdf versions, with pictures, and thousands of other classic books!
