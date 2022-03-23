@@ -8,21 +8,17 @@ Part of this chapter works with the book *Alice in Wonderland* and a *vocabulary
 
 ## 14.1. Test-driven development
 
-Early in our Fruitful functions chapter we introduced the idea of *incremental development*, where we added
-small fragments of code to slowly build up the whole, so that we could easily find problems early. Later in that same chapter we introduced unit testing and gave code for our testing framework so that we could capture, in code, appropriate tests for the functions we were writing.
+Early in our Fruitful functions chapter we introduced the idea of *incremental development*, where we added small fragments of code to slowly build up the whole, so that we could easily find problems early. Later in that same chapter we introduced unit testing and gave code for our testing framework so that we could capture, in code, appropriate tests for the functions we were writing.
 
-**Test-driven development (TDD)** is a software development practice which takes these practices one step further. The key idea is that automated tests should be written *first*. This technique is called
-*test-driven* because --- if we are to believe the extremists --- non-testing code should only be written when there is a failing test to make pass.
+**Test-driven development (TDD)** is a software development practice which takes these practices one step further. The key idea is that automated tests should be written *first*. This technique is called *test-driven* because --- if we are to believe the extremists --- non-testing code should only be written when there is a failing test to make pass.
 
-We can still retain our mode of working in small incremental steps, but now we'll define and express those steps in terms of a sequence of increasingly sophisticated unit tests that demand more from our code at
-each stage.
+We can still retain our mode of working in small incremental steps, but now we'll define and express those steps in terms of a sequence of increasingly sophisticated unit tests that demand more from our code at each stage.
 
 We'll turn our attention to some standard algorithms that process lists now, but as we proceed through this chapter we'll attempt to do so in the spirit envisaged by TDD.
 
 ## 14.2. The linear search algorithm
 
-We'd like to know the index where a specific item occurs within in a list of items. Specifically, we'll return the index of the item if it is found, or we'll return -1 if the item doesn't occur in the list. Let us
-start with some tests:
+We'd like to know the index where a specific item occurs within in a list of items. Specifically, we'll return the index of the item if it is found, or we'll return -1 if the item doesn't occur in the list. Let us start with some tests:
 
 ```python
 friends = ["Joe", "Zoe", "Brad", "Angelina", "Zuki", "Thandi", "Paris"]
@@ -43,8 +39,7 @@ def search_linear(xs, target):
     return -1
 ```
 
-There are a some points to learn here: We've seen a similar algorithm in section 8.10 when we searched for a character in a string. There we used a `while` loop, here we've used a `for` loop, coupled with `enumerate` to extract the `(i, v)` pair on each iteration. There are other variants --- for example, we could have used `range` and made the loop run only over the indexes, or we could have used the idiom of returning `None` when the item was not found in the list. But the essential similarity in all these variations is that we test every item in the list in turn, from first to last, using the pattern of the short-circuit *eureka
-traversal* that we introduced earlier ---that we return from the function as soon as we find the target that we're looking for.
+There are a some points to learn here: We've seen a similar algorithm in section 8.10 when we searched for a character in a string. There we used a `while` loop, here we've used a `for` loop, coupled with `enumerate` to extract the `(i, v)` pair on each iteration. There are other variants --- for example, we could have used `range` and made the loop run only over the indexes, or we could have used the idiom of returning `None` when the item was not found in the list. But the essential similarity in all these variations is that we test every item in the list in turn, from first to last, using the pattern of the short-circuit *eureka traversal* that we introduced earlier ---that we return from the function as soon as we find the target that we're looking for.
 
 Searching all items of a sequence from first to last is called a **linear search**. Each time we check whether `v == target` we'll call it a **probe**. We like to count probes as a measure of how efficient our algorithm is, and this will be a good enough indication of how long our algorithm will take to execute.
 
@@ -112,8 +107,7 @@ There are 19469 words in the vocab, starting with
 ['a', 'aback', 'abacus', 'abandon', 'abandoned', 'abandonment'] 
 ```
 
-So we've got a more sensible size vocabulary. Now let us load up a book, once again we'll use the one we downloaded at the beginning of this chapter. Loading a book is much like loading words from a file, but
-we're going to do a little extra black magic. Books are full of punctuation, and have mixtures of lowercase and uppercase letters. We need to clean up the contents of the book. This will involve removing punctuation, and converting everything to the same case (lowercase, because our vocabulary is all in lowercase). So we'll want a more sophisticated way of converting text to words.
+So we've got a more sensible size vocabulary. Now let us load up a book, once again we'll use the one we downloaded at the beginning of this chapter. Loading a book is much like loading words from a file, but we're going to do a little extra black magic. Books are full of punctuation, and have mixtures of lowercase and uppercase letters. We need to clean up the contents of the book. This will involve removing punctuation, and converting everything to the same case (lowercase, because our vocabulary is all in lowercase). So we'll want a more sophisticated way of converting text to words.
 
 ```python
 test(text_to_words("My name is Earl!") == ["my", "name", "is", "earl"])
@@ -141,8 +135,7 @@ def text_to_words(the_text):
     return wds
 ```
 
-The translation turns all uppercase characters into lowercase, and all punctuation characters and digits into spaces. Then, of course, `split` will get rid of the spaces as it breaks the text into a list of words.
-The tests pass.
+The translation turns all uppercase characters into lowercase, and all punctuation characters and digits into spaces. Then, of course, `split` will get rid of the spaces as it breaks the text into a list of words. The tests pass.
 
 Now we're ready to read in our book:
 
@@ -185,9 +178,7 @@ Well now we have all the pieces ready. Let us see what words in this book are no
 >>> missing_words = find_unknown_words(bigger_vocab, book_words) 
 ```
 
-We wait a considerable time now, something like a minute, before Python finally works its way through this, and prints a list of 3398 words in the book that are not in the vocabulary. Mmm... This is not particularly
-scaleable. For a vocabulary that is twenty times larger (you'll often find school dictionaries with 300 000 words, for example), and longer books, this is going to be slow. So let us make some timing measurements
-while we think about how we can improve this in the next section.
+We wait a considerable time now, something like a minute, before Python finally works its way through this, and prints a list of 3398 words in the book that are not in the vocabulary. Mmm... This is not particularly scaleable. For a vocabulary that is twenty times larger (you'll often find school dictionaries with 300 000 words, for example), and longer books, this is going to be slow. So let us make some timing measurements while we think about how we can improve this in the next section.
 
 ```python
 import time
@@ -208,12 +199,9 @@ That took 49.8014 seconds.
 
 ## 14.4. Binary Search
 
-If you think about what we've just done, it is not how we work in real life. If you were given a vocabulary and asked to tell if some word was present, you'd probably start in the middle. You can do this because the
-vocabulary is ordered --- so you can probe some word in the middle, and immediately realize that your target was before (or perhaps after) the one you had probed. Applying this principle repeatedly leads us to a
-very much better algorithm for searching in a list of items that are already ordered. (Note that if the items are not ordered, you have little choice other than to look through all of them. But, if we know
-the items are in order, we can improve our searching technique).
+If you think about what we've just done, it is not how we work in real life. If you were given a vocabulary and asked to tell if some word was present, you'd probably start in the middle. You can do this because the vocabulary is ordered --- so you can probe some word in the middle, and immediately realize that your target was before (or perhaps after) the one you had probed. Applying this principle repeatedly leads us to a very much better algorithm for searching in a list of items that are already ordered. (Note that if the items are not ordered, you have little choice other than to look through all of them. But, if we know the items are in order, we can improve our searching technique).
 
-Lets start with some tests. Remember, the list needs to be sorted:
+Let's start with some tests. Remember, the list needs to be sorted:
 
 ```python
 xs = [2,3,5,7,11,13,17,23,29,31,37,43,47,53]
@@ -224,12 +212,9 @@ for (i, v) in enumerate(xs):
     test(search_binary(xs, v) == i)
 ```
 
-Even our test cases are interesting this time: notice that we start with items not in the list and look at boundary conditions --- in the middle of the list, less than all items in the list, bigger than the biggest.
-Then we use a loop to use every list item as a target, and to confirm that our binary search returns the corresponding index of that item in the list.
+Even our test cases are interesting this time: notice that we start with items not in the list and look at boundary conditions --- in the middle of the list, less than all items in the list, bigger than the biggest. Then we use a loop to use every list item as a target, and to confirm that our binary search returns the corresponding index of that item in the list.
 
-It is useful to think about having a *region-of-interest* (ROI) within the list being searched. This ROI will be the portion of the list in which it is still possible that our target might be found. Our algorithm
-will start with the ROI set to all the items in the list. On the first probe in the middle of the ROI, there are three possible outcomes: either we find the target, or we learn that we can discard the top half
-of the ROI, or we learn that we can discard the bottom half of the ROI. And we keep doing this repeatedly, until we find our target, or until we end up with no more items in our region of interest. We can code this as follows:
+It is useful to think about having a *region-of-interest* (ROI) within the list being searched. This ROI will be the portion of the list in which it is still possible that our target might be found. Our algorithm will start with the ROI set to all the items in the list. On the first probe in the middle of the ROI, there are three possible outcomes: either we find the target, or we learn that we can discard the top half of the ROI, or we learn that we can discard the bottom half of the ROI. And we keep doing this repeatedly, until we find our target, or until we end up with no more items in our region of interest. We can code this as follows:
 
 ```python
 def search_binary(xs, target):
@@ -258,12 +243,9 @@ def search_binary(xs, target):
             ub = mid_index        # Use lower half of ROI next time
 ```
 
-The region of interest is represented by two variables, a lower bound `lb` and an upper bound `ub`. It is important to be precise about what values these indexes have. We'll make `lb` hold the index of the first
-item in the ROI, and make `ub` hold the index just *beyond* the last item of interest. So these semantics are similar to a Python slice semantics: the region of interest is exactly the slice `xs[lb:ub]`. (The
-algorithm never actually takes any array slices!)
+The region of interest is represented by two variables, a lower bound `lb` and an upper bound `ub`. It is important to be precise about what values these indexes have. We'll make `lb` hold the index of the first item in the ROI, and make `ub` hold the index just *beyond* the last item of interest. So these semantics are similar to a Python slice semantics: the region of interest is exactly the slice `xs[lb:ub]`. (The algorithm never actually takes any array slices!)
 
-With this code in place, our tests pass. Great. Now if we substitute a call to this search algorithm instead of calling the `search_linear` in `find_unknown_words`, can we improve our performance? Let's do that, and
-again run this test:
+With this code in place, our tests pass. Great. Now if we substitute a call to this search algorithm instead of calling the `search_linear` in `find_unknown_words`, can we improve our performance? Let's do that, and again run this test:
 
 ```python
 t0 = time.process_time()
@@ -301,16 +283,13 @@ ROI[10328:10329](size=1), probed='magic', target='magic'
 10328
 ```
 
-Here we see that finding the target word "magic" needed just 14 probes before it was found at index 10328. The important thing is that each probe halves (with some truncation) the remaining region of interest. By
-contrast, the linear search would have needed 10329 probes to find the same target word.
+Here we see that finding the target word "magic" needed just 14 probes before it was found at index 10328. The important thing is that each probe halves (with some truncation) the remaining region of interest. By contrast, the linear search would have needed 10329 probes to find the same target word.
 
 The word *binary* means *two*. Binary search gets its name from the fact that each probe splits the list into two pieces and discards the one half from the region of interest.
 
-The beauty of the algorithm is that we could double the size of the vocabulary, and it would only need one more probe! And after another doubling, just another one probe. So as the vocabulary gets bigger, this
-algorithm's performance becomes even more impressive.
+The beauty of the algorithm is that we could double the size of the vocabulary, and it would only need one more probe! And after another doubling, just another one probe. So as the vocabulary gets bigger, this algorithm's performance becomes even more impressive.
 
-Can we put a formula to this? If our list size is N, what is the biggest number of probes k we could need? The maths is a bit easier if we turn the question around: how big a list N could we deal with, given that we
-were only allowed to make k probes?
+Can we put a formula to this? If our list size is N, what is the biggest number of probes k we could need? The maths is a bit easier if we turn the question around: how big a list N could we deal with, given that we were only allowed to make k probes?
 
 With 1 probe, we can only search a list of size 1. With two probes we could cope with lists up to size 3 - (test the middle item with the first probe, then test either the left or right sublist with the second
 probe). With one more probe, we could cope with 7 items (the middle item, and two sublists of size 3). With four probes, we can search 15 items, and 5 probes lets us search up to 31 items. So the general relationship is given by the formula
@@ -319,9 +298,7 @@ probe). With one more probe, we could cope with 7 items (the middle item, and tw
 N = 2 ** k - 1
 ```
 
-where k is the number of probes we're allowed to make, and N is the maximum size of the list that can be searched in that many probes. This function is *exponential* in k (because k occurs in the exponent part).
-If we wanted to turn the formula around and solve for k in terms of N, we need to move the constant 1 to the other side, and take a log (base 2) on each side. (The log is the inverse of an exponent.) So the formula
-for k in terms of N is now:
+where k is the number of probes we're allowed to make, and N is the maximum size of the list that can be searched in that many probes. This function is *exponential* in k (because k occurs in the exponent part). If we wanted to turn the formula around and solve for k in terms of N, we need to move the constant 1 to the other side, and take a log (base 2) on each side. (The log is the inverse of an exponent.) So the formula for k in terms of N is now:
 
 ![](Chapter-14/log2np1.png)
 
@@ -353,8 +330,7 @@ You will rarely encounter algorithms that scale to large datasets as beautifully
 
 ## 14.5. Removing adjacent duplicates from a list
 
-We often want to get the unique elements in a list, i.e. produce a new list in which each different element occurs just once. Consider our case of looking for words in Alice in Wonderland that are not in our vocabulary. We had a report that there are 3398 such words, but there are duplicates in that list. In fact, the word "alice" occurs 398 times in the book, and it is not in our vocabulary! How should we remove these
-duplicates?
+We often want to get the unique elements in a list, i.e. produce a new list in which each different element occurs just once. Consider our case of looking for words in Alice in Wonderland that are not in our vocabulary. We had a report that there are 3398 such words, but there are duplicates in that list. In fact, the word "alice" occurs 398 times in the book, and it is not in our vocabulary! How should we remove these duplicates?
 
 A good approach is to sort the list, then remove all adjacent duplicates. Let us start with removing adjacent duplicates
 
@@ -384,8 +360,7 @@ def remove_adjacent_dups(xs):
 
 The amount of work done in this algorithm is linear --- each item in `xs` causes the loop to execute exactly once, and there are no nested loops. So doubling the number of elements in `xs` should cause this function to run twice as long: the relationship between the size of the list and the time to run will be graphed as a straight (linear) line.
 
-Let us go back now to our analysis of Alice in Wonderland. Before checking the words in the book against the
-vocabulary, we'll sort those words into order, and eliminate duplicates. So our new code looks like this:
+Let us go back now to our analysis of Alice in Wonderland. Before checking the words in the book against the vocabulary, we'll sort those words into order, and eliminate duplicates. So our new code looks like this:
 
 ```python
 all_words = get_words_in_book("alice_in_wonderland.txt")
@@ -436,7 +411,7 @@ newlist.sort()
 
 But this doesn't take advantage of the fact that the two lists are already sorted, and is going to have poor scalability and performance for very large lists.
 
-Lets get some tests together first:
+Let's get some tests together first:
 
 ```python
 xs = [1,3,5,7,9,11,13,15,17,19]
@@ -479,8 +454,7 @@ def merge(xs, ys):
             yi += 1
 ```
 
-The algorithm works as follows: we create a result list, and keep two indexes, one into each list (lines 3-5). On each iteration of the loop, whichever list item is smaller is copied to the result list, and that
-list's index is advanced. As soon as either index reaches the end of its list, we copy all the remaining items from the other list into the result, which we return.
+The algorithm works as follows: we create a result list, and keep two indexes, one into each list (lines 3-5). On each iteration of the loop, whichever list item is smaller is copied to the result list, and that list's index is advanced. As soon as either index reaches the end of its list, we copy all the remaining items from the other list into the result, which we return.
 
 ## 14.7. Alice in Wonderland, again!
 
@@ -492,7 +466,7 @@ Underlying the algorithm for merging sorted lists is a deep pattern of computati
     list?
 -   What should we do in the remaining case?
 
-Lets assume we have two sorted lists. Exercise your algorithmic skills by adapting the merging algorithm pattern for each of these cases:
+Let's assume we have two sorted lists. Exercise your algorithmic skills by adapting the merging algorithm pattern for each of these cases:
 
 -   Return only those items that are present in both lists.
 -   Return only those items that are present in the first list, but not in the second.
@@ -541,8 +515,7 @@ There are 828 unknown words.
 That took 0.0410 seconds.    
 ```
 
-Let's review what we've done. We started with a word-by-word linear lookup in the vocabulary that ran in about 50 seconds. We implemented a clever binary search, and got that down to 0.22 seconds, more than 200
-times faster. But then we did something even better: we sorted the words from the book, eliminated duplicates, and used a merging pattern to find words from the book that were not in the dictionary. This was about five times faster than even the binary lookup algorithm. At the end of the chapter our algorithm is more than a 1000 times faster than our first attempt!
+Let's review what we've done. We started with a word-by-word linear lookup in the vocabulary that ran in about 50 seconds. We implemented a clever binary search, and got that down to 0.22 seconds, more than 200 times faster. But then we did something even better: we sorted the words from the book, eliminated duplicates, and used a merging pattern to find words from the book that were not in the dictionary. This was about five times faster than even the binary lookup algorithm. At the end of the chapter our algorithm is more than a 1000 times faster than our first attempt!
 
 That is what we can call a good day at the office!
 
@@ -555,17 +528,13 @@ the same row, column, or diagonal."*
 
 Please try this yourself, and find a few more solutions by hand.
 
-We'd like to write a program to find solutions to this puzzle. In fact, the puzzle generalizes to placing N queens on an NxN board, so we're going to think about the general case, not just the 8x8 case. Perhaps we
-can find solutions for 12 queens on a 12x12 board, or 20 queens on a 20x20 board.
+We'd like to write a program to find solutions to this puzzle. In fact, the puzzle generalizes to placing N queens on an NxN board, so we're going to think about the general case, not just the 8x8 case. Perhaps we can find solutions for 12 queens on a 12x12 board, or 20 queens on a 20x20 board.
 
-How do we approach a complex problem like this? A good starting point is to think about our *data structures* --- how exactly do we plan to represent the state of the chessboard and its queens in our program? Once we have some handle on what our puzzle is going to look like in memory, we can begin to think about the functions and logic we'll need to solve the puzzle, i.e. how do we put another queen onto the board
-somewhere, and to check whether it clashes with any of the queens already on the board.
+How do we approach a complex problem like this? A good starting point is to think about our *data structures* --- how exactly do we plan to represent the state of the chessboard and its queens in our program? Once we have some handle on what our puzzle is going to look like in memory, we can begin to think about the functions and logic we'll need to solve the puzzle, i.e. how do we put another queen onto the board somewhere, and to check whether it clashes with any of the queens already on the board.
 
-The steps of finding a good representation, and then finding a good algorithm to operate on the data cannot always be done independently of each other. As you think about the operations you require, you may want
-to change or reorganize the data somewhat to make it easier to do the operations you need.
+The steps of finding a good representation, and then finding a good algorithm to operate on the data cannot always be done independently of each other. As you think about the operations you require, you may want to change or reorganize the data somewhat to make it easier to do the operations you need.
 
-This relationship between algorithms and data was elegantly expressed in the title of a book *Algorithms + Data Structures = Programs*, written by one of the pioneers in Computer Science, Niklaus Wirth, the inventor
-of Pascal.
+This relationship between algorithms and data was elegantly expressed in the title of a book *Algorithms + Data Structures = Programs*, written by one of the pioneers in Computer Science, Niklaus Wirth, the inventor of Pascal.
 
 Let's brainstorm some ideas about how a chessboard and queens could be represented in memory.
 
@@ -626,8 +595,7 @@ Let's brainstorm some ideas about how a chessboard and queens could be represent
 
 Let us now take some grand insight into the problem. Do you think it is a coincidence that there are no repeated numbers in the solution? The solution `[6,4,2,0,5,7,1,3]` contains the numbers `0,1,2,3,4,5,6,7`, but none are duplicated! Could other solutions contain duplicate numbers, or not?
 
-A little thinking should convince you that there can never be duplicate numbers in a solution: the numbers represent the row on which the queen is placed, and because we are never permitted to put two queens in the
-same row, no solution will ever have duplicate row numbers in it.
+A little thinking should convince you that there can never be duplicate numbers in a solution: the numbers represent the row on which the queen is placed, and because we are never permitted to put two queens in the same row, no solution will ever have duplicate row numbers in it.
 
 Our key insight
 
@@ -640,11 +608,9 @@ Wow, we seem to be making progress on this problem merely by thinking, rather th
 
 Our algorithm should start taking shape now. We can start with the list \[0..N-1\], generate various permutations of that list, and check each permutation to see if it has any clashes (queens that are on the same diagonal). If it has no clashes, it is a solution, and we can print it.
 
-Let us be precise and clear on this issue: if we only use permutations of the rows, and we're using our compact representation, no queens can clash on either rows or columns, and we don't even have to concern
-ourselves with those cases. So the only clashes we need to test for are clashes on the diagonals.
+Let us be precise and clear on this issue: if we only use permutations of the rows, and we're using our compact representation, no queens can clash on either rows or columns, and we don't even have to concern ourselves with those cases. So the only clashes we need to test for are clashes on the diagonals.
 
-It sounds like a useful function will be one that can test if two queens share a diagonal. Each queen is on some (x,y) position. So does the queen at (5,2) share a diagonal with the one at (2,0)? Does (5,2) clash
-with (3,0)?
+It sounds like a useful function will be one that can test if two queens share a diagonal. Each queen is on some (x,y) position. So does the queen at (5,2) share a diagonal with the one at (2,0)? Does (5,2) clash with (3,0)?
 
 ```python
 test(not share_diagonal(5,2,2,0))
@@ -653,8 +619,7 @@ test(share_diagonal(5,2,4,3))
 test(share_diagonal(5,2,4,1))
 ```
 
-A little geometry will help us here. A diagonal has a slope of either 1 or -1. The question we really want to ask is *is their distance between them the same in the x and the y direction?* If it is, they share a
-diagonal. Because diagonals can be to the left or right, it will make sense for this program to use the absolute distance in each direction:
+A little geometry will help us here. A diagonal has a slope of either 1 or -1. The question we really want to ask is *is their distance between them the same in the x and the y direction?* If it is, they share a diagonal. Because diagonals can be to the left or right, it will make sense for this program to use the absolute distance in each direction:
 
 ```python
 def share_diagonal(x0, y0, x1, y1):
